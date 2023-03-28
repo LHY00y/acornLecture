@@ -17,5 +17,9 @@
 		]]>
 	</select>
 	
-	
+	<insert id="insertMember" parameterType="memberDTO">
+		<![CDATA[
+			insert into # values(#{member_id}, #{password}, #{member_name}, #{grade}, sysdate
+		]]>
+	</insert>
 </mapper>
