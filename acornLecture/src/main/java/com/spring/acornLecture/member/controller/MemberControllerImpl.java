@@ -31,7 +31,7 @@ public class MemberControllerImpl implements MemberController{
 	
 	@Override
 	@RequestMapping(value="/member/addMember.do", method=RequestMethod.POST)
-	public ModelAndView addMember(@ModelAttribute("member")MemberDTO member, HttpServletRequest request, HttpServletResponse response)
+	public ModelAndView addMember(@ModelAttribute("member") MemberDTO member, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
 		memberService.addMember(member);
