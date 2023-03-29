@@ -26,7 +26,7 @@
 			joinForm.id.focus();
 		} else if(joinForm.idDuplication.value!="idCheck"){
 			alert("아이디 중복체크를 해주세요.");
-		} else if(pwd.length==0 || pwd=""){
+		} else if(pwd.length==0 || pwd==""){
 			alert("비밀번호를 입력해 주세요.");
 		} else if(rePwd.length==0 || rePwd==""){
 			joinForm.rePwd.focus();
