@@ -15,4 +15,14 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		memberDAO.insertMember(member);
 	}
+	@Override
+	public MemberDTO login(MemberDTO member) {
+		// TODO Auto-generated method stub
+		return memberDAO.loginById(member);
+	}
+	@Override
+	public int idCheck(String id) {
+		// TODO Auto-generated method stub
+		return memberDAO.selectAllId(id);
+	}
 }

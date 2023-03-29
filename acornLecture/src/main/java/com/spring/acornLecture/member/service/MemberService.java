@@ -6,4 +6,8 @@ public interface MemberService {
 
 	void addMember(MemberDTO member);
 
+	MemberDTO login(MemberDTO member);
+
+	int idCheck(String id);
+
 }

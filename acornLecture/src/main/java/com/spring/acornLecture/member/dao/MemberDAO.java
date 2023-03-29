@@ -6,4 +6,8 @@ public interface MemberDAO {
 
 	void insertMember(MemberDTO member);
 
+	MemberDTO loginById(MemberDTO member);
+
+	int selectAllId(String id);
+
 }

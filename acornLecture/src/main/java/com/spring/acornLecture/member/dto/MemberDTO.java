@@ -2,6 +2,9 @@ package com.spring.acornLecture.member.dto;
 
 import java.sql.Date;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemberDTO {
 	private String member_id;
 	private String password;
