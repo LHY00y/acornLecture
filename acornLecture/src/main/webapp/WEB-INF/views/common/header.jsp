@@ -6,14 +6,21 @@
 	request.setCharacterEncoding("utf-8");
 %>
 
-<!-- 현재 링크 매핑 X -->
 <div>
 	<div id="mainLogoContainer">
-		<a id="mainLogo" href="${ contextPath }/main.do">AcornLecture</a>
+		<a id="mainLogo" href="${ contextPath }/main.do">홍 선생</a>
 	</div>	
 	<div id="loginContainer">
-		<a class="link" href="${ contextPath }/member/loginForm.do" >로그인</a>
-		<a class="link" href="${ contextPath }/member/memberForm.do">회원 가입</a>
+		<c:choose>
+			<c:when test="${isLogOn == true && member != null }">	
+				<a class="link" href="${ contextPath }/member/logout.do">로그아웃</a>
+				<a class="link" href="#">마이 페이지</a>
+			</c:when>
+			<c:otherwise>
+				<a class="link" href="${ contextPath }/member/loginForm.do" >로그인</a>
+				<a class="link" href="${ contextPath }/member/memberTypeForm.do">회원 가입</a>
+			</c:otherwise>
+		</c:choose>
 	</div>
 </div>
 
@@ -23,17 +30,28 @@
 </div>
 
 
-<!-- 세션으로 로그인 기능 구현 예정
-<div id="loginContainer">
-	<c:choose>
-		<c:when test="${ session.loggedIn eq true }">
-			<a class="link" href="${contextPath }/member/loginForm.do" >로그인</a>
-			<a class="link" href="${contextPath }/member/memberForm.do">회원 가입</a>
-		</c:when>
-		<c:otherwise>
-			<a href="#">로그아웃</a>
-			<a href="#">마이 페이지</a>
-		</c:otherwise>
-	</c:choose>
-</div>
+<!-- 
+<table border="0" width="100%">
+	<tr>
+		<td>
+			<a href="${contextPath }/main.do">
+				홈페이지 이미지
+			</a>
+		</td>
+		<td>
+			<h1><font size="30">홍 선생</font></h1>
+		</td>
+		<td>
+			<c:choose>
+				<c:when test="${isLogOn == true && member != null }">
+					<h3>환영합니다. ${member.member_name }님!</h3>
+					<a href="${contextPath }/member/logout.do"><h3>로그아웃</h3></a>
+				</c:when>
+				<c:otherwise>
+					<a href="${contextPath }/member/loginForm.do"><h3>로그인</h3></a>
+				</c:otherwise>
+			</c:choose>
+		</td>
+	</tr>
+</table>
 -->

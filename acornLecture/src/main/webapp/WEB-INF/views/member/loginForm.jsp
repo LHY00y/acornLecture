@@ -4,6 +4,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <c:set var="result" value="${param.result }" />
 <c:if test="${result == 'loginfailed' }">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
 	window.onload = function(){
 		alert("아이디 / 패스워드가 다릅니다. 다시 로그인 하세요.");
@@ -24,7 +25,7 @@
 	}
 </script>
 </c:if>
-<form method="post" action="${contextPath }/member/loginForm.do">
+<form method="post" action="${contextPath }/member/login.do">
 	<h1 align="center">로그인</h1>
 	<table align="center">
 		<tr align="center">
@@ -41,7 +42,7 @@
             </td>
             <td>
             </td>
-        	<td align="right"><input class="sign" type="button" value="회원가입">
+        	<td align="right"><input class="sign" type="button" value="회원가입" onclick="location.href='memberTypeForm.do'">
         </tr>
 	</table>
 </form>
