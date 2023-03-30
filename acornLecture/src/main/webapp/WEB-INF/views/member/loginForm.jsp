@@ -25,7 +25,7 @@
 	}
 </script>
 </c:if>
-<form method="post" action="${contextPath }/member/loginForm.do">
+<form method="post" action="${contextPath }/member/login.do">
 	<h1 align="center">로그인</h1>
 	<table align="center">
 		<tr align="center">

@@ -60,12 +60,33 @@ public class MemberControllerImpl implements MemberController{
 			if(action != null) {
 				mav.setViewName("redirect:"+action);
 			} else {
-				mav.setViewName("redirect:/member/#.do");
+				mav.setViewName("redirect:/main.do");
 			}
 		} else {
 			rAttr.addAttribute("result", "loginfailed");
 			mav.setViewName("redirect:/member/loginForm.do");
 		}
+		return mav;
+	}
+	
+	@Override
+	@RequestMapping(value="/member/logout.do", method=RequestMethod.GET)
+	public ModelAndView logout(RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		System.out.println("asdsad");
+		HttpSession session = request.getSession(false);
+		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
+		
+		ModelAndView mav = new ModelAndView();
+		
+		if(session != null && isLogOn != null) {			
+			session.invalidate();
+			rAttr.addAttribute("result", "logout");
+		} else {
+			rAttr.addAttribute("result", "notLogin");
+		}
+		mav.setViewName("redirect:/member/loginForm.do");
 		return mav;
 	}
 
