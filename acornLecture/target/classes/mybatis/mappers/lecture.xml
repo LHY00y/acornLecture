@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="mapper.lecture">
+	<resultMap type="lectureDTO" id="lecResult">
+		<result property="lecture_id" column="lecture_id" />
+		<result property="lecture_title" column="lecture_title" />
+		<result property="professor_id" column="professor_id" />
+		<result property="category" column="category" />
+		<result property="count" column="count" />
+		<result property="schedule" column="schedule" />
+		<result property="lecture_content" column="lecture_content" />
+	</resultMap>
+
+	
+	<select id="findLectureById" parameterType="MemberDTO" resultType="lectureDTO">
+		<![CDATA[
+			select l.lecture_title from lecture l left join members m on m.member_id=l.lecture_id where 
+		]]>
+	</select>
+	
+</mapper>

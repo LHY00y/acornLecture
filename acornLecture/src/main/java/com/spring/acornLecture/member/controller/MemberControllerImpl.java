@@ -13,14 +13,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.spring.acornLecture.lecture.dto.LectureDTO;
 import com.spring.acornLecture.member.dto.MemberDTO;
+import com.spring.acornLecture.member.dto.MyPageDTO;
 import com.spring.acornLecture.member.service.MemberService;
+import com.spring.acornLecture.member.service.MyPageService;
 
 @Controller
 @EnableAspectJAutoProxy
 public class MemberControllerImpl implements MemberController{
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private MyPageService mypageService;
 
 	@Override
 	@RequestMapping(value= {"/main.do"})
@@ -90,4 +95,15 @@ public class MemberControllerImpl implements MemberController{
 		session.setAttribute("result", result);
 	}
 
+	@RequestMapping("/member/myPage")
+	public ModelAndView mypage(MyPageDTO myPageDTO, HttpServletRequest request, HttpServletResponse response) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mypageService.myPageForm(myPageDTO);
+		mav.addObject("myPageDTO", myPageDTO);
+		mav.setViewName("/myPageForm");
+		
+		return mav;
+	}
 }
