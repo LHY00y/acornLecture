@@ -98,3 +98,123 @@ footer {
 	font-size: 0.5em;
 	background-color: #F0F0F0;
 }
+
+/* member css */
+
+#confirm {
+	display: inline-block;
+	padding: 6px 7px;
+	font-size: 15px;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color: #fff;
+	background-color: #9DC0DF;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 3px #999;
+}
+
+#confirm:hover {
+	background-color: #9DC0DF
+}
+
+#confirm:active {
+	background-color: #9DC0DF;
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
+}
+
+#memberTd {
+	padding-bottom: 10px;
+}
+
+.sign {
+	display: inline-block;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color: #fff;
+	background-color: #9DC0DF;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 3px #999;
+}
+
+.sign:hover {
+	background-color: #9DC0DF
+}
+
+.sign:active {
+	background-color: #9DC0DF;
+	transform: translateY(4px);
+}
+
+.submit {
+	font-size: 15px;
+	width: 65px;
+	height: 50px;
+	display: inline-block;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color: #fff;
+	background-color: #9DC0DF;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 3px #999;
+}
+
+.submit:hover {
+	background-color: #9DC0DF
+}
+
+.submit:active {
+	background-color: #9DC0DF;
+	transform: translateY(4px);
+}
+
+.joinTypeTable {
+	margin: 100px auto;
+}
+
+.joinTypeBtn {
+	background-color: #4CAF50;
+	height: 200px;
+	width: 200px;
+	border: none;
+	color: white;
+	padding: 16px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+#proJoinMember {
+	background-color: white;
+	color: black;
+	border: 2px solid #4CAF50;
+}
+
+#proJoinMember:hover {
+	background-color: #4CAF50;
+	color: white;
+}
+
+#stuJoinMember {
+	background-color: white;
+	color: black;
+	border: 2px solid #008CBA;
+}
+
+#stuJoinMember:hover {
+	background-color: #008CBA;
+	color: white;
+}

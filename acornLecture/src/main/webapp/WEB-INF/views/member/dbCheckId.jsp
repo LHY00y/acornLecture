@@ -13,7 +13,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<c:set var="user_id" value="${param.user_id}" />
+<c:set var="member_id" value="${param.member_id}" />
 
 <!DOCTYPE html>
 <html>

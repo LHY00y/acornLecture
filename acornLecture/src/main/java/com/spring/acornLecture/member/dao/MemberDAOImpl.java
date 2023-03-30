@@ -30,14 +30,12 @@ public class MemberDAOImpl implements MemberDAO{
 		// TODO Auto-generated method stub
 		System.out.println("dao1");
 		String resultStr = sqlSession.selectOne("mapper.member.selectId", member_id);
-		System.out.println(resultStr);
 		int result;
-		if(resultStr != null) {
+		if(resultStr != "" || resultStr.length() != 0) {
 			result = 1;
 		}else {
 			result = 0;
 		}
-		System.out.println(result);
 		System.out.println("dao2");
 		return result;
 	}

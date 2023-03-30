@@ -106,12 +106,12 @@ public class MemberControllerImpl implements MemberController{
 	@RequestMapping("/member/dbCheckId.do")
 	public void dbCkeckId(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
+		ModelAndView mav = new ModelAndView();
 		String member_id = request.getParameter("member_id");
 		System.out.println("1");
 		int result = memberService.idCheck(member_id);
 		System.out.println("2");
-		session.setAttribute("result", result);
+		mav.addObject("result", result);
 		System.out.println("3");
 	}
 
