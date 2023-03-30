@@ -26,9 +26,12 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public int selectAllId(String id) {
+	public int selectAllId(String member_id) {
 		// TODO Auto-generated method stub
-		int result = sqlSession.selectOne("mapper.member.selectId", id);
+		System.out.println("dao1");
+		int result = sqlSession.selectOne("mapper.member.selectId", member_id);
+		System.out.println(result);
+		System.out.println("dao2");
 		return result;
 	}
 }

@@ -74,7 +74,6 @@ public class MemberControllerImpl implements MemberController{
 	public ModelAndView logout(RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("asdsad");
 		HttpSession session = request.getSession(false);
 		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
 		
@@ -108,9 +107,12 @@ public class MemberControllerImpl implements MemberController{
 	public void dbCkeckId(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		String id = request.getParameter("user_id");
-		int result = memberService.idCheck(id);
+		String member_id = request.getParameter("member_id");
+		System.out.println("1");
+		int result = memberService.idCheck(member_id);
+		System.out.println("2");
 		session.setAttribute("result", result);
+		System.out.println("3");
 	}
 
 }

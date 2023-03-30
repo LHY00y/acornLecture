@@ -21,8 +21,9 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.loginById(member);
 	}
 	@Override
-	public int idCheck(String id) {
+	public int idCheck(String member_id) {
 		// TODO Auto-generated method stub
-		return memberDAO.selectAllId(id);
+		System.out.println("service1");
+		return memberDAO.selectAllId(member_id);
 	}
 }

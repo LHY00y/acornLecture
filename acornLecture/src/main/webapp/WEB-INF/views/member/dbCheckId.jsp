@@ -46,7 +46,7 @@
 	<br>
 	
 	<form name="checkIdForm">
-		<input type="text" name="id" value="${user_id}" id="userId" disabled>
+		<input type="text" name="member_id" value="${member_id}" id="member_id" disabled>
 			
 		<c:choose>
 		<c:when test="${result==1}">
