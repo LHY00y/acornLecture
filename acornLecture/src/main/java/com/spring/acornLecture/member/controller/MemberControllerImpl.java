@@ -36,12 +36,16 @@ public class MemberControllerImpl implements MemberController{
 	public ModelAndView addMember(@ModelAttribute("member")MemberDTO member, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
+		String name = request.getParameter("member_name");
+		System.out.println(name);
 		memberService.addMember(member);
 		ModelAndView mav = new ModelAndView("redirect:/#");
 		return mav;
 	}
 
 	@Override
+	@RequestMapping(value="/member/login.do", method=RequestMethod.POST)
 	public ModelAndView login(MemberDTO member, RedirectAttributes rAttr, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
@@ -69,6 +73,7 @@ public class MemberControllerImpl implements MemberController{
 	}
 
 	@Override
+	@RequestMapping(value="/member/*Form.do", method=RequestMethod.GET)
 	public ModelAndView form(String result, String action, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
