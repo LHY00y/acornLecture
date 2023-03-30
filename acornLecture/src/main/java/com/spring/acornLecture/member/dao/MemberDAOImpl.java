@@ -29,13 +29,7 @@ public class MemberDAOImpl implements MemberDAO{
 	public int selectAllId(String member_id) {
 		// TODO Auto-generated method stub
 		System.out.println("dao1");
-		String resultStr = sqlSession.selectOne("mapper.member.selectId", member_id);
-		int result;
-		if(resultStr != "" || resultStr.length() != 0) {
-			result = 1;
-		}else {
-			result = 0;
-		}
+		int result = sqlSession.selectOne("mapper.member.selectId", member_id);
 		System.out.println("dao2");
 		return result;
 	}

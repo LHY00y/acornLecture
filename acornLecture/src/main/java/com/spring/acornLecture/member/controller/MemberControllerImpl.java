@@ -104,15 +104,14 @@ public class MemberControllerImpl implements MemberController{
 
 	@Override
 	@RequestMapping("/member/dbCheckId.do")
-	public void dbCkeckId(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView dbCkeckId(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView("/member/dbCheckId");
 		String member_id = request.getParameter("member_id");
-		System.out.println("1");
+		System.out.println(member_id);
 		int result = memberService.idCheck(member_id);
-		System.out.println("2");
 		mav.addObject("result", result);
-		System.out.println("3");
+		return mav;
 	}
 
 }

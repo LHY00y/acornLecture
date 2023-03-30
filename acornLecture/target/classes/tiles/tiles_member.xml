@@ -41,4 +41,9 @@
 		<put-attribute name="title" value="회원가입창" />
 		<put-attribute name="body" value="/WEB-INF/views/member/memberTypeForm.jsp" />
 	</definition>
+	
+	<definition name="/member/dbCheckId" extends="baseLayout">
+		<put-attribute name="title" value="회원가입창" />
+		<put-attribute name="body" value="/WEB-INF/views/member/dbCheckId.jsp" />
+	</definition>
 </tiles-definitions>

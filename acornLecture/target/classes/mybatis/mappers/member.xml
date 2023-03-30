@@ -23,7 +23,7 @@
 		]]>
 	</select>
 	
-	<select id="selectId" parameterType="String" resultType="String">
+	<select id="selectId" parameterType="String" resultType="int">
 		<![CDATA[
 			select count(*) from members where member_id=#{member_id}
 		]]>
