@@ -37,7 +37,7 @@ public class MemberControllerImpl implements MemberController{
 			throws Exception {
 		// TODO Auto-generated method stub
 		memberService.addMember(member);
-		ModelAndView mav = new ModelAndView("redirect:/#");
+		ModelAndView mav = new ModelAndView("redirect:/member/loginForm.do");
 		return mav;
 	}
 
