@@ -1,67 +1,119 @@
 @charset "UTF-8";
+
 #confirm {
-  display: inline-block;
-  padding: 6px 7px;
-  font-size: 15px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #808080;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 3px #999;
+	display: inline-block;
+	padding: 6px 7px;
+	font-size: 15px;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color: #fff;
+	background-color: #808080;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 3px #999;
 }
 
-#confirm:hover {background-color: #696969}
+#confirm:hover {
+	background-color: #696969
+}
 
 #confirm:active {
-  background-color: #000000;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
-#memberTd{
- padding-bottom:10px;
+	background-color: #000000;
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
 }
 
-.sign{
-        display: inline-block;
-  		cursor: pointer;
- 		 text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #808080;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 3px #999;
-        }
-    .sign:hover {background-color: #696969}
+#memberTd {
+	padding-bottom: 10px;
+}
+
+.sign {
+	display: inline-block;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color: #fff;
+	background-color: #808080;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 3px #999;
+}
+
+.sign:hover {
+	background-color: #696969
+}
 
 .sign:active {
-  background-color: #696969;
-  transform: translateY(4px);
+	background-color: #696969;
+	transform: translateY(4px);
 }
-	
-	.submit{
-    font-size:15px;
-    	width:65px; 
-        height:50px;
-        display: inline-block;
-  		cursor: pointer;
- 		 text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #808080;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 3px #999;
-        }
-    .submit:hover {background-color: #696969}
+
+.submit {
+	font-size: 15px;
+	width: 65px;
+	height: 50px;
+	display: inline-block;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color: #fff;
+	background-color: #808080;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 3px #999;
+}
+
+.submit:hover {
+	background-color: #696969
+}
 
 .submit:active {
-  background-color: #696969;
-  transform: translateY(4px);
+	background-color: #696969;
+	transform: translateY(4px);
+}
+
+.joinTypeTable {
+	margin: 200px auto;
+}
+
+.joinTypeBtn {
+	background-color: #4CAF50;
+	height: 200px;
+	width: 200px;
+	border: none;
+	color: white;
+	padding: 16px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+#proJoinMember {
+	background-color: white;
+	color: black;
+	border: 2px solid #4CAF50;
+}
+
+#proJoinMember:hover {
+	background-color: #4CAF50;
+	color: white;
+}
+
+#stuJoinMember {
+	background-color: white;
+	color: black;
+	border: 2px solid #008CBA;
+}
+
+#stuJoinMember:hover {
+	background-color: #008CBA;
+	color: white;
 }
