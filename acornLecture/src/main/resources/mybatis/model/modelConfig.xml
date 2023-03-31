@@ -5,5 +5,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.spring.acornLecture.member.dto.MemberDTO" alias="memberDTO"/>
+		<typeAlias type="com.spring.acornLecture.lecture.dto.LectureDTO" alias="LectureDTO"/>
 	</typeAliases>
 </configuration>

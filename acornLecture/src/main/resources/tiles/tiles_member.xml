@@ -46,4 +46,9 @@
 		<put-attribute name="title" value="회원가입창" />
 		<put-attribute name="body" value="/WEB-INF/views/member/dbCheckId.jsp" />
 	</definition>
+
+	<definition name="/lecture/listLectures" extends="baseLayout">
+		<put-attribute name="title" value="강의리스트" />
+		<put-attribute name="body" value="/WEB-INF/views/lecture/lectureList.jsp" />
+	</definition>
 </tiles-definitions>

@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+body{
+	text-align:center;
+}
+table{
+	
+	margin-top: 20px;
+	border-collapse : collapse;
+	border:none;
+	width:80%;
+}
+
+tr{
+	border-bottom: 2px solid #AAAAAA;
+}
+th{
+	border:none;
+	padding:5px;
+}
+
+td{
+	padding:3px;
+	border:none;
+	border-bottom: 2px solid #AAAAAA;
+}
+a{
+	text-decoration:none;
+	color:#000;
+}

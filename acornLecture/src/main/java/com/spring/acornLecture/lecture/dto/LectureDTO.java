@@ -8,12 +8,20 @@ public class LectureDTO {
 	 private int lecture_id;
 	 private String lecture_title;
 	 private String professor_id;
+	 private String professor_name;
 	 private String category;
 	 private int count;
 	 private String schedule;
 	 private String lecture_content;
 	
-	 public int getLecture_id() {
+	 
+	 public String getProfessor_name() {
+		return professor_name;
+	}
+	public void setProfessor_name(String professor_name) {
+		this.professor_name = professor_name;
+	}
+	public int getLecture_id() {
 		return lecture_id;
 	}
 	public void setLecture_id(int lecture_id) {

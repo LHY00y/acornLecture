@@ -1,5 +1,12 @@
 package com.spring.acornLecture.lecture.dao;
 
-public class LectureDAO {
+import java.util.List;
+
+import com.spring.acornLecture.lecture.dto.LectureDTO;
+
+public interface LectureDAO {
+
+	List<LectureDTO> selectAllLectureList();
+	List<String> selectAllCategories();
 
 }
