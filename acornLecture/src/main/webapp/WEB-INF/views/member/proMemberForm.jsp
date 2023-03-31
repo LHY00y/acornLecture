@@ -48,7 +48,7 @@
 			alert("아이디를 입력해 주세요.");
 			joinForm.member_id.focus();
 		} else{
-			window.open("${contextPath}/member/dbCheckId.do?member_id="+member_id,"","width=500, hegith=300");
+			window.open("${contextPath}/member/dbCheckId.do?member_id="+member_id,"","width=300, height=300");
 		}
 	}
 	

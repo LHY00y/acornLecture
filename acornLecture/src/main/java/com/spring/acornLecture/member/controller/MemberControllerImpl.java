@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -108,7 +109,6 @@ public class MemberControllerImpl implements MemberController{
 		// TODO Auto-generated method stub
 		ModelAndView mav = new ModelAndView("/member/dbCheckId");
 		String member_id = request.getParameter("member_id");
-		System.out.println(member_id);
 		int result = memberService.idCheck(member_id);
 		mav.addObject("result", result);
 		return mav;

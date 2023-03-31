@@ -43,25 +43,34 @@
 	
 	function fn_dbCheckId(){
 		var joinForm = document.joinForm;
-		var id = joinForm.id.value;
-		if(id.length==0 || id==""){
+		var member_id = joinForm.member_id.value;
+		if(member_id.length==0 || member_id==""){
 			alert("아이디를 입력해 주세요.");
-			joinForm.id.focus();
+			joinForm.member_id.focus();
 		} else{
-			window.open("${contextPath}/member/dbCheckId.do?id="+id,"","width=500, hegith=300");
+			window.open("${contextPath}/member/dbCheckId.do?member_id="+member_id,"","width=300px, height=300px");
 		}
+	}
+	
+	function inputIdChk(){
+		var joinForm = document.joinForm;
+		var dbCheckId = document.joinForm.dbCheckId;
+		document.joinForm.idDuplication.value="idUnCheck";
+		dbCheckId.disabled=false;
+		dbCheckId.style.opacity=1;
+		dbCheckId.style.cursor="pointer";
 	}
 </script>
 </head>
 <body>
 	<form name="joinForm" method="post" action="/acornLecture/member/addMember.do">
-		<h1 style="text-align: center">강사 회원 가입</h1>
+		<h1 style="text-align: center">학생 회원 가입</h1>
 		<table align="center">
 			<tr>
 				<td id="memberTd" width="100"><p align="left">아이디</p></td>
-				<td id="memberTd" width="280"><input type="text" name="member_id">
-				<button id="confirm" type="button" onclick="fn_dnCheckId()" name="dbCheckId">중복확인</button></td>
-				<input type="hidden" name="idDuplication" value="idCheck" />
+				<td id="memberTd" width="280"><input type="text" name="member_id" onkeydown="inputIdChk()" />
+				<button id="confirm" type="button" onclick="fn_dbCheckId()" name="dbCheckId">중복확인</button></td>
+				<input type="hidden" name="idDuplication" value="idUncheck" />
 			</tr>
 			<tr>
 				<td id="memberTd" width="100"><p align="left">암호</p></td>
@@ -75,7 +84,7 @@
 				<td id="memberTd" width="100"><p align="left">이름</p></td>
 				<td id="memberTd" width="280"><input type="text" name="member_name"></td>
 			</tr>
-			<input type="hidden" name="grade" value="학생">
+			<input type="hidden" name="grade" value="강사">
 			<tr>
 				<td id="memberTd" width="100"><p align="left">&nbsp;</p></td>
 				<td id="memberTd" width="280"><input id="confirm" type="button" value="가입하기" onclick="fn_joinMember()"> <input id="confirm"

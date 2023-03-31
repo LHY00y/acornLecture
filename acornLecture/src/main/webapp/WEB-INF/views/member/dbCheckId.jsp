@@ -54,7 +54,7 @@
 			<input type="hidden" name="chResult" value="N"/>
 		</c:when>
 		<c:when test="${result==0 }">
-			<p style="color: red">사용가능한 아이디입니다.</p>
+			<p style="color: green">사용가능한 아이디입니다.</p>
 			<input type="hidden" name="chResult" value="Y"/>
 		</c:when>
 		<c:otherwise>
@@ -63,8 +63,8 @@
 		</c:otherwise>
 		</c:choose>
 
-		<input type="button" onclick="window.close()" value="취소"/><br>
-		<input type="button" onclick="sendCheckValue()" value="사용하기"/>
+		<input id="confirm" type="button" onclick="window.close()" value="취소"/><br>
+		<input id="confirm" type="button" onclick="sendCheckValue()" value="사용하기"/>
 
 	</form>
 
