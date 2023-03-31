@@ -14,41 +14,58 @@
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer"
 			value="/WEB-INF/views/common/footer.jsp" />
-	</definition> 
-	
+	</definition>
+
+	<definition name="dbCheckId"
+		template="/WEB-INF/views/checkId/layout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header"
+			value="/WEB-INF/views/checkId/header.jsp" />
+		<put-attribute name="body" value="" />
+	</definition>
+
 	<definition name="main" extends="baseLayout">
 		<put-attribute name="title" value="메인페이지" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/main.jsp" />
 	</definition>
-	
-	<definition name="/member/proMemberForm" extends="baseLayout">
+
+	<definition name="/member/proMemberForm"
+		extends="baseLayout">
 		<put-attribute name="title" value="회원가입창" />
-		<put-attribute name="body" value="/WEB-INF/views/member/proMemberForm.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/proMemberForm.jsp" />
 	</definition>
-	
-	<definition name="/member/stuMemberForm" extends="baseLayout">
+
+	<definition name="/member/stuMemberForm"
+		extends="baseLayout">
 		<put-attribute name="title" value="회원가입창" />
-		<put-attribute name="body" value="/WEB-INF/views/member/stuMemberForm.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/stuMemberForm.jsp" />
 	</definition>
-	
+
 	<definition name="/member/loginForm" extends="baseLayout">
 		<put-attribute name="title" value="회원가입창" />
-		<put-attribute name="body" value="/WEB-INF/views/member/loginForm.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/loginForm.jsp" />
 	</definition>
-	
-	<definition name="/member/memberTypeForm" extends="baseLayout">
+
+	<definition name="/member/memberTypeForm"
+		extends="baseLayout">
 		<put-attribute name="title" value="회원가입창" />
-		<put-attribute name="body" value="/WEB-INF/views/member/memberTypeForm.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/memberTypeForm.jsp" />
 	</definition>
-	
-	<definition name="/member/dbCheckId" extends="baseLayout">
+
+	<definition name="/member/dbCheckId" extends="dbCheckId">
 		<put-attribute name="title" value="회원가입창" />
 		<put-attribute name="body" value="/WEB-INF/views/member/dbCheckId.jsp" />
 	</definition>
 
-	<definition name="/lecture/listLectures" extends="baseLayout">
+	<definition name="/lecture/listLectures"
+		extends="baseLayout">
 		<put-attribute name="title" value="강의리스트" />
-		<put-attribute name="body" value="/WEB-INF/views/lecture/lectureList.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/lecture/lectureList.jsp" />
 	</definition>
 </tiles-definitions>
