@@ -13,25 +13,29 @@
 <title>전체 강의 리스트</title>
 </head>
 <body>
-		<form style="width:80%; padding:5px;">
-			<select name="category" height="20px">
-				<option selected disabled>카데고리</option>
-				<c:forEach var="cate" items="${categories }">
-					<option>${cate }</option>
-				</c:forEach>				
-			</select>
-			<input type="text" name="search" height="20px">
-			<input type="submit" value="검색" height="20px"/>	
+		<!-- onclick 만들기 -->
+		<select name="category" style="height:25px;">
+			<option selected>전체</option>
+			<c:forEach var="cate" items="${categories }">
+				<option value="${cate }">${cate }</option>
+			</c:forEach>				
+		</select>
+		<form action="${contextPath }/lecture/search.do" method="GET" style="padding-left:20px; display:inline;">
+			<input type="text" name="keyword" style="width:55%; height:20px;">
+			<input type="submit" value="검색" style="width:50px; height:29px; margin:5px;"/>	
 		</form>
 		<table align="center">
+		
 		<tr align="center" bgcolor="#9DC0DF">
 			<th><b>번호</b></th>
-			<th><b>카데고리</b></th>
+			<th><b>카데고리 <br>
+			</b></th>
 			<th><b>강의명</b></th>
 			<th><b>강사</b></th>
 			<th><b>요일</b></th>
 			<th><b>정원</b></th>
 		</tr>
+		
 		<c:set var="index" value="0"/>
 		<c:forEach var="lecture" items="${lecturesList}">
 			<tr align="center">
@@ -42,8 +46,8 @@
  				<td>${lecture.schedule }</td>
  				<td>${lecture.count }</td>
 			</tr>
-			
 		</c:forEach>
+		
 	</table>
 </body>
 </html>

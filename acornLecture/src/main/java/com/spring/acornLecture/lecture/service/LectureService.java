@@ -8,5 +8,6 @@ public interface LectureService {
 
 	List<LectureDTO> listLectures();
 	List<String> categories();
+	List<LectureDTO> searchLectures(String keyword);
 
 }

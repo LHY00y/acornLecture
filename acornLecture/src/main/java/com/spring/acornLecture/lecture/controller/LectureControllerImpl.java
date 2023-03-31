@@ -14,6 +14,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.acornLecture.lecture.dto.LectureDTO;
@@ -29,12 +30,30 @@ public class LectureControllerImpl implements LectureController {
 	@RequestMapping(value="/lecture/listLectures.do", method=RequestMethod.GET)
 	public ModelAndView listLectures(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+		
 		List<LectureDTO> lecturesList = lectureService.listLectures();
 		List<String> categories = lectureService.categories();
-		ModelAndView mav = new ModelAndView(viewName);
+		
 		
 		mav.addObject("lecturesList", lecturesList);
 		mav.addObject("categories", categories);
+		return mav;
+	}
+	
+	@Override
+	@RequestMapping(value="/lecture/search.do", method=RequestMethod.GET)
+	public ModelAndView searchLectures(@RequestParam("keyword") String keyword, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		//ModelAndView mav = new ModelAndView("redirect:/lecture/listLectures.do");
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+
+		if(keyword == null || keyword.equals("")) {
+			mav.setViewName("redirect:/lecture/listLectures.do");
+			return mav;
+		} 
+		List<LectureDTO> lecturesList = lectureService.searchLectures(keyword);
+		mav.addObject("lecturesList", lecturesList);
 		return mav;
 	}
 }

@@ -23,4 +23,9 @@ public class LectureServiceImpl implements LectureService{
 	public List<String> categories() {
 		return lectureDAO.selectAllCategories();
 	}
+	
+	@Override
+	public List<LectureDTO> searchLectures(String keyword) {
+		return lectureDAO.selectSearchLectureList(keyword);
+	}
 }

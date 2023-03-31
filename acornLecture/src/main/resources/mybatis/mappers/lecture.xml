@@ -28,7 +28,16 @@
 		<![CDATA[
 			select distinct category from lecture order by category asc
 		]]>
-		
+	</select>
+
+	<select id="selectSearchLectureList" parameterType="String" resultType="lectureDTO">
+		<![CDATA[
+			select lecture.*, members.member_name as professor_name from lecture
+				inner join members
+				on lecture.professor_id = members.member_id
+				where lecture_title LIKE '%'||#{keyword}||'%' 
+				order by lecture_id desc
+		]]>
 	</select>
 	
 </mapper>

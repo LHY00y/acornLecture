@@ -25,4 +25,10 @@ public class LectureDAOImpl implements LectureDAO {
 		List<String> categories = sqlSession.selectList("mapper.lecture.selectAllCategories");
 		return categories;
 	}
+	
+	@Override
+	public List<LectureDTO> selectSearchLectureList(String keyword) {
+		List<LectureDTO> lecturesList = sqlSession.selectList("mapper.lecture.selectSearchLectureList", keyword);
+		return lecturesList;
+	}
 }
