@@ -23,9 +23,9 @@
 		]]>
 	</select>
 	
-	<select id="selectId" parameterType="memberDTO" resultType="memberDTO">
+	<select id="selectId" parameterType="String" resultType="int">
 		<![CDATA[
-			select member_id from members where member_id=#{id}
+			select count(*) from members where member_id=#{member_id}
 		]]>
 	</select>
 </mapper>

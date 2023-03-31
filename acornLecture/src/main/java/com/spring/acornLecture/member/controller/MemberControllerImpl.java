@@ -37,11 +37,12 @@ public class MemberControllerImpl implements MemberController{
 			throws Exception {
 		// TODO Auto-generated method stub
 		memberService.addMember(member);
-		ModelAndView mav = new ModelAndView("redirect:/#");
+		ModelAndView mav = new ModelAndView("redirect:/member/loginForm.do");
 		return mav;
 	}
 
 	@Override
+	@RequestMapping(value="/member/login.do", method=RequestMethod.POST)
 	public ModelAndView login(MemberDTO member, RedirectAttributes rAttr, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
@@ -59,7 +60,7 @@ public class MemberControllerImpl implements MemberController{
 			if(action != null) {
 				mav.setViewName("redirect:"+action);
 			} else {
-				mav.setViewName("redirect:/member/#.do");
+				mav.setViewName("redirect:/main.do");
 			}
 		} else {
 			rAttr.addAttribute("result", "loginfailed");
@@ -67,8 +68,29 @@ public class MemberControllerImpl implements MemberController{
 		}
 		return mav;
 	}
+	
+	@Override
+	@RequestMapping(value="/member/logout.do", method=RequestMethod.GET)
+	public ModelAndView logout(RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		HttpSession session = request.getSession(false);
+		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
+		
+		ModelAndView mav = new ModelAndView();
+		
+		if(session != null && isLogOn != null) {			
+			session.invalidate();
+			rAttr.addAttribute("result", "logout");
+		} else {
+			rAttr.addAttribute("result", "notLogin");
+		}
+		mav.setViewName("redirect:/member/loginForm.do");
+		return mav;
+	}
 
 	@Override
+	@RequestMapping(value="/member/*Form.do", method=RequestMethod.GET)
 	public ModelAndView form(String result, String action, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
@@ -82,12 +104,14 @@ public class MemberControllerImpl implements MemberController{
 
 	@Override
 	@RequestMapping("/member/dbCheckId.do")
-	public void dbCkeckId(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView dbCkeckId(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		String id = request.getParameter("user_id");
-		int result = memberService.idCheck(id);
-		session.setAttribute("result", result);
+		ModelAndView mav = new ModelAndView("/member/dbCheckId");
+		String member_id = request.getParameter("member_id");
+		System.out.println(member_id);
+		int result = memberService.idCheck(member_id);
+		mav.addObject("result", result);
+		return mav;
 	}
 
 }

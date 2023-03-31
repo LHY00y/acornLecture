@@ -13,7 +13,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<c:set var="member_id" value="${param.member_id}" />
+<c:set var="user_id" value="${param.user_id}" />
 
 <!DOCTYPE html>
 <html>
@@ -46,7 +46,7 @@
 	<br>
 	
 	<form name="checkIdForm">
-		<input type="text" name="member_id" value="${member_id}" id="member_id" disabled>
+		<input type="text" name="id" value="${user_id}" id="userId" disabled>
 			
 		<c:choose>
 		<c:when test="${result==1}">

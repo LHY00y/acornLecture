@@ -16,5 +16,6 @@ public interface MemberController {
 	public ModelAndView login(@ModelAttribute("member") MemberDTO member, RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView form(@RequestParam(value="result", required=false) String result,
 			@RequestParam(value="action", required=false) String action,HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public void dbCkeckId(HttpServletRequest request, HttpServletResponse response);
+	public ModelAndView dbCkeckId(HttpServletRequest request, HttpServletResponse response);
+	public ModelAndView logout(RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

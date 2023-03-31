@@ -1,0 +1,220 @@
+@charset "UTF-8";
+
+body {
+	margin: 0;
+}
+
+
+
+/* 
+	헤더
+		*/
+
+/* 메인 로고 컨테이너 */
+#mainLogoContainer {
+	float: left;
+	padding: 20px 35px;	
+}
+
+/* 메인 로고 */
+#mainLogo {
+	font-size: 1.2em; 
+	color: black;
+	font-weight: bold;
+}
+
+/* 로그인 컨테이너 */
+#loginContainer {
+	padding: 20px 20px;
+	text-align: right;
+}
+
+/* 메뉴 컨테이너 */
+#menuContainer {
+	padding: 25px 30px;	
+	font-size: 1.3em;
+	font-weight: bold;
+	background-color: lightblue;
+}
+
+/* 링크 */
+a {
+	text-decoration: none;
+}
+
+.link {
+	color: black;
+	margin: 5px;
+}
+
+
+
+/* 
+	메인
+		*/
+		
+/* 카테고리 버튼 컨테이너 */
+#ctBtnContainer {	
+	padding: 20px 20px;
+	text-align: center;
+}
+
+/* 카테고리 버튼 */
+.ctBtn {
+	width: 150px;
+	height: 150px;
+	margin: 20px;
+	font-size: 1.3em;
+	border: none;
+	background-color: lightblue;
+	cursor: pointer;
+}
+
+.ctBtn:hover {
+	transition: all 0.4s;
+	background: #9DC0DF;
+}
+
+/* 리뷰 컨테이너 */
+#reviewContainer {
+	padding: 30px 0;
+	text-align: center;
+	background-color: #F0F0F0;
+}
+
+
+
+/* 
+	Footer
+			*/
+
+footer {
+	position: absolute;
+	padding: 20px 0;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+	font-size: 0.5em;
+	background-color: #F0F0F0;
+}
+
+/* member css */
+
+#confirm {
+	display: inline-block;
+	padding: 6px 7px;
+	font-size: 15px;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color: #fff;
+	background-color: #9DC0DF;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 3px #999;
+}
+
+#confirm:hover {
+	background-color: #9DC0DF
+}
+
+#confirm:active {
+	background-color: #9DC0DF;
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
+}
+
+#memberTd {
+	padding-bottom: 10px;
+}
+
+.sign {
+	display: inline-block;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color: #fff;
+	background-color: #9DC0DF;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 3px #999;
+}
+
+.sign:hover {
+	background-color: #9DC0DF
+}
+
+.sign:active {
+	background-color: #9DC0DF;
+	transform: translateY(4px);
+}
+
+.submit {
+	font-size: 15px;
+	width: 65px;
+	height: 50px;
+	display: inline-block;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color: #fff;
+	background-color: #9DC0DF;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 3px #999;
+}
+
+.submit:hover {
+	background-color: #9DC0DF
+}
+
+.submit:active {
+	background-color: #9DC0DF;
+	transform: translateY(4px);
+}
+
+.joinTypeTable {
+	margin: 100px auto;
+}
+
+.joinTypeBtn {
+	background-color: #4CAF50;
+	height: 200px;
+	width: 200px;
+	border: none;
+	color: white;
+	padding: 16px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+#proJoinMember {
+	background-color: white;
+	color: black;
+	border: 2px solid #4CAF50;
+}
+
+#proJoinMember:hover {
+	background-color: #4CAF50;
+	color: white;
+}
+
+#stuJoinMember {
+	background-color: white;
+	color: black;
+	border: 2px solid #008CBA;
+}
+
+#stuJoinMember:hover {
+	background-color: #008CBA;
+	color: white;
+}

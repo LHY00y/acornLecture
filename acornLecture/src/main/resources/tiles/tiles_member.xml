@@ -15,13 +15,35 @@
 		<put-attribute name="footer"
 			value="/WEB-INF/views/common/footer.jsp" />
 	</definition> 
+	
 	<definition name="main" extends="baseLayout">
 		<put-attribute name="title" value="메인페이지" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/main.jsp" />
 	</definition>
-	<definition name="/member/memberForm" extends="baseLayout">
+	
+	<definition name="/member/proMemberForm" extends="baseLayout">
 		<put-attribute name="title" value="회원가입창" />
-		<put-attribute name="body" value="/WEB-INF/views/member/memberForm.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/member/proMemberForm.jsp" />
+	</definition>
+	
+	<definition name="/member/stuMemberForm" extends="baseLayout">
+		<put-attribute name="title" value="회원가입창" />
+		<put-attribute name="body" value="/WEB-INF/views/member/stuMemberForm.jsp" />
+	</definition>
+	
+	<definition name="/member/loginForm" extends="baseLayout">
+		<put-attribute name="title" value="회원가입창" />
+		<put-attribute name="body" value="/WEB-INF/views/member/loginForm.jsp" />
+	</definition>
+	
+	<definition name="/member/memberTypeForm" extends="baseLayout">
+		<put-attribute name="title" value="회원가입창" />
+		<put-attribute name="body" value="/WEB-INF/views/member/memberTypeForm.jsp" />
+	</definition>
+	
+	<definition name="/member/dbCheckId" extends="baseLayout">
+		<put-attribute name="title" value="회원가입창" />
+		<put-attribute name="body" value="/WEB-INF/views/member/dbCheckId.jsp" />
 	</definition>
 </tiles-definitions>
