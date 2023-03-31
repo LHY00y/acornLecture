@@ -6,7 +6,9 @@
 	
 	<select id="findMyLectureList" parameterType="MemberDTO" resultType="LectureDTO">
 		<![CDATA[
-			select lecture from lecture where member_id=lecture_id;
+			select * from lecture
+			inner join member_lecture on lecture.lecture_id = member-lecture.lecture_id
+			where member_lecture.member_id=#{member_id}
 		]]>
 	</select>
 </mapper>
