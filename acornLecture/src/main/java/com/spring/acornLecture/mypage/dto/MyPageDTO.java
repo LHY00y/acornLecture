@@ -1,4 +1,4 @@
-package com.spring.acornLecture.member.dto;
+package com.spring.acornLecture.mypage.dto;
 
 import java.util.List;
 
