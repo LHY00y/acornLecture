@@ -11,7 +11,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <link rel="stylesheet" href="${ contextPath }/resources/css/lectureStyle.css">
 <title>전체 강의 리스트</title>
 <script>
@@ -36,12 +35,10 @@
 </script>
 </head>
 <body>
-
 		<form action="${contextPath }/lecture/search.do" method="GET" style="padding-left:20px; display:inline;">
 			<input type="text" name="keyword" style="width:55%; height:20px;">
 			<input type="submit" value="검색" style="width:50px; height:29px; margin:5px;"/>	
 		</form>
-		<div id="divTable">
 		<table align="center">
 	
 		<tr align="center" bgcolor="#9DC0DF">
@@ -82,9 +79,6 @@
 			</tr>
 			</c:if>
 		</c:forEach>
-		
 	</table>
-</div>
-
 </body>
 </html>
