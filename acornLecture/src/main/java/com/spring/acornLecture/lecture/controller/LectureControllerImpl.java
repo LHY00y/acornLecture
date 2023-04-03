@@ -53,7 +53,10 @@ public class LectureControllerImpl implements LectureController {
 			return mav;
 		} 
 		List<LectureDTO> lecturesList = lectureService.searchLectures(keyword);
+		List<String> categories = lectureService.categories();
+
 		mav.addObject("lecturesList", lecturesList);
+		mav.addObject("categories", categories);
 		return mav;
 	}
 }
