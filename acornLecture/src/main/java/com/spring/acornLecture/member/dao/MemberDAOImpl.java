@@ -33,4 +33,18 @@ public class MemberDAOImpl implements MemberDAO{
 		System.out.println("dao2");
 		return result;
 	}
+	
+	@Override
+	public MemberDTO selectMember(String id) {
+		// TODO Auto-generated method stub
+		MemberDTO dto = (MemberDTO) sqlSession.selectOne("mapper.member.selectMember", id);
+		System.out.println(dto.getMember_id());
+		return dto;
+	}
+
+	@Override
+	public void updateMember(MemberDTO member) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.update("mapper.member.updateMember", member);
+	}
 }

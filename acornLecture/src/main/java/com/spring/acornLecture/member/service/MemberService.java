@@ -10,4 +10,8 @@ public interface MemberService {
 
 	int idCheck(String id);
 
+	MemberDTO selectMember(String id);
+
+	void modMember(MemberDTO member);
+
 }

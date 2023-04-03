@@ -53,6 +53,7 @@ public class MemberControllerImpl implements MemberController{
 		if(member != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", member);
+			session.setAttribute("member_id", member.getMember_id());
 			session.setAttribute("isLogOn", true);
 			rAttr.addAttribute("msg", "login");
 			String action = (String) session.getAttribute("action");
@@ -113,5 +114,31 @@ public class MemberControllerImpl implements MemberController{
 		mav.addObject("result", result);
 		return mav;
 	}
+	
+	@Override
+	@RequestMapping(value="/member/modMemberForm.do", method=RequestMethod.GET)
+	public ModelAndView modMemberForm(String member_id, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		member_id = (String) session.getAttribute("member_id");
+		MemberDTO dto = memberService.selectMember(member_id);
+		
+		String viewName = (String) request.getAttribute("viewName");
 
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("member", dto);
+		return mav;
+	}
+
+	@Override
+	@RequestMapping(value="/member/modMember.do", method=RequestMethod.POST)
+	public ModelAndView modMember(MemberDTO member, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		memberService.modMember(member);
+		ModelAndView mav = new ModelAndView("redirect:/main.do");
+		
+		return mav;
+	}
 }

@@ -73,4 +73,9 @@
 		<put-attribute name="title" value="강의검색" />
 		<put-attribute name="body" value="/WEB-INF/views/lecture/lectureList.jsp" />
 	</definition>
+	
+	<definition name="/member/modMemberForm" extends="baseLayout">
+		<put-attribute name="title" value="회원정보수정" />
+		<put-attribute name="body" value="/WEB-INF/views/member/modMemberForm.jsp" />
+	</definition>
 </tiles-definitions>

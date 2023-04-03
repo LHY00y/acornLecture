@@ -10,4 +10,8 @@ public interface MemberDAO {
 
 	int selectAllId(String id);
 
+	MemberDTO selectMember(String id);
+
+	void updateMember(MemberDTO member);
+
 }
