@@ -28,4 +28,16 @@
 			select count(*) from members where member_id=#{member_id}
 		]]>
 	</select>
+	
+	<select id="selectMember" parameterType="String" resultType="memberDTO">
+		<![CDATA[
+			select * from members where member_id=#{member_id}
+		]]>
+	</select>
+	
+	<update id="updateMember" parameterType="memberDTO">
+		<![CDATA[
+			update members set password=#{password}, member_name=#{member_name} where member_id=#{member_id}
+		]]>
+	</update>
 </mapper>

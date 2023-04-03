@@ -26,4 +26,15 @@ public class MemberServiceImpl implements MemberService{
 		System.out.println("service1");
 		return memberDAO.selectAllId(member_id);
 	}
+	@Override
+	public MemberDTO selectMember(String id) {
+		// TODO Auto-generated method stub
+		return memberDAO.selectMember(id);
+	}
+
+	@Override
+	public void modMember(MemberDTO member) {
+		// TODO Auto-generated method stub
+		memberDAO.updateMember(member);
+	}
 }
