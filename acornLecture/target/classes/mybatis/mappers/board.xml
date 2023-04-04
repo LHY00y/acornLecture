@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="mapper.board">
+	<resultMap type="boardDTO" id="boardResult">
+		<result property="baord_id" column="lecture_id" />
+		<result property="board_title" column="lecture_title" />
+		<result property="category" column="category" />
+		<result property="board_content" column="board_content" />
+		<result property="write_date" column="write_date" />
+		<result property="image" column="image" />
+		<result property="member_id" column="member_id" />
+		<result property="member_name" column="member_name" />
+		<result property="lecture_id" column="lecture_id" />
+		<result property="lecture_title" column="lecture_title" />
+	</resultMap>
+
+	
+	<select id="selectAllBoard" resultType="boardDTO">
+		<![CDATA[
+			select board.*, members. member_name as member_name, lecture.lecture_title as lecture_title,
+		        case when members.grade='강사' then '공지' else '후기' end category from board
+		        inner join members
+		        on board.member_id = members.member_id
+		        inner join lecture
+		        on board.lecture_id = lecture.lecture_id
+		        order by board_id desc
+		]]>
+	
+	</select>
+	
+</mapper>

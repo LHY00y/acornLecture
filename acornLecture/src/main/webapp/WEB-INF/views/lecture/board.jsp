@@ -23,16 +23,18 @@
 			<th>구분</th>
 			<th>제목</th>
 			<th>작성자</th>
-			<th>요일</th>
+			<th>강의명</th>
+			<th>작성일</th>
 		</tr>
 		
 		<c:set var="index" value="0"/>
 		<c:forEach var="board" items="${boardList}">
 			<tr align="center">
 				<td>${index=index+1 }</td>
-				<td>${board.category}</td>
+				<td style="color:grey;">[${board.category}]</td>
 				<td><a href="#">${board.board_title }</a></td>
 				<td>${board.member_name }</td> 
+				<td>${board.lecture_title }</td> 
  				<td>${board.write_date }</td>
 			</tr>
 		</c:forEach>

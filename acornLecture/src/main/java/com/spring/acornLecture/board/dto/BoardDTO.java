@@ -16,10 +16,17 @@ public class BoardDTO {
 	 private String member_id;
 	 private String member_name;
 	 private int lecture_id;
+	 private String lecture_title;
 	 
 	 
 	 
 	 
+	public String getLecture_title() {
+		return lecture_title;
+	}
+	public void setLecture_title(String lecture_title) {
+		this.lecture_title = lecture_title;
+	}
 	public String getCategory() {
 		return category;
 	}

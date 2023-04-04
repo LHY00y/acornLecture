@@ -17,9 +17,9 @@
 		<put-attribute name="body" value="/WEB-INF/views/lecture/lectureList.jsp" />
 	</definition>
 
-	<definition name="/board" extends="baseLayout">
+	<definition name="/lecture/board" extends="baseLayout">
 		<put-attribute name="title" value="게시판" />
-		<put-attribute name="body" value="/WEB-INF/views/lecture/boardList.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/lecture/board.jsp" />
 	</definition>
 
 </tiles-definitions>
