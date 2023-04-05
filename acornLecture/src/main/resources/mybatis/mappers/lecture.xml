@@ -40,4 +40,21 @@
 		]]>
 	</select>
 	
+	<select id="selectOneLecture" parameterType="int" resultType="lectureDTO">
+		<![CDATA[
+			select lecture.*, members.member_name as professor_name from lecture 
+				inner join members
+                on lecture.professor_id = members.member_id
+                where lecture.lecture_id = #{lecture_id}
+				order by lecture_id desc
+		]]>
+	</select>
+	
+	<select id="chkLecture" parameterType="Map" resultType="lectureDTO">
+		<![CDATA[
+			select * from member_lecture 
+				where member_id = #{member_id}
+				and lecture_id = #{lecture_id} 
+		]]>
+	</select>
 </mapper>

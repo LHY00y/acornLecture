@@ -11,4 +11,6 @@ public interface LectureController {
 	ModelAndView listLectures(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 	ModelAndView searchLectures(@RequestParam("keyword") String keyword, HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+	ModelAndView showLectureInfo(@RequestParam("id") int lecture_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 }
