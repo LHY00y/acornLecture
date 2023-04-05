@@ -16,17 +16,19 @@
 		<table align="center">
 			<c:choose>
 				<c:when test="${member.grade == '강사'}">
-					<c:forEach var="lectureList" items="${lectureList }">
-		        		asd
-		        	</c:forEach>
+					<c:forEach var="item" items="${lectureList }" varStatus="status">
+						<td>${status.count }</td>
+						<td>${item}&nbsp;<input id="confirm" type="button"
+							value="강의 수정" onClick="location.href='modlecture.do'">
+						</td>
+					</c:forEach>
 				</c:when>
 				<c:when test="${member.grade == '학생'}">
 					<c:forEach var="item" items="${lectureList }" varStatus="status">
 						<tr>
 							<td>${status.count }</td>
-							<td>${item}&nbsp;
-							<input id="confirm" type="button" value="수강 취소"
-								onClick="location.href='droplecture.do'">
+							<td>${item}&nbsp;<input id="confirm" type="button"
+								value="수강 취소" onClick="location.href='droplecture.do'">
 							</td>
 						</tr>
 					</c:forEach>
@@ -36,8 +38,7 @@
 			<tr>
 				<td></td>
 				<td><input id="confirm" type="button" value="회원 정보 수정"
-					onClick="location.href='modMemberForm.do'">
-				</td>
+					onClick="location.href='modMemberForm.do'"></td>
 			</tr>
 		</table>
 	</form>

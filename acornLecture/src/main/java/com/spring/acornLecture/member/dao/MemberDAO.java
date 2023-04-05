@@ -19,5 +19,7 @@ public interface MemberDAO {
 
 	MemberDTO selectGrade(String grade);
 
-	List<String> selectLectureList(String member_id);
+	List<String> selectStuLectureList(String member_id);
+	
+	List<String> selectProLectureList(String member_id);
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	
+
 <mapper namespace="mapper.member">
 	<resultMap type="memberDTO" id="memResult">
 		<result property="member_id" column="member_id" />
@@ -10,51 +10,61 @@
 		<result property="grade" column="grade" />
 		<result property="join_date" column="join_date" />
 	</resultMap>
-	
+
 	<resultMap id="lectureTitleMap" type="java.lang.String">
-        <result column="lecture_title" property="title" />
-    </resultMap>
+		<result column="lecture_title" property="title" />
+	</resultMap>
 
 	<insert id="insertMember" parameterType="memberDTO">
 		<![CDATA[
 			insert into members values(#{member_id}, #{password}, #{member_name}, #{grade}, sysdate)
 		]]>
 	</insert>
-	
-	<select id="loginById" parameterType="memberDTO" resultType="memberDTO">
+
+	<select id="loginById" parameterType="memberDTO"
+		resultType="memberDTO">
 		<![CDATA[
 			select * from members where member_id=#{member_id} and password=#{password}
 		]]>
 	</select>
-	
+
 	<select id="selectId" parameterType="String" resultType="int">
 		<![CDATA[
 			select count(*) from members where member_id=#{member_id}
 		]]>
 	</select>
-	
-	<select id="selectMember" parameterType="String" resultType="memberDTO">
+
+	<select id="selectMember" parameterType="String"
+		resultType="memberDTO">
 		<![CDATA[
 			select * from members where member_id=#{member_id}
 		]]>
 	</select>
-	
+
 	<update id="updateMember" parameterType="memberDTO">
 		<![CDATA[
 			update members set password=#{password}, member_name=#{member_name} where member_id=#{member_id}
 		]]>
 	</update>
-	
-	<select id="selectGrade" parameterType="String" resultType="memberDTO">
+
+	<select id="selectGrade" parameterType="String"
+		resultType="memberDTO">
 		select grade from members where member_id=#{member_id}
 	</select>
-	
-	<select id="selectLectureList" parameterType="String" resultMap="lectureTitleMap">
+
+	<select id="selectStuLectureList" parameterType="String"
+		resultMap="lectureTitleMap">
         <![CDATA[
             select l.lecture_title
             FROM lecture l
             INNER JOIN member_lecture ml ON l.lecture_id = ml.lecture_id
             WHERE ml.member_id=#{member_id}
         ]]>
-    </select>
+	</select>
+	<select id="selectProLectureList" parameterType="String"
+		resultMap="lectureTitleMap">
+        <![CDATA[
+            SELECT lecture_title FROM lecture WHERE professor_id = #{member_id}
+        ]]>
+	</select>
 </mapper>
