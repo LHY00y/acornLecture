@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.acornLecture.lecture.dto.LectureDTO;
-import com.spring.acornLecture.lecture.dto.Member_LectureDTO;
 import com.spring.acornLecture.member.dto.MemberDTO;
 import com.spring.acornLecture.member.service.MemberService;
 
