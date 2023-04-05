@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isErrorPage="false"%>
+	pageEncoding="UTF-8" isErrorPage="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<%-- <c:set var="lectureList" value="${memberService..selectLectureList(member_id) }" /> --%>
 <%
 	request.setCharacterEncoding("utf-8");
 %>
@@ -15,23 +14,30 @@
 <body>
 	<form method="get" name="joinForm">
 		<table align="center">
-		 <c:choose>
-	        <c:when test="${member.grade}=='강사'">
-	        	<c:forEach var="lectureList" items="${lectureList }">
-	        		asd
-	        	</c:forEach>
-	        </c:when>
-	        <c:when test="${member.grade }=='학생'">
-	        	<c:forEach var="item" items="${lectureList }">
-	        		<h1>${item.lecture_title }</h1>
-	        	</c:forEach>
-	        </c:when>
-        </c:choose>
+			<c:choose>
+				<c:when test="${member.grade == '강사'}">
+					<c:forEach var="lectureList" items="${lectureList }">
+		        		asd
+		        	</c:forEach>
+				</c:when>
+				<c:when test="${member.grade == '학생'}">
+					<c:forEach var="item" items="${lectureList }" varStatus="status">
+						<tr>
+							<td>${status.count }</td>
+							<td>${item}&nbsp;
+							<input id="confirm" type="button" value="수강 취소"
+								onClick="location.href='droplecture.do'">
+							</td>
+						</tr>
+					</c:forEach>
+				</c:when>
+			</c:choose>
+			<tr></tr>
 			<tr>
-				<h1>${member.grade }</h1>
-			</tr>
-			<tr>
-				<input id="confirm" type="button" value="회원 정보 수정" onClick="location.href='modMemberForm.do'">
+				<td></td>
+				<td><input id="confirm" type="button" value="회원 정보 수정"
+					onClick="location.href='modMemberForm.do'">
+				</td>
 			</tr>
 		</table>
 	</form>

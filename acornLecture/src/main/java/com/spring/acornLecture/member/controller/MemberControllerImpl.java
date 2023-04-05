@@ -153,8 +153,7 @@ public class MemberControllerImpl implements MemberController{
 		HttpSession session = request.getSession();
 		member_id = (String) session.getAttribute("member_id");
 		MemberDTO dto = memberService.selectGrade(member_id);
-		List<Member_LectureDTO> lectureList = memberService.selectLectureList(member_id);
-		System.out.println(lectureList);
+		List<String> lectureList = memberService.selectLectureList(member_id);
 		
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);

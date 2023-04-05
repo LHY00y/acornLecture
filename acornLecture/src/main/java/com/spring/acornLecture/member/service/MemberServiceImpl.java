@@ -46,7 +46,7 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.selectGrade(member_id);
 	}
 	@Override
-	public List<Member_LectureDTO> selectLectureList(String member_id) {
+	public List<String> selectLectureList(String member_id) {
 		// TODO Auto-generated method stub
 		return memberDAO.selectLectureList(member_id);
 	}

@@ -59,9 +59,9 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public List<Member_LectureDTO> selectLectureList(String member_id) {
+	public List<String> selectLectureList(String member_id) {
 		// TODO Auto-generated method stub
-		List<Member_LectureDTO> list = sqlSession.selectList("mapper.member.selectLectureList",member_id);
+		List<String> list = sqlSession.selectList("mapper.member.selectLectureList",member_id);
 		return list;
 	}
 }
