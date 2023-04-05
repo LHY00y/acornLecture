@@ -1,5 +1,8 @@
 package com.spring.acornLecture.member.service;
 
+import java.util.List;
+
+import com.spring.acornLecture.lecture.dto.Member_LectureDTO;
 import com.spring.acornLecture.member.dto.MemberDTO;
 
 public interface MemberService {
@@ -14,4 +17,7 @@ public interface MemberService {
 
 	void modMember(MemberDTO member);
 
+	MemberDTO selectGrade(String grade);
+
+	List<Member_LectureDTO> selectLectureList(String member_id);
 }

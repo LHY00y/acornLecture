@@ -10,6 +10,17 @@
 		<result property="grade" column="grade" />
 		<result property="join_date" column="join_date" />
 	</resultMap>
+	
+	<resultMap type="lectureDTO" id="lecResult">
+		<result property="lecture_id" column="lecture_id" />
+		<result property="lecture_title" column="lecture_title" />
+		<result property="professor_id" column="professor_id" />
+		<result property="professor_name" column="professor_name" />
+		<result property="category" column="category" />
+		<result property="count" column="count" />
+		<result property="shedule" column="schedule" />
+		<result property="lecture_content" column="lecture_content" />
+	</resultMap>
 
 	<insert id="insertMember" parameterType="memberDTO">
 		<![CDATA[
@@ -40,4 +51,17 @@
 			update members set password=#{password}, member_name=#{member_name} where member_id=#{member_id}
 		]]>
 	</update>
+	
+	<select id="selectGrade" parameterType="String" resultType="memberDTO">
+		select grade from members where member_id=#{member_id}
+	</select>
+	
+	<select id="selectLectureList" parameterType="String" resultMap="lecResult">
+		<![CDATA[
+			select l.lecture_title
+			FROM lecture l
+			INNER JOIN member_lecture ml ON l.lecture_id = ml.lecture_id
+			WHERE ml.member_id=#{member_id}
+		]]>
+	</select>
 </mapper>

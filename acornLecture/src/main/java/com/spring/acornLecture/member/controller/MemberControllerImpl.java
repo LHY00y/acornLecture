@@ -1,5 +1,7 @@
 package com.spring.acornLecture.member.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.spring.acornLecture.lecture.dto.Member_LectureDTO;
 import com.spring.acornLecture.member.dto.MemberDTO;
 import com.spring.acornLecture.member.service.MemberService;
 
@@ -139,6 +142,24 @@ public class MemberControllerImpl implements MemberController{
 		
 		ModelAndView mav = new ModelAndView("redirect:/main.do");
 		
+		return mav;
+	}
+
+	@Override
+	@RequestMapping(value="/member/myPage.do", method=RequestMethod.GET)
+	public ModelAndView myPage(String member_id, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		member_id = (String) session.getAttribute("member_id");
+		MemberDTO dto = memberService.selectGrade(member_id);
+		List<Member_LectureDTO> lectureList = memberService.selectLectureList(member_id);
+		System.out.println(lectureList);
+		
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("member", dto);
+		mav.addObject("lectureList", lectureList);
 		return mav;
 	}
 }

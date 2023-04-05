@@ -26,7 +26,7 @@ public class MyPageController {
 	@Autowired
 	private MyPageService myPageService;
 	
-	@RequestMapping(value="/member/mypage", method=RequestMethod.POST)
+	@RequestMapping(value="/member/mypage.do", method=RequestMethod.GET)
 	public ModelAndView login(@ModelAttribute("member") MemberDTO member, RedirectAttributes rAttr,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
@@ -37,8 +37,9 @@ public class MyPageController {
 		
 		if(isLogOn == true) {
 			List<LectureDTO> myLectureList = myPageService.myLecture(member);
+			System.out.println(myLectureList);
 			mav.addObject("myLectureList", myLectureList);
-			mav.setViewName("/mypageFrom");
+			mav.setViewName("/mypage");
 		} else {
 			mav.setViewName("redirect:/login.do");
 		}

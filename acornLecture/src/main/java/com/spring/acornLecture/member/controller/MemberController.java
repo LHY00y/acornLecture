@@ -20,4 +20,5 @@ public interface MemberController {
 	public ModelAndView logout(RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView modMemberForm(@RequestParam("member_id") String member_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView modMember(@ModelAttribute("member") MemberDTO member, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView myPage(@RequestParam("member_id") String member_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

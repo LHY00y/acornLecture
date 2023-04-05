@@ -14,7 +14,7 @@
 		<c:choose>
 			<c:when test="${isLogOn == true && member != null }">	
 				<a class="link" href="${ contextPath }/member/logout.do">로그아웃</a>
-				<a class="link" href="#">마이 페이지</a>
+				<a class="link" href="${ contextPath }/member/myPage.do">마이 페이지</a>
 			</c:when>
 			<c:otherwise>
 				<a class="link" href="${ contextPath }/member/loginForm.do" >로그인</a>
@@ -26,32 +26,5 @@
 
 <div id="menuContainer">
 	<a class="link" href="${contextPath }/lecture/listLectures.do">강의 목록</a>
-	<a class="link" href="${contextPath}/lecture/board.do">후기 목록</a>
+	<a class="link" href="#">후기 목록</a>
 </div>
-
-
-<!-- 
-<table border="0" width="100%">
-	<tr>
-		<td>
-			<a href="${contextPath }/main.do">
-				홈페이지 이미지
-			</a>
-		</td>
-		<td>
-			<h1><font size="30">홍 선생</font></h1>
-		</td>
-		<td>
-			<c:choose>
-				<c:when test="${isLogOn == true && member != null }">
-					<h3>환영합니다. ${member.member_name }님!</h3>
-					<a href="${contextPath }/member/logout.do"><h3>로그아웃</h3></a>
-				</c:when>
-				<c:otherwise>
-					<a href="${contextPath }/member/loginForm.do"><h3>로그인</h3></a>
-				</c:otherwise>
-			</c:choose>
-		</td>
-	</tr>
-</table>
--->

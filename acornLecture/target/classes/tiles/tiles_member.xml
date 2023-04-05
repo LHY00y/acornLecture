@@ -45,7 +45,7 @@
 	</definition>
 
 	<definition name="/member/loginForm" extends="baseLayout">
-		<put-attribute name="title" value="로그인창" />
+		<put-attribute name="title" value="회원가입창" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/member/loginForm.jsp" />
 	</definition>
@@ -65,5 +65,10 @@
 	<definition name="/member/modMemberForm" extends="baseLayout">
 		<put-attribute name="title" value="회원정보수정" />
 		<put-attribute name="body" value="/WEB-INF/views/member/modMemberForm.jsp" />
+	</definition>
+	
+	<definition name="/member/myPage" extends="baseLayout">
+		<put-attribute name="title" value="회원정보수정" />
+		<put-attribute name="body" value="/WEB-INF/views/member/myPage.jsp" />
 	</definition>
 </tiles-definitions>

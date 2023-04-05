@@ -6,15 +6,9 @@
 	
 	<select id="findMyLectureList" parameterType="MemberDTO" resultType="LectureDTO">
 		<![CDATA[
-<<<<<<< HEAD
 			select * from lecture 
 				inner join member_lecture on lecture.lecture_id = member_lecture.lecture_id
 				where member_lecture.member_id=#{member_id}
-=======
-			select * from lecture
-				 inner join member_lecture on lecture.lecture_id = member-lecture.lecture_id
-				 where member_lecture.member_id=#{member_id}
->>>>>>> branch 'main' of https://github.com/LHY00y/acornLecture.git
 		]]>
 	</select>
 </mapper>
