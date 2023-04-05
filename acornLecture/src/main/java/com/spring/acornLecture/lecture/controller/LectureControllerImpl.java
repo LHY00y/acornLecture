@@ -64,12 +64,17 @@ public class LectureControllerImpl implements LectureController {
 		ModelAndView mav = new ModelAndView(viewName);
 
 		HttpSession session = request.getSession(false);
-		String member_id = (String) session.getAttribute("member_id");
+		
+		// 로그인 상태일 경우에만 강의가 내 강의 목록에 있는지 확인
+		if(session.getAttribute("isLogOn") != null) {
+			String member_id = (String) session.getAttribute("member_id");
+			
+			Boolean isMine = lectureService.chkLecture(lecture_id, member_id);
+			mav.addObject("isMine", isMine);
+		}
 		
 		LectureDTO lecture = lectureService.lectureInfo(lecture_id);
-		Boolean isMine = lectureService.chkLecture(lecture_id, member_id);
 		mav.addObject("lecture", lecture);
-		mav.addObject("isMine", isMine);
 		return mav;
 	}
 }
