@@ -17,10 +17,12 @@
 			<c:choose>
 				<c:when test="${member.grade == '강사'}">
 					<c:forEach var="item" items="${lectureList }" varStatus="status">
-						<td>${status.count }</td>
-						<td>${item}&nbsp;<input id="confirm" type="button"
-							value="강의 수정" onClick="location.href='modlecture.do'">
-						</td>
+						<tr>
+							<td>${status.count }</td>
+							<td>${item}&nbsp;<input id="confirm" type="button"
+								value="강의 수정" onClick="location.href='modLecture.do'">
+							</td>
+						<tr>
 					</c:forEach>
 				</c:when>
 				<c:when test="${member.grade == '학생'}">

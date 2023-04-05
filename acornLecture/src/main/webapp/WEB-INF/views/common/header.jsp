@@ -14,7 +14,7 @@
 		<c:choose>
 			<c:when test="${isLogOn == true && member != null }">	
 				<a class="link" href="${ contextPath }/member/logout.do">로그아웃</a>
-				<a class="link" href="${ contextPath }/member/modMemberForm.do">마이 페이지</a>
+				<a class="link" href="${ contextPath }/member/myPage.do">마이 페이지</a>
 			</c:when>
 			<c:otherwise>
 				<a class="link" href="${ contextPath }/member/loginForm.do" >로그인</a>

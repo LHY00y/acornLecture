@@ -155,7 +155,6 @@ public class MemberControllerImpl implements MemberController{
 		member_id = (String) session.getAttribute("member_id");
 		MemberDTO dto = memberService.selectGrade(member_id);
 		String grade = (String) session.getAttribute("grade");
-		System.out.println(grade);
 		List<String> lectureList;
 		if(grade.equals("학생")) {
 			lectureList = memberService.selectStuLectureList(member_id);			
