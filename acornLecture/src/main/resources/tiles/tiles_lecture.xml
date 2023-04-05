@@ -21,5 +21,10 @@
 		<put-attribute name="title" value="게시판" />
 		<put-attribute name="body" value="/WEB-INF/views/lecture/board.jsp" />
 	</definition>
+	
+	<definition name="/lecture/articleForm" extends="baseLayout">
+		<put-attribute name="title" value="글 작성" />
+		<put-attribute name="body" value="/WEB-INF/views/lecture/articleForm.jsp" />
+	</definition>
 
 </tiles-definitions>

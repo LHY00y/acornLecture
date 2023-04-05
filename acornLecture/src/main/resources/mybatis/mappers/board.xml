@@ -27,7 +27,35 @@
 		        on board.lecture_id = lecture.lecture_id
 		        order by board_id desc
 		]]>
-	
 	</select>
+
+	<insert id="insertNewArticle" parameterType="java.util.Map">
+		<![CDATA[	
+			insert into board(board_id, board_title, board_content, member_id, lecture_id)
+				values(#{articleNo}, #{title}, #{content}, #{member_id}, #{lecture_id})
+		]]>		
+	</insert>
+	
+		<select id="selectNewArticleNo" resultType="int">
+		<![CDATA[
+			select max(board_id)+1 from board
+		]]>
+	</select>
+	
+	
+	<insert id="insertNewImage" parameterType="java.util.Map">
+		<foreach collection="list" item="item" open="insert all" separator=" "
+			close="select * from dual">
+			into lec_imgfile (imgFileNo, imgFileName, board_id)
+			 values (#{item.imageFileNo}, #{item.imageFileName}, #{item.articleNo})
+		</foreach>
+	</insert>
+	
+	<select id="selectNewImageFileNo" resultType="int">
+ 		<![CDATA[
+ 			select nvl(max(imgFileNo),0) from lec_imgFile
+ 		]]>
+ 	</select>
+	
 	
 </mapper>

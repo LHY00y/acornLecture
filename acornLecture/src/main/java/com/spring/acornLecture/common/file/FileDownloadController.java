@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class FileDownloadController {
-	private static final String CURR_IMAGE_REPO_PATH = "C:\\Users\\leeha\\git\\acornLecture\\acornLecture\\review_imageFile";
+	// 경로 각자 바꿔주세요
+	private static final String CURR_IMAGE_REPO_PATH = "C:\\Users\\leeha\\git\\acornLecture\\acornLecture\\article_imageFile";
 	
 	@RequestMapping("/download.do")
 	public void download(@RequestParam("imageFileName") String imageFileName,
