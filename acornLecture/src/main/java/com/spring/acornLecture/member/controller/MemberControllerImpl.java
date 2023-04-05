@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.spring.acornLecture.lecture.dto.LectureDTO;
 import com.spring.acornLecture.lecture.dto.Member_LectureDTO;
 import com.spring.acornLecture.member.dto.MemberDTO;
 import com.spring.acornLecture.member.service.MemberService;
@@ -155,8 +156,8 @@ public class MemberControllerImpl implements MemberController{
 		member_id = (String) session.getAttribute("member_id");
 		MemberDTO dto = memberService.selectGrade(member_id);
 		String grade = (String) session.getAttribute("grade");
-		List<String> lectureList;
-		if(grade.equals("ÌïôÏÉù")) {
+		List<LectureDTO> lectureList;
+		if(grade.equals("«–ª˝")) {
 			lectureList = memberService.selectStuLectureList(member_id);			
 		}
 		else {	

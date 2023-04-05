@@ -11,8 +11,15 @@
 		<result property="join_date" column="join_date" />
 	</resultMap>
 
-	<resultMap id="lectureTitleMap" type="java.lang.String">
-		<result column="lecture_title" property="title" />
+	<resultMap type="lectureDTO" id="lecResult">
+		<result property="lecture_id" column="lecture_id" />
+		<result property="lecture_title" column="lecture_title" />
+		<result property="professor_id" column="professor_id" />
+		<result property="professor_name" column="professor_name" />
+		<result property="category" column="category" />
+		<result property="count" column="count" />
+		<result property="shedule" column="schedule" />
+		<result property="lecture_content" column="lecture_content" />
 	</resultMap>
 
 	<insert id="insertMember" parameterType="memberDTO">
@@ -53,7 +60,7 @@
 	</select>
 
 	<select id="selectStuLectureList" parameterType="String"
-		resultMap="lectureTitleMap">
+		resultType="lectureDTO">
         <![CDATA[
             select l.lecture_title
             FROM lecture l
@@ -62,9 +69,9 @@
         ]]>
 	</select>
 	<select id="selectProLectureList" parameterType="String"
-		resultMap="lectureTitleMap">
+		resultType="lectureDTO">
         <![CDATA[
-            SELECT lecture_title FROM lecture WHERE professor_id = #{member_id}
+            SELECT lecture_title, lecture_id FROM lecture WHERE professor_id = #{member_id}
         ]]>
 	</select>
 </mapper>

@@ -10,6 +10,17 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 정보</title>
+<style>
+	a:link{
+		color:black;
+	}
+	a:hover{
+		color:blue;
+	}
+	a:active{
+		color:darkblue;
+	}
+</style>
 </head>
 <body>
 	<form method="get" name="joinForm">
@@ -19,7 +30,8 @@
 					<c:forEach var="item" items="${lectureList }" varStatus="status">
 						<tr>
 							<td>${status.count }</td>
-							<td>${item}&nbsp;<input id="confirm" type="button"
+							<td><a href="${ contextPath }/lecture/info.do?id=${item.lecture_id}">${item.lecture_title}</a>&nbsp;
+							<input id="confirm" type="button"
 								value="강의 수정" onClick="location.href='modLecture.do'">
 							</td>
 						<tr>

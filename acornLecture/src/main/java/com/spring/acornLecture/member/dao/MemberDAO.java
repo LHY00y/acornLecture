@@ -2,6 +2,7 @@ package com.spring.acornLecture.member.dao;
 
 import java.util.List;
 
+import com.spring.acornLecture.lecture.dto.LectureDTO;
 import com.spring.acornLecture.lecture.dto.Member_LectureDTO;
 import com.spring.acornLecture.member.dto.MemberDTO;
 
@@ -19,7 +20,7 @@ public interface MemberDAO {
 
 	MemberDTO selectGrade(String grade);
 
-	List<String> selectStuLectureList(String member_id);
+	List<LectureDTO> selectStuLectureList(String member_id);
 	
-	List<String> selectProLectureList(String member_id);
+	List<LectureDTO> selectProLectureList(String member_id);
 }
