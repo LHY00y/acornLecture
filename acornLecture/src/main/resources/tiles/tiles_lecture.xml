@@ -17,16 +17,6 @@
 		<put-attribute name="body" value="/WEB-INF/views/lecture/lectureList.jsp" />
 	</definition>
 
-	<definition name="/lecture/board" extends="baseLayout">
-		<put-attribute name="title" value="게시판" />
-		<put-attribute name="body" value="/WEB-INF/views/lecture/board.jsp" />
-	</definition>
-	
-	<definition name="/lecture/articleForm" extends="baseLayout">
-		<put-attribute name="title" value="글 작성" />
-		<put-attribute name="body" value="/WEB-INF/views/lecture/articleForm.jsp" />
-	</definition>
-
 	<definition name="/lecture/info" extends="baseLayout">
 		<put-attribute name="title" value="강의정보" />
 		<put-attribute name="body" value="/WEB-INF/views/lecture/lectureInfo.jsp" />

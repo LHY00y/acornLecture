@@ -32,7 +32,7 @@
 			<tr align="center">
 				<td>${index=index+1 }</td>
 				<td style="color:grey;">[${board.category}]</td>
-				<td><a href="#">${board.board_title }</a></td>
+				<td><a href="${contextPath }/board/boardPage.do?board_id=${board.board_id}">${board.board_title }</a></td>
 				<td>${board.member_name }</td> 
 				<td>${board.lecture_title }</td> 
  				<td>${board.write_date }</td>

@@ -1,5 +1,6 @@
 package com.spring.acornLecture.board.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.acornLecture.board.dao.BoardDAO;
 import com.spring.acornLecture.board.dto.BoardDTO;
+import com.spring.acornLecture.board.dto.ImageDTO;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -26,5 +28,21 @@ public class BoardServiceImpl implements BoardService {
 		if(imgflag)
 			boardDAO.insertNewImage(articleMap);
 		return articleNo;
+	}
+	
+	@Override
+	public Map viewArticle(int board_id) {
+		Map articleMap = new HashMap();
+		BoardDTO boardDTO = boardDAO.selectArticle(board_id);
+		//List<ImageDTO> imageFileList = boardDAO.selectImageFileList(board_id);
+		articleMap.put("article", boardDTO);
+		//articleMap.put("imageFileList",imageFileList);
+		return articleMap;
+	}
+	
+	@Override
+	public void deleteArticle(int articleNo) {
+		// TODO Auto-generated method stub
+		boardDAO.deleteArticle(articleNo);
 	}
 }

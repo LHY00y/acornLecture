@@ -53,7 +53,7 @@
 	
 	<hr>
 	
-	<jsp:include page="board.jsp"></jsp:include>
+	<jsp:include page="../board/board.jsp"></jsp:include>
 	
 </body>
 </html>

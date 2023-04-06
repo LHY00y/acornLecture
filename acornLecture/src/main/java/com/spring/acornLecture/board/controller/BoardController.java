@@ -17,4 +17,6 @@ public interface BoardController {
 
 	ModelAndView form(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
+	ModelAndView viewArticle(int board_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
+
 }

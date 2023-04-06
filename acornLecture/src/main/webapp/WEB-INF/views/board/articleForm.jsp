@@ -22,7 +22,7 @@
 		}
 	}
 	function backToList(obj){
-		obj.action = "${contextPath}/lecture/board.do";
+		obj.action = "${contextPath}/board/board.do";
 		obj.submit();
 	}
 	let cnt = 1;
@@ -34,7 +34,7 @@
 </head>
 <body>
 	<h1 style="text-align: center;">새 글 쓰기</h1>
-	<form name="articleForm" method="post" action="${contextPath }/lecture/addNewArticle.do"
+	<form name="articleForm" method="post" action="${contextPath }/board/addNewArticle.do"
 		enctype="multipart/form-data">
 		<table border="0" align="center">
 			<tr>

@@ -13,4 +13,8 @@ public interface BoardDAO {
 
 	void insertNewImage(Map<String, Object> articleMap);
 
+	BoardDTO selectArticle(int board_id);
+
+	BoardDTO deleteArticle(int board_id);
+
 }

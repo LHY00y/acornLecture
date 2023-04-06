@@ -56,6 +56,28 @@
  			select nvl(max(imgFileNo),0) from lec_imgFile
  		]]>
  	</select>
-	
-	
+ 	
+ 	<select id="selectArticle" parameterType="int" resultType="boardDTO">
+ 		<![CDATA[
+ 			select board.*, members. member_name as member_name, lecture.lecture_title as lecture_title,
+		        case when members.grade='강사' then '공지' else '후기' end category from board
+		        inner join members
+		        on board.member_id = members.member_id
+		        inner join lecture
+		        on board.lecture_id = lecture.lecture_id
+                where board.board_id=#{board_id}
+ 		]]>
+ 	</select>
+ 	
+ 	
+ 	<delete id="deleteArticle" parameterType="int">
+		<![CDATA[
+			delete from board where board_id
+		
+		]]>
+		</delete>
+		
+ 	
+
+		
 </mapper>

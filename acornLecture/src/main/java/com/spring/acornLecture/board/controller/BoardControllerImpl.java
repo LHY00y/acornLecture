@@ -42,7 +42,7 @@ public class BoardControllerImpl implements BoardController{
 	private BoardService boardService;
 	
 	@Override
-	@RequestMapping(value= {"/lecture/board.do"})
+	@RequestMapping(value= {"/board/board.do"})
 	public ModelAndView board(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		String viewName = (String) request.getAttribute("viewName");
@@ -55,7 +55,7 @@ public class BoardControllerImpl implements BoardController{
 	}
 	
 	@Override
-	@RequestMapping(value="/lecture/addNewArticle.do", method=RequestMethod.POST)
+	@RequestMapping(value="/board/addNewArticle.do", method=RequestMethod.POST)
 	public ResponseEntity addNewArticle( MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
@@ -85,7 +85,6 @@ public class BoardControllerImpl implements BoardController{
 		MemberDTO member = (MemberDTO)session.getAttribute("member");
 		
 		String member_id = member.getMember_id();
-	//	articleMap.put("lectureNo", lecture_id);
 		articleMap.put("member_id", member_id);
 				
 		String message;
@@ -106,7 +105,7 @@ public class BoardControllerImpl implements BoardController{
 			message = "<script>";
 			message += "alert('새글을 추가했습니다.');";
 			message += "location.href='" + multipartRequest.getContextPath()
-				+"/lecture/board.do';";
+				+"/board/board.do';";
 			message += "</script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		} catch (Exception e) {
@@ -121,7 +120,7 @@ public class BoardControllerImpl implements BoardController{
 			message = "<script>";
 			message += "alert('오류가 발생했습니다. 다시 시도해 주세요.');";
 			message += "location.href='" + multipartRequest.getContextPath()
-				+"/lecture/articleForm.do';";
+				+"/board/articleForm.do';";
 			message += "</script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			e.printStackTrace();
@@ -130,7 +129,7 @@ public class BoardControllerImpl implements BoardController{
 	}
 
 	@Override
-//	@RequestMapping(value="/lecture/*Form.do", method=RequestMethod.GET)
+	@RequestMapping(value="/board/*Form.do", method=RequestMethod.GET)
 	public ModelAndView form(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		String viewName = (String) request.getAttribute("viewName");
@@ -160,4 +159,18 @@ public class BoardControllerImpl implements BoardController{
 		}
 		return fileList;
 	}
+	
+	@Override
+	@RequestMapping(value="/board/boardPage.do", method=RequestMethod.GET)
+	public ModelAndView viewArticle(int board_id, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		String viewName = (String) request.getAttribute("viewName");
+		Map articleMap = boardService.viewArticle(board_id);
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("articleMap", articleMap);
+		return mav;
+	}
+	
+	
 }
