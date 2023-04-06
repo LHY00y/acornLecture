@@ -7,7 +7,8 @@ import com.spring.acornLecture.board.dto.BoardDTO;
 
 public interface BoardDAO {
 
-	List<BoardDTO> selectAllBoard();
+	List<BoardDTO> selectAllReviews();
+	List<BoardDTO> selectAllNotices();
 
 	int insertNewArticle(Map<String, Object> articleMap);
 

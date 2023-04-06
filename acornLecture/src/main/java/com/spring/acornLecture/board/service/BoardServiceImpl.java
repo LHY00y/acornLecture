@@ -17,8 +17,13 @@ public class BoardServiceImpl implements BoardService {
 	private BoardDAO boardDAO;
 	
 	@Override
-	public List<BoardDTO> listBoards() {
-		return boardDAO.selectAllBoard();
+	public List<BoardDTO> listReviews() {
+		return boardDAO.selectAllReviews();
+	}
+	
+	@Override
+	public List<BoardDTO> listNotices() {
+		return boardDAO.selectAllNotices();
 	}
 	
 	@Override

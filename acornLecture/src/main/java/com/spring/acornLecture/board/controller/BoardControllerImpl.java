@@ -42,13 +42,26 @@ public class BoardControllerImpl implements BoardController{
 	private BoardService boardService;
 	
 	@Override
-	@RequestMapping(value= {"/board/board.do"})
-	public ModelAndView board(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@RequestMapping(value= {"/board/review.do"})
+	public ModelAndView review(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		
-		List<BoardDTO> boardList = boardService.listBoards();
+		List<BoardDTO> boardList = boardService.listReviews();
+		
+		mav.addObject("boardList", boardList);
+		return mav;
+	}
+	
+	@Override
+	@RequestMapping(value= {"/board/notice.do"})
+	public ModelAndView notice(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+		
+		List<BoardDTO> boardList = boardService.listNotices();
 		
 		mav.addObject("boardList", boardList);
 		return mav;

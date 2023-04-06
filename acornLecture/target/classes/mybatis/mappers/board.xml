@@ -17,14 +17,29 @@
 	</resultMap>
 
 	
-	<select id="selectAllBoard" resultType="boardDTO">
+	<select id="selectAllReviews" resultType="boardDTO">
 		<![CDATA[
 			select board.*, members. member_name as member_name, lecture.lecture_title as lecture_title,
-		        case when members.grade='강사' then '공지' else '후기' end category from board
+		        '후기' as category from board
 		        inner join members
 		        on board.member_id = members.member_id
 		        inner join lecture
 		        on board.lecture_id = lecture.lecture_id
+                where members.grade='학생'
+		        order by board_id desc
+		]]>
+	</select>
+	
+	
+	<select id="selectAllNotices" resultType="boardDTO">
+		<![CDATA[
+			select board.*, members. member_name as member_name, lecture.lecture_title as lecture_title,
+		        '공지' as category from board
+		        inner join members
+		        on board.member_id = members.member_id
+		        inner join lecture
+		        on board.lecture_id = lecture.lecture_id
+                where members.grade='강사'
 		        order by board_id desc
 		]]>
 	</select>

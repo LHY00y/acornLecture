@@ -16,8 +16,14 @@ public class BoardDAOImpl implements BoardDAO{
 	private SqlSession sqlSession;
 	
 	@Override
-	public List<BoardDTO> selectAllBoard() {
-		List<BoardDTO> boardList = sqlSession.selectList("mapper.board.selectAllBoard");
+	public List<BoardDTO> selectAllReviews() {
+		List<BoardDTO> boardList = sqlSession.selectList("mapper.board.selectAllReviews");
+		return boardList;
+	}
+	
+	@Override
+	public List<BoardDTO> selectAllNotices() {
+		List<BoardDTO> boardList = sqlSession.selectList("mapper.board.selectAllNotices");
 		return boardList;
 	}
 	

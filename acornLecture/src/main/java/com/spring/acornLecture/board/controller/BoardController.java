@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 public interface BoardController {
 
-	ModelAndView board(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	ModelAndView review(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 	ResponseEntity addNewArticle(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
 			throws Exception;
@@ -18,5 +18,7 @@ public interface BoardController {
 	ModelAndView form(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 	ModelAndView viewArticle(int board_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+	ModelAndView notice(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 }

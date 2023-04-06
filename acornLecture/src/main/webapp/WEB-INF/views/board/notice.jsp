@@ -20,7 +20,6 @@
 	
 		<tr align="center" bgcolor="#9DC0DF">
 			<th>번호</th>
-			<th>구분</th>
 			<th>제목</th>
 			<th>작성자</th>
 			<th>강의명</th>
@@ -31,7 +30,6 @@
 		<c:forEach var="board" items="${boardList}">
 			<tr align="center">
 				<td>${index=index+1 }</td>
-				<td style="color:grey;">[${board.category}]</td>
 				<td><a href="${contextPath }/board/boardPage.do?board_id=${board.board_id}">${board.board_title }</a></td>
 				<td>${board.member_name }</td> 
 				<td>${board.lecture_title }</td> 

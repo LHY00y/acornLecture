@@ -5,9 +5,14 @@
 
 
 <tiles-definitions>
-	<definition name="/board/board" extends="baseLayout">
+	<definition name="/board/notice" extends="baseLayout">
 		<put-attribute name="title" value="게시판" />
-		<put-attribute name="body" value="/WEB-INF/views/board/board.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/board/notice.jsp" />
+	</definition>
+	
+		<definition name="/board/review" extends="baseLayout">
+		<put-attribute name="title" value="게시판" />
+		<put-attribute name="body" value="/WEB-INF/views/board/review.jsp" />
 	</definition>
 	
 	<definition name="/board/articleForm" extends="baseLayout">
