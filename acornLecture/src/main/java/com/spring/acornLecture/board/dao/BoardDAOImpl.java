@@ -51,5 +51,16 @@ public class BoardDAOImpl implements BoardDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("mapper.board.selectNewImageFileNo");
 	}
+	
+	@Override
+	public BoardDTO selectArticle(int board_id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.board.selectArticle", board_id);
+	}
 
+	@Override
+	public BoardDTO deleteArticle(int board_id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.board.selectArticle", board_id);
+	}
 }

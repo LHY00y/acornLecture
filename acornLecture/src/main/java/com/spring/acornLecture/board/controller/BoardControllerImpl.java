@@ -36,7 +36,7 @@ import com.spring.acornLecture.member.dto.MemberDTO;
 public class BoardControllerImpl implements BoardController{
 	
 	//경로 각자 바꾸셔야 합니다.
-	private static final String CURR_IMAGE_REPO_PATH = "C:\\Users\\leeha\\git\\acornLecture\\acornLecture\\article_imageFile";
+	private static final String CURR_IMAGE_REPO_PATH = "C:\\Users\\haera\\git\\acornLecture\\acornLecture\\article_imageFile";
 	
 	@Autowired
 	private BoardService boardService;
@@ -160,4 +160,18 @@ public class BoardControllerImpl implements BoardController{
 		}
 		return fileList;
 	}
+	
+	@Override
+	@RequestMapping(value="/lecture/boardPage.do", method=RequestMethod.GET)
+	public ModelAndView viewArticle(int board_id, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		String viewName = (String) request.getAttribute("viewName");
+		Map articleMap = boardService.viewArticle(board_id);
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("articleMap", articleMap);
+		return mav;
+	}
+	
+	
 }

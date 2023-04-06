@@ -11,4 +11,8 @@ public interface BoardService {
 
 	int addNewArticle(Map<String, Object> articleMap, boolean imgflag);
 
+	Map viewArticle(int board_id);
+
+	void deleteArticle(int board_id);
+
 }
