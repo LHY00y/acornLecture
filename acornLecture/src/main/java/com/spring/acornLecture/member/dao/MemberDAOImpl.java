@@ -1,6 +1,8 @@
 package com.spring.acornLecture.member.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,5 +70,14 @@ public class MemberDAOImpl implements MemberDAO{
 		// TODO Auto-generated method stub
 		List<LectureDTO> list = sqlSession.selectList("mapper.member.selectProLectureList",member_id);
 		return list;
+	}
+
+	@Override
+	public void deleteLecture(String member_id, Integer lecture_id) {
+		// TODO Auto-generated method stub
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("member_id", member_id);
+		map.put("lecture_id", String.valueOf(lecture_id));
+		int result = sqlSession.delete("mapper.member.deleteLecture", map);
 	}
 }

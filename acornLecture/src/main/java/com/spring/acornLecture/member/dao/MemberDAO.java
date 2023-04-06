@@ -1,6 +1,7 @@
 package com.spring.acornLecture.member.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.spring.acornLecture.lecture.dto.LectureDTO;
 import com.spring.acornLecture.lecture.dto.Member_LectureDTO;
@@ -23,4 +24,6 @@ public interface MemberDAO {
 	List<LectureDTO> selectStuLectureList(String member_id);
 	
 	List<LectureDTO> selectProLectureList(String member_id);
+
+	void deleteLecture(String member_id, Integer lecture_id);
 }

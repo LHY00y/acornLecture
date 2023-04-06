@@ -21,4 +21,5 @@ public interface MemberController {
 	public ModelAndView modMemberForm(@RequestParam("member_id") String member_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView modMember(@ModelAttribute("member") MemberDTO member, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView myPage(@RequestParam("member_id") String member_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView dropLecture(@RequestParam("lecture_id") int lecture_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

@@ -1,6 +1,8 @@
 package com.spring.acornLecture.member.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,5 +56,10 @@ public class MemberServiceImpl implements MemberService{
 	public List<LectureDTO> selectProLectureList(String member_id) {
 		// TODO Auto-generated method stub
 		return memberDAO.selectProLectureList(member_id);
+	}
+	@Override
+	public void dropLecture(String member_id, int lecture_id) {
+		// TODO Auto-generated method stub
+		memberDAO.deleteLecture(member_id, lecture_id);
 	}
 }
