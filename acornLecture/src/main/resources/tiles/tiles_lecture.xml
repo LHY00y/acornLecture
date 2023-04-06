@@ -32,4 +32,8 @@
 		<put-attribute name="body" value="/WEB-INF/views/lecture/boardPage.jsp" />
 	</definition>
 
+	<definition name="/lecture/info" extends="baseLayout">
+		<put-attribute name="title" value="강의정보" />
+		<put-attribute name="body" value="/WEB-INF/views/lecture/lectureInfo.jsp" />
+	</definition>
 </tiles-definitions>

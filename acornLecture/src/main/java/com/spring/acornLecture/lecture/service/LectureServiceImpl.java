@@ -28,4 +28,14 @@ public class LectureServiceImpl implements LectureService{
 	public List<LectureDTO> searchLectures(String keyword) {
 		return lectureDAO.selectSearchLectureList(keyword);
 	}
+	
+	@Override
+	public LectureDTO lectureInfo(int lecture_id) {
+		return lectureDAO.selectOneLecture(lecture_id);
+	}
+
+	@Override
+	public Boolean chkLecture(int lecture_id, String member_id) {
+		return lectureDAO.chkLecture(lecture_id, member_id);
+	}
 }

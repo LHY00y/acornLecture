@@ -5,9 +5,8 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
-import com.spring.acornLecture.lecture.dto.Member_LectureDTO;
+import com.spring.acornLecture.lecture.dto.LectureDTO;
 import com.spring.acornLecture.member.dto.MemberDTO;
 
 @Repository
@@ -59,9 +58,15 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public List<Member_LectureDTO> selectLectureList(String member_id) {
+	public List<LectureDTO> selectStuLectureList(String member_id) {
 		// TODO Auto-generated method stub
-		List<Member_LectureDTO> list = sqlSession.selectList("mapper.member.selectLectureList",member_id);
+		List<LectureDTO> list = sqlSession.selectList("mapper.member.selectStuLectureList",member_id);
+		return list;
+	}
+	@Override
+	public List<LectureDTO> selectProLectureList(String member_id) {
+		// TODO Auto-generated method stub
+		List<LectureDTO> list = sqlSession.selectList("mapper.member.selectProLectureList",member_id);
 		return list;
 	}
 }

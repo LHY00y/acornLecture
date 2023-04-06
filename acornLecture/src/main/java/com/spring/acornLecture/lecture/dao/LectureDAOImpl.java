@@ -1,6 +1,8 @@
 package com.spring.acornLecture.lecture.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +32,21 @@ public class LectureDAOImpl implements LectureDAO {
 	public List<LectureDTO> selectSearchLectureList(String keyword) {
 		List<LectureDTO> lecturesList = sqlSession.selectList("mapper.lecture.selectSearchLectureList", keyword);
 		return lecturesList;
+	}	
+	
+	@Override
+	public LectureDTO selectOneLecture(int lecture_id) {
+		LectureDTO lecture = sqlSession.selectOne("mapper.lecture.selectOneLecture", lecture_id);
+		return lecture;
+	}
+
+	@Override
+	public Boolean chkLecture(int lecture_id, String member_id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("lecture_id", lecture_id);
+		map.put("member_id", member_id);
+		
+		Boolean isMine = (sqlSession.selectOne("mapper.lecture.chkLecture", map) != null);
+		return isMine;
 	}
 }
