@@ -1,5 +1,6 @@
 package com.spring.acornLecture.lecture.controller;
 
+import java.io.File;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -9,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +23,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.acornLecture.board.dto.ImageDTO;
 import com.spring.acornLecture.lecture.dto.LectureDTO;
 import com.spring.acornLecture.lecture.service.LectureService;
+import com.spring.acornLecture.member.dto.MemberDTO;
 
 @Controller
 @EnableAspectJAutoProxy
@@ -92,6 +98,8 @@ public class LectureControllerImpl implements LectureController {
 		HttpSession session = request.getSession();
 		session.setAttribute("action", action);
 		ModelAndView mav = new ModelAndView(viewName);
+		List<String> categories = lectureService.categories();
+		mav.addObject("categories",categories);
 		mav.addObject("result", result);
 		return mav;
 	}
@@ -107,10 +115,53 @@ public class LectureControllerImpl implements LectureController {
 		
 		while(enu.hasMoreElements()) {
 			String name = (String)enu.nextElement();
-			String value = multipartRequest.getParameter(name);
-			System.out.println(name+" : "+value);
+			String value = "";
+			if(name.equals("daybox")) {
+				for(String val : multipartRequest.getParameterValues(name)) {
+					value += val;
+				}
+			}else {
+				value = multipartRequest.getParameter(name);
+			}
+			
+//			System.out.println(name+":"+value);
 			lectureMap.put(name, value);
 		}
-		return null;
+		if(lectureMap.get("category").equals("add")) {
+			lectureMap.put("category", lectureMap.get("category_add"));
+		}
+		lectureMap.put("time",lectureMap.get("daybox").toString() + " " + lectureMap.get("time").toString());
+		
+		HttpSession session = multipartRequest.getSession();
+		MemberDTO member = (MemberDTO)session.getAttribute("member");
+		
+		String member_id = member.getMember_id();
+		lectureMap.put("member_id", member_id);
+				
+		String message;
+		ResponseEntity resEnt = null;
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
+		
+		try {
+			int lectureNo = lectureService.addNewLecture(lectureMap);
+			
+			message = "<script>";
+			message += "alert('새 강의를 추가했습니다.');";
+			message += "location.href='" + multipartRequest.getContextPath()
+				+"/lecture/info.do?id="+lectureNo+"';";
+			message += "</script>";
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+		} catch (Exception e) {
+			// TODO: handle exception
+			message = "<script>";
+			message += "alert('오류가 발생했습니다. 다시 시도해 주세요.');";
+			message += "location.href='" + multipartRequest.getContextPath()
+				+"/lecture/lectureForm.do';";
+			message += "</script>";
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+			e.printStackTrace();
+		}
+		return resEnt;
 	}
 }

@@ -57,4 +57,17 @@
 				and lecture_id = #{lecture_id} 
 		]]>
 	</select>
+	
+		<insert id="insertNewLecture" parameterType="java.util.Map">
+		<![CDATA[	
+			insert into lecture 
+				values(#{lectureNo}, #{title}, #{member_id}, #{category}, #{count}, #{time} ,#{content})
+		]]>		
+	</insert>
+	
+		<select id="selectNewLectureNo" resultType="int">
+		<![CDATA[
+			select max(lecture_id)+1 from lecture
+		]]>
+	</select>
 </mapper>

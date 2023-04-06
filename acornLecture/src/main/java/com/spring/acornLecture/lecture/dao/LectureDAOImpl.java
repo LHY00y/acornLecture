@@ -49,4 +49,17 @@ public class LectureDAOImpl implements LectureDAO {
 		Boolean isMine = (sqlSession.selectOne("mapper.lecture.chkLecture", map) != null);
 		return isMine;
 	}
+	
+	@Override
+	public int insertNewLecture(Map<String, Object> lectureMap) {
+		int lectureNo = selectNewLectureNo();
+		lectureMap.put("lectureNo", lectureNo);
+		sqlSession.insert("mapper.lecture.insertNewLecture", lectureMap);
+		return lectureNo;
+	}
+	
+	private int selectNewLectureNo() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.lecture.selectNewLectureNo");
+	}
 }

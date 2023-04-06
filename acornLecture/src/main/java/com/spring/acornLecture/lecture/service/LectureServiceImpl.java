@@ -1,6 +1,7 @@
 package com.spring.acornLecture.lecture.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,5 +38,11 @@ public class LectureServiceImpl implements LectureService{
 	@Override
 	public Boolean chkLecture(int lecture_id, String member_id) {
 		return lectureDAO.chkLecture(lecture_id, member_id);
+	}
+	
+	@Override
+	public int addNewLecture(Map<String, Object> lectureMap) {
+		int lectureNo = lectureDAO.insertNewLecture(lectureMap);
+		return lectureNo;
 	}
 }
