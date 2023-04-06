@@ -26,4 +26,9 @@
 		<put-attribute name="title" value="강의추가" />
 		<put-attribute name="body" value="/WEB-INF/views/lecture/lectureForm.jsp" />
 	</definition>
+	
+	<definition name="/lecture/modLectureForm" extends="baseLayout">
+		<put-attribute name="title" value="강의수정" />
+		<put-attribute name="body" value="/WEB-INF/views/lecture/modLectureForm.jsp" />
+	</definition>
 </tiles-definitions>

@@ -25,6 +25,7 @@
 <body>
 	<form method="get" name="joinForm">
 		<table align="center">
+		<h1 style="text-align:center">My Page</h1>
 			<c:choose>
 				<c:when test="${member.grade == '강사'}">
 					<c:forEach var="item" items="${lectureList }" varStatus="status">
@@ -32,7 +33,7 @@
 							<td>${status.count }</td>
 							<td><a href="${ contextPath }/lecture/info.do?id=${item.lecture_id}">${item.lecture_title}</a>&nbsp;
 							<input id="confirm" type="button"
-								value="강의 수정" onClick="location.href='modLecture.do'">
+								value="강의 수정" onClick="location.href='${contextPath}/lecture/modLectureForm.do?lecture_id=${item.lecture_id}'">
 							</td>
 						<tr>
 					</c:forEach>

@@ -56,8 +56,10 @@ public class MemberControllerImpl implements MemberController{
 
 		if(member != null) {
 			HttpSession session = request.getSession();
+			
 			session.setAttribute("member", member);
 			session.setAttribute("member_id", member.getMember_id());
+			
 			session.setAttribute("isLogOn", true);
 			session.setAttribute("grade", member.getGrade());
 			rAttr.addAttribute("msg", "login");
@@ -159,7 +161,7 @@ public class MemberControllerImpl implements MemberController{
 		String grade = (String) session.getAttribute("grade");
 		List<LectureDTO> lectureList;
 		if(grade.equals("학생")) {
-			lectureList = memberService.selectStuLectureList(member_id);	
+			lectureList = memberService.selectStuLectureList(member_id);
 		}
 		else {	
 			lectureList = memberService.selectProLectureList(member_id);

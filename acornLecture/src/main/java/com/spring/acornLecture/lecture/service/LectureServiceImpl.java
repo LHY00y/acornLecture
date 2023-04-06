@@ -45,4 +45,10 @@ public class LectureServiceImpl implements LectureService{
 		int lectureNo = lectureDAO.insertNewLecture(lectureMap);
 		return lectureNo;
 	}
+
+	@Override
+	public LectureDTO lectureList(int lecture_id) {
+		// TODO Auto-generated method stub
+		return lectureDAO.selectLecture(lecture_id);
+	}
 }

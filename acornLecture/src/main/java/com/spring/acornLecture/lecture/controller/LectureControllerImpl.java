@@ -1,6 +1,6 @@
 package com.spring.acornLecture.lecture.controller;
 
-import java.io.File;
+import java.sql.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.http.HttpHeaders;
@@ -23,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.spring.acornLecture.board.dto.ImageDTO;
 import com.spring.acornLecture.lecture.dto.LectureDTO;
 import com.spring.acornLecture.lecture.service.LectureService;
 import com.spring.acornLecture.member.dto.MemberDTO;
@@ -163,5 +161,22 @@ public class LectureControllerImpl implements LectureController {
 			e.printStackTrace();
 		}
 		return resEnt;
+	}
+
+	@Override
+	@RequestMapping(value="/lecture/modLectureForm.do", method=RequestMethod.GET)
+	public ModelAndView modLectureForm(int lecture_id, String result, String action, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		String viewName = (String) request.getAttribute("viewName");
+		HttpSession session = request.getSession();
+		session.setAttribute("action", action);
+		ModelAndView mav = new ModelAndView(viewName);
+		LectureDTO lecture = (LectureDTO) lectureService.lectureList(lecture_id);
+		List<String> categories = lectureService.categories();
+		mav.addObject("categories",categories);
+		mav.addObject("lecture", lecture);
+		mav.addObject("result", result);
+		return mav;
 	}
 }

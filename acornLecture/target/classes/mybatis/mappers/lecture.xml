@@ -70,4 +70,10 @@
 			select max(lecture_id)+1 from lecture
 		]]>
 	</select>
+	
+	<select id="selectLecture" parameterType="int" resultType="LectureDTO">
+		<![CDATA[
+			select * from lecture where lecture_id = #{lecture_id}
+		]]>
+	</select>
 </mapper>

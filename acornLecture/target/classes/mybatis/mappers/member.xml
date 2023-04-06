@@ -71,7 +71,7 @@
 	<select id="selectProLectureList" parameterType="String"
 		resultType="lectureDTO">
         <![CDATA[
-            SELECT lecture_title, lecture_id FROM lecture WHERE professor_id = #{member_id}
+            SELECT * FROM lecture WHERE professor_id = #{member_id}
         ]]>
 	</select>
 	
