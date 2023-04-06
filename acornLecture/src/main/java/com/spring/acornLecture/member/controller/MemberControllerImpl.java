@@ -1,6 +1,8 @@
 package com.spring.acornLecture.member.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -156,8 +158,8 @@ public class MemberControllerImpl implements MemberController{
 		MemberDTO dto = memberService.selectGrade(member_id);
 		String grade = (String) session.getAttribute("grade");
 		List<LectureDTO> lectureList;
-		if(grade.equals("«–ª˝")) {
-			lectureList = memberService.selectStuLectureList(member_id);			
+		if(grade.equals("ÌïôÏÉù")) {
+			lectureList = memberService.selectStuLectureList(member_id);	
 		}
 		else {	
 			lectureList = memberService.selectProLectureList(member_id);
@@ -167,6 +169,18 @@ public class MemberControllerImpl implements MemberController{
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("member", dto);
 		mav.addObject("lectureList", lectureList);
+		return mav;
+	}
+
+	@Override
+	@RequestMapping(value="/member/dropLecture.do", method=RequestMethod.GET)
+	public ModelAndView dropLecture(int lecture_id, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		String member_id = (String) session.getAttribute("member_id");
+		memberService.dropLecture(member_id, lecture_id);
+		ModelAndView mav = new ModelAndView("redirect:/member/myPage.do");
 		return mav;
 	}
 }

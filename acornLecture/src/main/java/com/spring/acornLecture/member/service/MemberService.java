@@ -1,9 +1,9 @@
 package com.spring.acornLecture.member.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.spring.acornLecture.lecture.dto.LectureDTO;
-import com.spring.acornLecture.lecture.dto.Member_LectureDTO;
 import com.spring.acornLecture.member.dto.MemberDTO;
 
 public interface MemberService {
@@ -23,4 +23,6 @@ public interface MemberService {
 	List<LectureDTO> selectStuLectureList(String member_id);
 	
 	List<LectureDTO> selectProLectureList(String member_id);
+
+	void dropLecture(String member_id, int lecture_id);
 }

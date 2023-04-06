@@ -41,8 +41,9 @@
 					<c:forEach var="item" items="${lectureList }" varStatus="status">
 						<tr>
 							<td>${status.count }</td>
-							<td>${item}&nbsp;<input id="confirm" type="button"
-								value="수강 취소" onClick="location.href='droplecture.do'">
+							<td><a href="${ contextPath }/lecture/info.do?id=${item.lecture_id}">${item.lecture_title}</a>&nbsp;
+								<input id="confirm" type="button"
+									value="수강 취소" onClick="location.href='dropLecture.do?lecture_id=${item.lecture_id}'">
 							</td>
 						</tr>
 					</c:forEach>
