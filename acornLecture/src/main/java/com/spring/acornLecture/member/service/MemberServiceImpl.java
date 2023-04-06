@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.spring.acornLecture.lecture.dto.Member_LectureDTO;
+import com.spring.acornLecture.lecture.dto.LectureDTO;
 import com.spring.acornLecture.member.dao.MemberDAO;
 import com.spring.acornLecture.member.dto.MemberDTO;
 
@@ -46,8 +46,13 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.selectGrade(member_id);
 	}
 	@Override
-	public List<Member_LectureDTO> selectLectureList(String member_id) {
+	public List<LectureDTO> selectStuLectureList(String member_id) {
 		// TODO Auto-generated method stub
-		return memberDAO.selectLectureList(member_id);
+		return memberDAO.selectStuLectureList(member_id);
+	}
+	@Override
+	public List<LectureDTO> selectProLectureList(String member_id) {
+		// TODO Auto-generated method stub
+		return memberDAO.selectProLectureList(member_id);
 	}
 }

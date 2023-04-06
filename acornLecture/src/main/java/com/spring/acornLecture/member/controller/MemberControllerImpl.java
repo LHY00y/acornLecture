@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.spring.acornLecture.lecture.dto.Member_LectureDTO;
+import com.spring.acornLecture.lecture.dto.LectureDTO;
 import com.spring.acornLecture.member.dto.MemberDTO;
 import com.spring.acornLecture.member.service.MemberService;
 
@@ -57,6 +57,7 @@ public class MemberControllerImpl implements MemberController{
 			session.setAttribute("member", member);
 			session.setAttribute("member_id", member.getMember_id());
 			session.setAttribute("isLogOn", true);
+			session.setAttribute("grade", member.getGrade());
 			rAttr.addAttribute("msg", "login");
 			String action = (String) session.getAttribute("action");
 			session.removeAttribute("action");
@@ -72,7 +73,7 @@ public class MemberControllerImpl implements MemberController{
 		}
 		return mav;
 	}
-	
+
 	@Override
 	@RequestMapping(value="/member/logout.do", method=RequestMethod.GET)
 	public ModelAndView logout(RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response)
@@ -80,9 +81,9 @@ public class MemberControllerImpl implements MemberController{
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(false);
 		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
-		
+
 		ModelAndView mav = new ModelAndView();
-		
+
 		if(session != null && isLogOn != null) {			
 			session.invalidate();
 			rAttr.addAttribute("result", "logout");
@@ -116,7 +117,7 @@ public class MemberControllerImpl implements MemberController{
 		mav.addObject("result", result);
 		return mav;
 	}
-	
+
 	@Override
 	@RequestMapping(value="/member/modMemberForm.do", method=RequestMethod.GET)
 	public ModelAndView modMemberForm(String member_id, HttpServletRequest request, HttpServletResponse response)
@@ -125,7 +126,7 @@ public class MemberControllerImpl implements MemberController{
 		HttpSession session = request.getSession();
 		member_id = (String) session.getAttribute("member_id");
 		MemberDTO dto = memberService.selectMember(member_id);
-		
+
 		String viewName = (String) request.getAttribute("viewName");
 
 		ModelAndView mav = new ModelAndView(viewName);
@@ -139,9 +140,9 @@ public class MemberControllerImpl implements MemberController{
 			throws Exception {
 		// TODO Auto-generated method stub
 		memberService.modMember(member);
-		
+
 		ModelAndView mav = new ModelAndView("redirect:/main.do");
-		
+
 		return mav;
 	}
 
@@ -153,9 +154,15 @@ public class MemberControllerImpl implements MemberController{
 		HttpSession session = request.getSession();
 		member_id = (String) session.getAttribute("member_id");
 		MemberDTO dto = memberService.selectGrade(member_id);
-		List<Member_LectureDTO> lectureList = memberService.selectLectureList(member_id);
-		System.out.println(lectureList);
-		
+		String grade = (String) session.getAttribute("grade");
+		List<LectureDTO> lectureList;
+		if(grade.equals("ÇÐ»ý")) {
+			lectureList = memberService.selectStuLectureList(member_id);			
+		}
+		else {	
+			lectureList = memberService.selectProLectureList(member_id);
+		}
+
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("member", dto);

@@ -72,8 +72,7 @@
 			<tr align="center">
 				<td>${index=index+1 }</td>
 				<td>${lecture.category }</td>
-				<td><a href="${contextPath }/lecture/info?id=${lecture.lecture_id}">${lecture.lecture_title }</a></td>
-				<td>${lecture.professor_name }</td> 
+				<td><a href="${ contextPath }/lecture/info.do?id=${lecture.lecture_id}">${lecture.lecture_title }</a></td>				<td>${lecture.professor_name }</td> 
  				<td>${lecture.schedule }</td>
  				<td>${lecture.count }</td>
 			</tr>

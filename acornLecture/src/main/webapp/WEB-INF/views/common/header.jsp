@@ -25,6 +25,6 @@
 </div>
 
 <div id="menuContainer">
-	<a class="link" href="${contextPath }/lecture/listLectures.do">강의 목록</a>
-	<a class="link" href="#">후기 목록</a>
+	<a class="link" href="${ contextPath }/lecture/listLectures.do">강의 목록</a>
+	<a class="link" href="${ contextPath }/lecture/board.do">후기 목록</a>
 </div>

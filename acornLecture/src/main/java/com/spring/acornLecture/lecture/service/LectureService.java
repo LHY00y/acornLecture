@@ -9,5 +9,6 @@ public interface LectureService {
 	List<LectureDTO> listLectures();
 	List<String> categories();
 	List<LectureDTO> searchLectures(String keyword);
-
+	LectureDTO lectureInfo(int lecture_id);
+	Boolean chkLecture(int lecture_id, String member_id);
 }

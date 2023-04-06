@@ -27,4 +27,13 @@
 		<put-attribute name="body" value="/WEB-INF/views/lecture/articleForm.jsp" />
 	</definition>
 
+	<definition name="/lecture/info" extends="baseLayout">
+		<put-attribute name="title" value="강의정보" />
+		<put-attribute name="body" value="/WEB-INF/views/lecture/lectureInfo.jsp" />
+	</definition>
+
+	<definition name="/lecture/lectureForm" extends="baseLayout">
+		<put-attribute name="title" value="강의추가" />
+		<put-attribute name="body" value="/WEB-INF/views/lecture/lectureForm.jsp" />
+	</definition>
 </tiles-definitions>

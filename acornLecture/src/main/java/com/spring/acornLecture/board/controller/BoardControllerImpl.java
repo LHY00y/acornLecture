@@ -130,7 +130,7 @@ public class BoardControllerImpl implements BoardController{
 	}
 
 	@Override
-	@RequestMapping(value="/lecture/*Form.do", method=RequestMethod.GET)
+//	@RequestMapping(value="/lecture/*Form.do", method=RequestMethod.GET)
 	public ModelAndView form(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		String viewName = (String) request.getAttribute("viewName");
