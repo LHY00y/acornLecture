@@ -21,7 +21,7 @@
 		} else if(rePwd.length==0 || rePwd==""){
 			joinForm.rePwd.focus();
 			alert("비밀번호를 다시 입력해 주세요.");
-		} else if(rePwd!=password){
+		} else if(rePwd != password){
 			alert("입력하신 비밀번호가 틀립니다.");
 			joinForm.rePwd.focus();
 		}else{

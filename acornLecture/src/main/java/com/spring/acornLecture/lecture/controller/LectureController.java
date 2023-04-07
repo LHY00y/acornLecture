@@ -24,4 +24,7 @@ public interface LectureController {
 	
 	ModelAndView modLectureForm(@RequestParam("lecture_id")int lecture_id,String result, String action, HttpServletRequest request, HttpServletResponse response)
 			throws Exception;
+	
+	ResponseEntity modLecture(@RequestParam("lecture_id")int lecture_id, MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
+			throws Exception;
 }

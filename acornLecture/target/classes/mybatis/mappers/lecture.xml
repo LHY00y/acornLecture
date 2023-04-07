@@ -58,14 +58,20 @@
 		]]>
 	</select>
 	
-		<insert id="insertNewLecture" parameterType="java.util.Map">
+	<insert id="insertNewLecture" parameterType="java.util.Map">
 		<![CDATA[	
 			insert into lecture 
 				values(#{lectureNo}, #{title}, #{member_id}, #{category}, #{count}, #{time} ,#{content})
 		]]>		
 	</insert>
 	
-		<select id="selectNewLectureNo" resultType="int">
+	<update id="updateLecture" parameterType="java.util.Map">
+		<![CDATA[
+			update lecture set category = #{category}, count = #{count}, schedule = #{time}, lecture_content = #{content} where lecture_id = #{lecture_id} 
+		]]>		
+	</update>
+	
+	<select id="selectNewLectureNo" resultType="int">
 		<![CDATA[
 			select max(lecture_id)+1 from lecture
 		]]>

@@ -30,7 +30,7 @@
 </head>
 <body>
 	<h1 style="text-align: center;">강의 수정</h1>
-	<form name="lectureForm" method="post" action="${contextPath }/lecture/modLecture.do"
+	<form name="lectureForm" method="post" action="${contextPath }/lecture/modLecture.do?lecture_id=${lecture.lecture_id}"
 		enctype="multipart/form-data">
 		<table border="0" align="center">
 			<tr>
@@ -64,7 +64,7 @@
 			</tr>
 			<tr>
 				<td align="right" valign="top">강의 설명</td>
-				<td colspan="4"><textarea name="content" rows="10" cols="69" value="${lecture.lecture_content }" maxlength="4000"></textarea></td>
+				<td colspan="4"><textarea name="content" rows="10" cols="69" maxlength="4000">${lecture.lecture_content }</textarea></td>
 			</tr>
 			<tr>
 				<td align="right" >요일/시간</td>
