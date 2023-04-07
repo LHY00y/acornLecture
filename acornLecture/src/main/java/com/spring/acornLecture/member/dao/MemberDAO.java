@@ -28,4 +28,8 @@ public interface MemberDAO {
 	void deleteLecture(String member_id, Integer lecture_id);
 	
 	void removeMember(String member_id);
+
+	void removeMemBoard(String member_id);
+
+	void removeMemLecture(String member_id);
 }

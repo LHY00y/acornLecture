@@ -81,9 +81,19 @@
         ]]>
    </delete>
    
-   <delete id="deleteMember" parameterType="String">
+   <delete id="removeMember" parameterType="String">
 		<![CDATA[
-			delete from members where member_id=#{member_id}
+			delete from members where member_id = #{member_id}
+		]]>
+	</delete>
+	<delete id="removeMemBoard" parameterType="String">
+		<![CDATA[
+			delete from board where member_id = #{member_id}
+		]]>
+	</delete>
+	<delete id="removeMemLecture" parameterType="String">
+		<![CDATA[
+			delete from member_lecture where member_id = #{member_id}
 		]]>
 	</delete>
 </mapper>

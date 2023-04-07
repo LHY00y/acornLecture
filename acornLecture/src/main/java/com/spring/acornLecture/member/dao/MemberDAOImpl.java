@@ -85,4 +85,17 @@ public class MemberDAOImpl implements MemberDAO{
 		// TODO Auto-generated method stub
 		int result = sqlSession.delete("mapper.member.removeMember", member_id);
 	}
+
+	@Override
+	public void removeMemBoard(String member_id) {
+		// TODO Auto-generated method stub
+		System.out.println("dao1");
+		int result = sqlSession.delete("mapper.member.removeMemBoard", member_id);
+	}
+
+	@Override
+	public void removeMemLecture(String member_id) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.delete("mapper.member.removeMemLecture", member_id);
+	}
 }

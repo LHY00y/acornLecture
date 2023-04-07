@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<%
+	request.setCharacterEncoding("utf-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +16,6 @@
 		var password = joinForm.password.value;
 		var rePwd = joinForm.rePwd.value;
 		
-		console.log(member_id);
 		if(password.length==0 || password==""){
 			alert("비밀번호를 입력해 주세요.");
 		} else if(rePwd.length==0 || rePwd==""){
@@ -22,7 +26,7 @@
 			joinForm.rePwd.focus();
 		}else{
 			joinForm.method="post";
-			joinForm.action="/acornLecture/member/removeMember.do";
+			joinForm.action="${contextPath}/member/removeMember.do";
 			alert("회원정보 삭제가 완료되었습니다.");
 			joinForm.submit();
 		}
@@ -30,7 +34,7 @@
 </script>
 </head>
 <body>
-	<form method="post" name="joinForm">
+	<form method="post" name="joinForm" action="/acornLecture/member/removeMember.do">
 		<h1 style="text-align: center">회원 정보 삭제창</h1>
 		<table align="center">
 			<tr>

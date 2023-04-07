@@ -68,4 +68,15 @@ public class MemberServiceImpl implements MemberService{
 		memberDAO.removeMember(member_id);
 		
 	}
+	@Override
+	public void removeMemBoard(String member_id) {
+		// TODO Auto-generated method stub
+		System.out.println("service1");
+		memberDAO.removeMemBoard(member_id);
+	}
+	@Override
+	public void removeMemLecture(String member_id) {
+		// TODO Auto-generated method stub
+		memberDAO.removeMemLecture(member_id);
+	}
 }

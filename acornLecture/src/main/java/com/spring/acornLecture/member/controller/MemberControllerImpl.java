@@ -187,13 +187,21 @@ public class MemberControllerImpl implements MemberController{
 		ModelAndView mav = new ModelAndView("redirect:/member/myPage.do");
 		return mav;
 	}
+	
 	@Override
-	@RequestMapping(value="/member/removeMember.do", method=RequestMethod.GET)
-	public ModelAndView removeMember(@RequestParam("id") String id,
+	@RequestMapping(value="/member/removeMember.do", method=RequestMethod.POST)
+	public ModelAndView removeMember(String member_id,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		memberService.removeMember(id);
-		ModelAndView mav = new ModelAndView("redirect:/member/main.do");
+		System.out.println(1);
+		System.out.println(member_id);
+		memberService.removeMemBoard(member_id);
+		System.out.println(2);
+		memberService.removeMemLecture(member_id);
+		System.out.println(3);
+		memberService.removeMember(member_id);
+		System.out.println(4);
+		ModelAndView mav = new ModelAndView("redirect:/member/logout.do");
 				
 		return mav;
 	}

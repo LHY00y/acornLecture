@@ -27,4 +27,8 @@ public interface MemberService {
 	void dropLecture(String member_id, int lecture_id);
 
 	void removeMember(String id);
+
+	void removeMemBoard(String member_id);
+
+	void removeMemLecture(String member_id);
 }
