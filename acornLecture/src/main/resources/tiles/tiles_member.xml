@@ -71,4 +71,9 @@
 		<put-attribute name="title" value="회원정보수정" />
 		<put-attribute name="body" value="/WEB-INF/views/member/myPage.jsp" />
 	</definition>
+	
+	<definition name="/member/removeMemberForm" extends="baseLayout">
+		<put-attribute name="title" value="회원삭제창" />
+		<put-attribute name="body" value="/WEB-INF/views/member/removeMemberForm.jsp" />
+	</definition>
 </tiles-definitions>

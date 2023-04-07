@@ -80,4 +80,10 @@ public class MemberDAOImpl implements MemberDAO{
 		map.put("lecture_id", String.valueOf(lecture_id));
 		int result = sqlSession.delete("mapper.member.deleteLecture", map);
 	}
+
+	@Override
+	public void deleteMember(String id) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.delete("mapper.member.deleteMember", id);
+	}
 }

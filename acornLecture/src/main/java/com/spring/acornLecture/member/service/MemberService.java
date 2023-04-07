@@ -25,4 +25,6 @@ public interface MemberService {
 	List<LectureDTO> selectProLectureList(String member_id);
 
 	void dropLecture(String member_id, int lecture_id);
+
+	void removeMember(String id);
 }

@@ -80,4 +80,10 @@
             delete FROM member_lecture WHERE member_id = #{member_id} and lecture_id = #{lecture_id}
         ]]>
    </delete>
+   
+   <delete id="deleteMember" parameterType="String">
+		<![CDATA[
+			delete from members where member_id=#{member_id}
+		]]>
+	</delete>
 </mapper>

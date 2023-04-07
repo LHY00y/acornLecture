@@ -26,4 +26,6 @@ public interface MemberDAO {
 	List<LectureDTO> selectProLectureList(String member_id);
 
 	void deleteLecture(String member_id, Integer lecture_id);
+	
+	void deleteMember(String id);
 }

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -183,6 +184,16 @@ public class MemberControllerImpl implements MemberController{
 		String member_id = (String) session.getAttribute("member_id");
 		memberService.dropLecture(member_id, lecture_id);
 		ModelAndView mav = new ModelAndView("redirect:/member/myPage.do");
+		return mav;
+	}
+	@Override
+	@RequestMapping(value="/member/removeMember.do", method=RequestMethod.GET)
+	public ModelAndView removeMember(@RequestParam("id") String id,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		memberService.removeMember(id);
+		ModelAndView mav = new ModelAndView("redirect:/member/main.do");
+				
 		return mav;
 	}
 }

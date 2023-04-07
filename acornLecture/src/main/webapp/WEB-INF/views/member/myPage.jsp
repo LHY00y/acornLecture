@@ -55,6 +55,9 @@
 				<td></td>
 				<td><input id="confirm" type="button" value="회원 정보 수정"
 					onClick="location.href='modMemberForm.do'"></td>
+					<td></td>
+				<td><input id="confirm" type="button" value="회원 정보 삭제"
+					onClick="location.href='removeMemberForm.do'"></td>
 			</tr>
 		</table>
 	</form>
