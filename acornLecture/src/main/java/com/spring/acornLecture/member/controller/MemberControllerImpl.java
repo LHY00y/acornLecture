@@ -174,6 +174,7 @@ public class MemberControllerImpl implements MemberController{
 		mav.addObject("lectureList", lectureList);
 		return mav;
 	}
+	
 
 	@Override
 	@RequestMapping(value="/member/dropLecture.do", method=RequestMethod.GET)
