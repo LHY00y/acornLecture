@@ -193,14 +193,9 @@ public class MemberControllerImpl implements MemberController{
 	public ModelAndView removeMember(String member_id,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println(1);
-		System.out.println(member_id);
 		memberService.removeMemBoard(member_id);
-		System.out.println(2);
 		memberService.removeMemLecture(member_id);
-		System.out.println(3);
 		memberService.removeMember(member_id);
-		System.out.println(4);
 		ModelAndView mav = new ModelAndView("redirect:/member/logout.do");
 				
 		return mav;
