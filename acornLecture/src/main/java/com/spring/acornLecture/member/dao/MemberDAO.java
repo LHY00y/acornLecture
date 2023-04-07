@@ -27,5 +27,5 @@ public interface MemberDAO {
 
 	void deleteLecture(String member_id, Integer lecture_id);
 	
-	void deleteMember(String id);
+	void removeMember(String member_id);
 }

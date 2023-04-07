@@ -8,12 +8,11 @@
 <script>
 	function fn_removeMember(){
 		var joinForm = document.joinForm;
-		var member_name = joinForm.member_name.value;
 		var password = joinForm.password.value;
 		var rePwd = joinForm.rePwd.value;
 		
 		console.log(member_id);
-		}if(password.length==0 || password==""){
+		if(password.length==0 || password==""){
 			alert("비밀번호를 입력해 주세요.");
 		} else if(rePwd.length==0 || rePwd==""){
 			joinForm.rePwd.focus();

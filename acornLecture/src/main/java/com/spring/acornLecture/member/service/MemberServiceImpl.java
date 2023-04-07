@@ -63,8 +63,9 @@ public class MemberServiceImpl implements MemberService{
 		memberDAO.deleteLecture(member_id, lecture_id);
 	}
 	@Override
-	public void removeMember(String id) {
+	public void removeMember(String member_id) {
 		// TODO Auto-generated method stub
+		memberDAO.removeMember(member_id);
 		
 	}
 }
