@@ -43,8 +43,8 @@
 					<select id="category" name="category" style="height:25px;" onchange="cate_select()">
 						<c:forEach var="category" items="${categories }">
 						<c:choose>
-						<c:when test="${cate  == category }">
-							<option value="${category }"  selected>${lecture.category }</option>
+						<c:when test="${lecture.category  == category }">
+							<option value="${category }"  selected>${category }</option>
 						</c:when>
 						<c:otherwise>
 							<option value="${category }">${category }</option>

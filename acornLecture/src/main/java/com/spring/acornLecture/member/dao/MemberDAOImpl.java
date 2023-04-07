@@ -32,9 +32,7 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public int selectAllId(String member_id) {
 		// TODO Auto-generated method stub
-		System.out.println("dao1");
 		int result = sqlSession.selectOne("mapper.member.selectId", member_id);
-		System.out.println("dao2");
 		return result;
 	}
 	
@@ -42,7 +40,6 @@ public class MemberDAOImpl implements MemberDAO{
 	public MemberDTO selectMember(String id) {
 		// TODO Auto-generated method stub
 		MemberDTO dto = (MemberDTO) sqlSession.selectOne("mapper.member.selectMember", id);
-		System.out.println(dto.getMember_id());
 		return dto;
 	}
 
@@ -89,7 +86,6 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public void removeMemBoard(String member_id) {
 		// TODO Auto-generated method stub
-		System.out.println("dao1");
 		int result = sqlSession.delete("mapper.member.removeMemBoard", member_id);
 	}
 
