@@ -100,7 +100,6 @@
 			 style="width:100px ;border-radius:10px;"
 			 onclick="fn_imgBrowserOpen(this)">
 			<br>
-			<input type="hidden" name="originalFileName" value="${imgFile.imgFileName }">
 			<button id="d_img" style=" display:none;" onclick="fn_removeFile(${imgFile.imgFileNo },${imgFile.imgFileName })">삭제</button>
 		</c:forEach>
 		<button id="m_img" class="button" onclick="fn_addFile()"
