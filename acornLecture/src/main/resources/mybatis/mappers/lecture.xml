@@ -18,10 +18,11 @@
 	<select id="selectAllLectureList" resultType="lectureDTO">
 		<![CDATA[
 			SELECT lecture.*, members.member_name as professor_name, 
-      			(select count(*) from lecture where lecture.lecture_id = member_lecture.lecture_id) as stu_count
-				FROM lecture
+      			SUM((SELECT COUNT(*) FROM member_lecture WHERE member_lecture.lecture_id = lecture.lecture_id)) as stu_count
+				FROM lecture 
 				INNER JOIN members ON lecture.professor_id = members.member_id
-				LEFT JOIN member_lecture ON lecture.lecture_id = member_lecture.lecture_id 
+				GROUP BY lecture.lecture_id, lecture.lecture_title, lecture.professor_id, lecture.category, lecture.count,
+				         lecture.schedule, lecture.lecture_content, members.member_name
 				ORDER BY lecture.lecture_id DESC
 		]]>
 	</select>
