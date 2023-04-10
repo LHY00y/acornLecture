@@ -14,4 +14,6 @@ public interface LectureService {
 	Boolean chkLecture(int lecture_id, String member_id);
 	int addNewLecture(Map<String, Object> lectureMap);
 	LectureDTO lectureList(int lecture_id);
+	int modLecture(Map<String, Object> lectureMap);
+	void delLecture(int lecture_id);
 }

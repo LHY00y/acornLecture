@@ -28,7 +28,6 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int idCheck(String member_id) {
 		// TODO Auto-generated method stub
-		System.out.println("service1");
 		return memberDAO.selectAllId(member_id);
 	}
 	@Override
@@ -71,7 +70,6 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public void removeMemBoard(String member_id) {
 		// TODO Auto-generated method stub
-		System.out.println("service1");
 		memberDAO.removeMemBoard(member_id);
 	}
 	@Override

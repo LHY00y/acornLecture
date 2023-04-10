@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <%
 	request.setCharacterEncoding("utf-8");
@@ -15,6 +15,7 @@
 		var joinForm = document.joinForm;
 		var password = joinForm.password.value;
 		var rePwd = joinForm.rePwd.value;
+		var pwdChk = ${member.password};
 		
 		if(password.length==0 || password==""){
 			alert("비밀번호를 입력해 주세요.");
@@ -24,7 +25,10 @@
 		} else if(rePwd!=password){
 			alert("입력하신 비밀번호가 틀립니다.");
 			joinForm.rePwd.focus();
-		}else{
+		} else if(password != pwdChk){
+			alert("비밀번호가 틀립니다.")
+			joinForm.rePwd.focus();
+		} else{
 			joinForm.method="post";
 			joinForm.action="${contextPath}/member/removeMember.do";
 			alert("회원정보 삭제가 완료되었습니다.");
@@ -34,7 +38,8 @@
 </script>
 </head>
 <body>
-	<form method="post" name="joinForm" action="/acornLecture/member/removeMember.do">
+	<form method="post" name="joinForm"
+		action="/acornLecture/member/removeMember.do">
 		<h1 style="text-align: center">회원 정보 삭제창</h1>
 		<table align="center">
 			<tr>
@@ -53,10 +58,11 @@
 				<td width="200"><p align="right">암호확인</p></td>
 				<td width="400"><input type="password" name="rePwd"></td>
 			</tr>
-			
+
 			<tr>
 				<td width="200"><p align="right">&nbsp;</p></td>
-				<td width="400"><input id="confirm" type="button" value="탈퇴하기" onclick="fn_removeMember()"> <input id="confirm"
+				<td width="400"><input id="confirm" type="button" value="탈퇴하기"
+					onclick="fn_removeMember()"> <input id="confirm"
 					type="reset" value="다시입력"></td>
 			</tr>
 		</table>

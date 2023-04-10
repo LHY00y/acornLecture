@@ -84,7 +84,7 @@
 				<td id="memberTd" width="100"><p align="left">이름</p></td>
 				<td id="memberTd" width="280"><input type="text" name="member_name"></td>
 			</tr>
-			<input type="hidden" name="grade" value="강사">
+			<input type="hidden" name="grade" value="학생">
 			<tr>
 				<td id="memberTd" width="100"><p align="left">&nbsp;</p></td>
 				<td id="memberTd" width="280"><input id="confirm" type="button" value="가입하기" onclick="fn_joinMember()"> <input id="confirm"

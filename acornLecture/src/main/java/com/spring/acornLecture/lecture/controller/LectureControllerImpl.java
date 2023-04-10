@@ -179,4 +179,96 @@ public class LectureControllerImpl implements LectureController {
 		mav.addObject("result", result);
 		return mav;
 	}
+
+	@Override
+	@RequestMapping(value="/lecture/modLecture.do", method=RequestMethod.POST)
+	public ResponseEntity modLecture(int lecture_id, MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		multipartRequest.setCharacterEncoding("utf-8");
+		Map<String, Object> lectureMap = new HashMap<String, Object>();
+		Enumeration<String> enu = multipartRequest.getParameterNames();
+		
+		while(enu.hasMoreElements()) {
+			String name = (String)enu.nextElement();
+			String value = "";
+			if(name.equals("daybox")) {
+				for(String val : multipartRequest.getParameterValues(name)) {
+					value += val;
+				}
+			}else {
+				value = multipartRequest.getParameter(name);
+			}
+			
+//			System.out.println(name+":"+value);
+			lectureMap.put(name, value);
+			lectureMap.put("lecture_id", String.valueOf(lecture_id));
+		}
+		if(lectureMap.get("category").equals("add")) {
+			lectureMap.put("category", lectureMap.get("category_add"));
+		}
+		lectureMap.put("time",lectureMap.get("daybox").toString() + " " + lectureMap.get("time").toString());
+		
+		HttpSession session = multipartRequest.getSession();
+		MemberDTO member = (MemberDTO)session.getAttribute("member");
+		
+		String member_id = member.getMember_id();
+		lectureMap.put("member_id", member_id);
+				
+		String message;
+		ResponseEntity resEnt = null;
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
+		
+		try {
+			int lectureNo = lectureService.modLecture(lectureMap);
+			
+			message = "<script>";
+			message += "alert('강의를 수정했습니다.');";
+			message += "location.href='" + multipartRequest.getContextPath()
+				+"/lecture/info.do?id="+lectureNo+"';";
+			message += "</script>";
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+		} catch (Exception e) {
+			// TODO: handle exception
+			message = "<script>";
+			message += "alert('오류가 발생했습니다. 다시 시도해 주세요.');";
+			message += "location.href='" + multipartRequest.getContextPath()
+				+"/lecture/lectureForm.do';";
+			message += "</script>";
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+			e.printStackTrace();
+		}
+		return resEnt;
+	}
+
+	@Override
+	@RequestMapping(value="/lecture/delLecture", method=RequestMethod.GET)
+	public ResponseEntity delLecture(int lecture_id, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		String message;
+		ResponseEntity resEnt = null;
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
+		try {
+			lectureService.delLecture(lecture_id);
+			
+			message = "<script>";
+			message += "alert('강의를 삭제했습니다.');";
+			message += "location.href='"+request.getContextPath()+"/member/myPage.do';";
+			message += "</script>";
+			
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+		} catch (Exception e) {
+			// TODO: handle exception
+			message = "<script>";
+			message += "alert('오류가 발생했습니다. 다시 시도해 주세요.');";
+			message += "location.href='"+request.getContextPath()+"/member/myPage.do';";
+			message += "</script>";
+			e.printStackTrace();
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+		}
+		return resEnt;
+	}
 }

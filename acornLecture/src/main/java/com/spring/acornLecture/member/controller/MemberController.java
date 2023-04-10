@@ -3,6 +3,7 @@ package com.spring.acornLecture.member.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,6 +23,6 @@ public interface MemberController {
 	public ModelAndView modMemberForm(@RequestParam("member_id") String member_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView modMember(@ModelAttribute("member") MemberDTO member, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView myPage(@RequestParam("member_id") String member_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public ModelAndView dropLecture(@RequestParam("lecture_id") int lecture_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public ModelAndView removeMember(@RequestParam("member_id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ResponseEntity dropLecture(@RequestParam("lecture_id") int lecture_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView removeMember(@RequestParam("member_id") String member_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

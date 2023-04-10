@@ -72,12 +72,16 @@
 			<tr align="center">
 				<td>${index=index+1 }</td>
 				<td>${lecture.category }</td>
-				<td><a href="${ contextPath }/lecture/info.do?id=${lecture.lecture_id}">${lecture.lecture_title }</a></td>				<td>${lecture.professor_name }</td> 
+				<td><a href="${ contextPath }/lecture/info.do?id=${lecture.lecture_id}">${lecture.lecture_title }</a></td>				
+				<td>${lecture.professor_name }</td> 
  				<td>${lecture.schedule }</td>
  				<td>${lecture.count }</td>
 			</tr>
 			</c:if>
 		</c:forEach>
 	</table>
+	<c:if test="${member.grade=='강사' }">
+		<input id=confirm type="button" onclick="location.href='lectureForm.do'" value="강의 추가"> 
+	</c:if>
 </body>
 </html>

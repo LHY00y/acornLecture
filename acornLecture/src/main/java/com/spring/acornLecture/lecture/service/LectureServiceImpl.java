@@ -51,4 +51,17 @@ public class LectureServiceImpl implements LectureService{
 		// TODO Auto-generated method stub
 		return lectureDAO.selectLecture(lecture_id);
 	}
+
+	@Override
+	public int modLecture(Map<String, Object> lectureMap) {
+		// TODO Auto-generated method stub
+		int modLectureNo = lectureDAO.updateLecture(lectureMap);
+		return modLectureNo;
+	}
+
+	@Override
+	public void delLecture(int lecture_id) {
+		// TODO Auto-generated method stub
+		lectureDAO.delLecture(lecture_id);
+	}
 }
