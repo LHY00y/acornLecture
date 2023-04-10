@@ -10,6 +10,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -178,14 +181,34 @@ public class MemberControllerImpl implements MemberController{
 
 	@Override
 	@RequestMapping(value="/member/dropLecture.do", method=RequestMethod.GET)
-	public ModelAndView dropLecture(int lecture_id, HttpServletRequest request, HttpServletResponse response)
+	public ResponseEntity dropLecture(int lecture_id, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		String member_id = (String) session.getAttribute("member_id");
-		memberService.dropLecture(member_id, lecture_id);
-		ModelAndView mav = new ModelAndView("redirect:/member/myPage.do");
-		return mav;
+		String message;
+		ResponseEntity resEnt = null;
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
+		try {
+			memberService.dropLecture(member_id,lecture_id);
+			
+			message = "<script>";
+			message += "alert('수강을 취소 했습니다.');";
+			message += "location.href='"+request.getContextPath()+"/member/myPage.do';";
+			message += "</script>";
+			
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+		} catch (Exception e) {
+			// TODO: handle exception
+			message = "<script>";
+			message += "alert('오류가 발생했습니다. 다시 시도해 주세요.');";
+			message += "location.href='"+request.getContextPath()+"/member/myPage.do';";
+			message += "</script>";
+			e.printStackTrace();
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+		}
+		return resEnt;
 	}
 	
 	@Override
