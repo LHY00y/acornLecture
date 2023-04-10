@@ -80,5 +80,7 @@ public class LectureDAOImpl implements LectureDAO {
 	public void delLecture(int lecture_id) {
 		// TODO Auto-generated method stub
 		sqlSession.delete("mapper.lecture.delLecture", lecture_id);
+		sqlSession.delete("mapper.lecture.delMemberLecture", lecture_id);
+		sqlSession.delete("mapper.lecture.delBoard", lecture_id);
 	}
 }

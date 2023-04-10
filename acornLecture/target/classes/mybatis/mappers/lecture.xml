@@ -88,4 +88,14 @@
 			delete from lecture where lecture_id = #{lecture_id}
 		]]>
 	</delete>
+	<delete id="delBoard" parameterType="int">
+		<![CDATA[
+			delete from Board where lecture_id = #{lecture_id}
+		]]>
+	</delete>
+	<delete id="delMemberLecture" parameterType="int">
+		<![CDATA[
+			delete from member_lecture where lecture_id = #{lecture_id}
+		]]>
+	</delete>
 </mapper>
