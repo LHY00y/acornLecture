@@ -73,6 +73,7 @@
 		
 		$("#side-img").append("<hr>")
 		//이미지 없을때도 추가하는 기능
+		//이미지 첨부 ui좀 손보기
 	}
 	
 	function fn_removeFile(no,img, obj){
