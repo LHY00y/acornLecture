@@ -66,22 +66,40 @@
 		document.getElementById("mc_btn").style.display="inline";	
 		document.getElementById("mcheck_btn").style.display="inline";	
 		document.getElementById("m_img").style.display="block";	
-		document.getElementById("d_img").style.display="block";	
+		let d_img = document.getElementsByClassName("d_img");
+		for(let i =0;i<d_img.length;i++){
+			d_img[i].style.display="block";
+		}
 		
-		
+		$("#side-img").append("<hr>")
 		//이미지 없을때도 추가하는 기능
 	}
 	
-	function fn_addFile(){
-		$("#side-img").append("<br>" + "<input type='file' name='file"+cnt+"'>");
-		cnt++;
-	}
-
-	function fn_removeFile(img,no){
+	function fn_removeFile(no,img, obj){
 		$("#d_file").append("<br>" + "<input type='hidden' name='delImgNo' value='"+no+"'>");
 		$("#d_file").append("<br>" + "<input type='hidden' name='delImg' value='"+img+"'>");
+		document.getElementById("img_"+no).style.display="none";	
+		obj.style.display="none";
 	}
 	
+	let cnt = 1;
+	function fn_addFile(){
+		$("#side-img").append("<br>" + "<input type='file' onchange='readURL(this)' name='file"+cnt+"'>");
+		/* $("#side-img").append("<br>" + "<label for='file'>"
+				  + "<div class='btn-select'>파일 선택</div>"
+				 + "<input type='file' style='display:none;' name='file"+cnt+"'> </label>"
+				  ); */
+		cnt++;
+	}
+	function readURL(input) {
+		  if (input.files && input.files[0]) {
+		    var reader = new FileReader();
+		    reader.onload = function(e) {
+	    		$("#side-img").append("<br>" + "<img style='width:100px;border-radius:10px;'src='"+e.target.result+"'>");
+		    };
+		    reader.readAsDataURL(input.files[0]);
+		  }
+		}
 </script>
 </head>
 <link rel="stylesheet" href="${ contextPath }/resources/css/boardStyle.css">
@@ -89,21 +107,26 @@
 	<form name="frmArticle" method="post" enctype="multipart/form-data">
 	
 	<div id="imgBrowser">
-		<button onclick="fn_imgBrowserClose()" style="float:right; background:#000; color:white; margin-bottom:10px; font-size:14pt;">X</button>
+		<button type="button" onclick="fn_imgBrowserClose()" style="float:right; background:#000; color:white; margin-bottom:10px; font-size:14pt;">X</button>
 		<br>
 		<img id="bImg" src="#" style="padding:20px 70px; width:800px; height:500px;">
 	</div>
 	<c:if test="${not empty imgFileList && imgFileList != null }">
 	<div id="side-img">
 		<c:forEach var="imgFile" items="${imgFileList}">
+			<button type="button" class="d_img" onclick="fn_removeFile(${imgFile.imgFileNo },'${imgFile.imgFileName }', this)"
+			style="position:relative; float:right; display:none; top:28px; right: 3px; color:#F0F0F0; margin-top:-25px; background:#FF6347;'" 
+			>X</button>
+		
 			<img src="${contextPath }/download.do?imageFileName=${imgFile.imgFileName }&board_id=${article.board_id }"
-			 style="width:100px ;border-radius:10px;"
+			 id="img_${imgFile.imgFileNo }"
+			 style="width:100px; border-radius:10px;"
 			 onclick="fn_imgBrowserOpen(this)">
 			<br>
-			<button id="d_img" style=" display:none;" onclick="fn_removeFile(${imgFile.imgFileNo },${imgFile.imgFileName })">삭제</button>
 		</c:forEach>
-		<button id="m_img" class="button" onclick="fn_addFile()"
-			style="display:none; padding:5px; position: absolute; bottom:-50px; margin:auto; margin-top:10px; font-size:11pt; width:100px; height:30px;">이미지추가</button>
+		<button id="m_img" class="button" onclick="fn_addFile()"  type="button"
+			style="display:none; padding:5px; position: absolute; bottom:-50px; margin:auto; margin-top:10px; font-size:11pt; width:100px; height:30px;"
+			>이미지추가</button>
 	</div>
 	</c:if>
 		

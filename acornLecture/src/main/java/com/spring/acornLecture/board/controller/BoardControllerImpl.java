@@ -112,19 +112,19 @@ public class BoardControllerImpl implements BoardController{
 		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
 		
 		try {
-			int articleNo = boardService.addNewArticle(articleMap, imgflag);
+			int board_id = boardService.addNewArticle(articleMap, imgflag);
 			if(imageFileList != null && imageFileList.size() != 0) {
 				for(ImageDTO imageDTO : imageFileList) {
 					File srcFile = new File(CURR_IMAGE_REPO_PATH+ "\\temp\\" 
 							+ imageDTO.getImgFileName());
-					File destDir = new File(CURR_IMAGE_REPO_PATH+"\\"+articleNo);
+					File destDir = new File(CURR_IMAGE_REPO_PATH+"\\"+board_id);
 					FileUtils.moveFileToDirectory(srcFile, destDir, true);
 				}
 			}
 			message = "<script>";
 			message += "alert('새글을 추가했습니다.');";
 			message += "location.href='" + multipartRequest.getContextPath()
-				+"/board/boardPage.do?board_id="+articleNo+"';";
+				+"/board/boardPage.do?board_id="+board_id+"';";
 			message += "</script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		} catch (Exception e) {
@@ -181,7 +181,7 @@ public class BoardControllerImpl implements BoardController{
 	
 		
 	@Override
-	@RequestMapping(value="/board/boardPage.do", method=RequestMethod.GET)
+	@RequestMapping(value="/board/boardPage.do", method= RequestMethod.GET)
 	public ModelAndView viewArticle(int board_id, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
@@ -237,9 +237,8 @@ public class BoardControllerImpl implements BoardController{
 		Map<String, Object> articleMap = new HashMap<String, Object>();
 	
 		String board_id = multipartRequest.getParameter("board_id");
-		articleMap.put("board_id", board_id);
+		articleMap.put("board_id", Integer.parseInt(board_id));
 		
-		System.out.println("board_id : " + board_id);
 		String content = multipartRequest.getParameter("content");
 		articleMap.put("content", content);
 		
@@ -247,8 +246,10 @@ public class BoardControllerImpl implements BoardController{
 		articleMap.put("title", title);
 
 		String[] delFileNo = multipartRequest.getParameterValues("delImgNo");
-		if(delFileNo != null && delFileNo.length != 0) 
-			articleMap.put("delFileName", delFileNo);
+		if(delFileNo != null && delFileNo.length != 0) {
+//			System.out.println("DelFileNO: "+delFileNo[0]);
+			articleMap.put("delFileNo", delFileNo);
+		}
 		
 		List<String> fileList= upload(multipartRequest);
 		HttpSession session = multipartRequest.getSession();
@@ -282,11 +283,10 @@ public class BoardControllerImpl implements BoardController{
 			}
 			
 			String[] delFileName = multipartRequest.getParameterValues("delImg");
-			System.out.println("delImgName:"+delFileName);
 			if(delFileName != null && delFileName.length != 0) {
-				for(String oldFileName : delFileName) {
-					File oldFile = new File(CURR_IMAGE_REPO_PATH + "\\" + board_id + "\\" + delFileName);
-					oldFile.delete();
+				for(String FileName : delFileName) {
+//					System.out.println("delFileName:"+oldFileName);
+					File oldFile = new File(CURR_IMAGE_REPO_PATH + "\\" + board_id + "\\" + FileName);
 				}
 			}
 			message = "<script>";

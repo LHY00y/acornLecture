@@ -28,11 +28,11 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public int addNewArticle(Map<String, Object> articleMap, boolean imgflag) {
-		int articleNo = boardDAO.insertNewArticle(articleMap);
-		articleMap.put("articleNo", articleNo);
+		int board_id = boardDAO.insertNewArticle(articleMap);
+		articleMap.put("board_id", board_id);
 		if(imgflag)
 			boardDAO.insertNewImage(articleMap);
-		return articleNo;
+		return board_id;
 	}
 	
 	@Override
@@ -54,7 +54,12 @@ public class BoardServiceImpl implements BoardService {
 	public void modArticle(Map<String, Object> articleMap) {
 		boardDAO.updateArticle(articleMap);
 		if(articleMap.containsKey("delFileNo")) {
-			int[] delFileNo = (int[]) articleMap.get("delFileNo");
+			String[] sDelFileNo = (String[]) articleMap.get("delFileNo");
+			int[] delFileNo = new int[sDelFileNo.length];
+	        for(int i=0; i<sDelFileNo.length; i++) {
+	            delFileNo[i] = Integer.parseInt(sDelFileNo[i]);
+	        }
+			
 			boardDAO.deleteImage(delFileNo);
 		}
 		if(articleMap.containsKey("imageFileList"))

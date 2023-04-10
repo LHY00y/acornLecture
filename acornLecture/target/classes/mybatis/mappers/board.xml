@@ -109,16 +109,9 @@
 		]]>
 		</delete>
 
- 	<delete id="deleteImage" parameterType="list">
- 		<foreach collection="array" item="no" separator=" ">
- 			delete from lec_imgfile where imgfileNo=${no}
-		</foreach>
-		<![CDATA[
-			
-			
-		
-		]]>
-		</delete>
+ 	<delete id="deleteImage" parameterType="int">
+		delete from lec_imgfile where imgfileNo=#{fileNo}
+	</delete>
 		
  	
 
