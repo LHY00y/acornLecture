@@ -15,4 +15,5 @@ public interface LectureDAO {
 	int insertNewLecture(Map<String, Object> lectureMap);
 	int updateLecture(Map<String, Object> lectureMap);
 	LectureDTO selectLecture(int lecture_id);
+	void delLecture(int lecture_id);
 }

@@ -82,4 +82,10 @@
 			select * from lecture where lecture_id = #{lecture_id}
 		]]>
 	</select>
+	
+	<delete id="delLecture" parameterType="int">
+		<![CDATA[
+			delete from lecture where lecture_id = #{lecture_id}
+		]]>
+	</delete>
 </mapper>

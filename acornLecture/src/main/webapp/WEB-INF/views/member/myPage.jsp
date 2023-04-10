@@ -31,12 +31,19 @@
 					<c:forEach var="item" items="${lectureList }" varStatus="status">
 						<tr>
 							<td>${status.count }</td>
-							<td><a href="${ contextPath }/lecture/info.do?id=${item.lecture_id}">${item.lecture_title}</a>&nbsp;
-							<input id="confirm" type="button"
-								value="강의 수정" onClick="location.href='${contextPath}/lecture/modLectureForm.do?lecture_id=${item.lecture_id}'">
+							<td><a href="${ contextPath }/lecture/info.do?id=${item.lecture_id}">${item.lecture_title}</a>&nbsp;</td>
+							<td></td>
+							<td>
+								<input id="confirm" type="button"
+									value="강의 수정" onClick="location.href='${contextPath}/lecture/modLectureForm.do?lecture_id=${item.lecture_id}'">
+								<input id="confirm" type="button"
+									value="강의 삭제" onClick="location.href='${contextPath}/lecture/delLecture.do?lecture_id=${item.lecture_id}'">
 							</td>
 						<tr>
 					</c:forEach>
+					<td colspan="2">
+						<a id="confirm" href="${contextPath }/lecture/lectureForm.do">강의 추가</a>
+					</td>
 				</c:when>
 				<c:when test="${member.grade == '학생'}">
 					<c:forEach var="item" items="${lectureList }" varStatus="status">
@@ -52,11 +59,10 @@
 			</c:choose>
 			<tr></tr>
 			<tr>
-				<td></td>
-				<td><input id="confirm" type="button" value="회원 정보 수정"
+				<td colspan="2"><input id="confirm" type="button" value="회원 정보 수정"
 					onClick="location.href='modMemberForm.do'"></td>
 					<td></td>
-				<td><input id="confirm" type="button" value="회원 정보 삭제"
+				<td align="right"><input id="confirm" type="button" value="회원 정보 삭제"
 					onClick="location.href='removeMemberForm.do'"></td>
 			</tr>
 		</table>

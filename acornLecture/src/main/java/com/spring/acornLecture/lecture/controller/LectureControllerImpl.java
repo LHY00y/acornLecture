@@ -241,4 +241,34 @@ public class LectureControllerImpl implements LectureController {
 		}
 		return resEnt;
 	}
+
+	@Override
+	@RequestMapping(value="/lecture/delLecture", method=RequestMethod.GET)
+	public ResponseEntity delLecture(int lecture_id, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		String message;
+		ResponseEntity resEnt = null;
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
+		try {
+			lectureService.delLecture(lecture_id);
+			
+			message = "<script>";
+			message += "alert('강의를 삭제했습니다.');";
+			message += "location.href='"+request.getContextPath()+"/member/myPage.do';";
+			message += "</script>";
+			
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+		} catch (Exception e) {
+			// TODO: handle exception
+			message = "<script>";
+			message += "alert('오류가 발생했습니다. 다시 시도해 주세요.');";
+			message += "location.href='"+request.getContextPath()+"/member/myPage.do';";
+			message += "</script>";
+			e.printStackTrace();
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+		}
+		return resEnt;
+	}
 }
