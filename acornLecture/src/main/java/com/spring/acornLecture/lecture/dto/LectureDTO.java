@@ -13,9 +13,16 @@ public class LectureDTO {
 	 private int count;
 	 private String schedule;
 	 private String lecture_content;
+	 private int stu_count;
 	
 	 
-	 public String getProfessor_name() {
+	 public int getStu_count() {
+		return stu_count;
+	}
+	public void setStu_count(int stu_count) {
+		this.stu_count = stu_count;
+	}
+	public String getProfessor_name() {
 		return professor_name;
 	}
 	public void setProfessor_name(String professor_name) {

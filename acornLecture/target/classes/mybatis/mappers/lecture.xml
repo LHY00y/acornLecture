@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	
+
 <mapper namespace="mapper.lecture">
 	<resultMap type="lectureDTO" id="lecResult">
 		<result property="lecture_id" column="lecture_id" />
@@ -14,23 +14,27 @@
 		<result property="lecture_content" column="lecture_content" />
 	</resultMap>
 
-	
+
 	<select id="selectAllLectureList" resultType="lectureDTO">
 		<![CDATA[
-			select lecture.*, members.member_name as professor_name from lecture 
-				inner join members
-				on lecture.professor_id = members.member_id
-				order by lecture_id desc
+			SELECT lecture.*, members.member_name as professor_name, 
+      			SUM((SELECT COUNT(*) FROM member_lecture WHERE member_lecture.lecture_id = lecture.lecture_id)) as stu_count
+				FROM lecture 
+				INNER JOIN members ON lecture.professor_id = members.member_id
+				GROUP BY lecture.lecture_id, lecture.lecture_title, lecture.professor_id, lecture.category, lecture.count,
+				         lecture.schedule, lecture.lecture_content, members.member_name
+				ORDER BY lecture.lecture_id DESC
 		]]>
 	</select>
-	
+
 	<select id="selectAllCategories" resultType="String">
 		<![CDATA[
 			select distinct category from lecture order by category asc
 		]]>
 	</select>
 
-	<select id="selectSearchLectureList" parameterType="String" resultType="lectureDTO">
+	<select id="selectSearchLectureList" parameterType="String"
+		resultType="lectureDTO">
 		<![CDATA[
 			select lecture.*, members.member_name as professor_name from lecture
 				inner join members
@@ -39,8 +43,9 @@
 				order by lecture_id desc
 		]]>
 	</select>
-	
-	<select id="selectOneLecture" parameterType="int" resultType="lectureDTO">
+
+	<select id="selectOneLecture" parameterType="int"
+		resultType="lectureDTO">
 		<![CDATA[
 			select lecture.*, members.member_name as professor_name from lecture 
 				inner join members
@@ -49,40 +54,42 @@
 				order by lecture_id desc
 		]]>
 	</select>
-	
-	<select id="chkLecture" parameterType="Map" resultType="lectureDTO">
+
+	<select id="chkLecture" parameterType="Map"
+		resultType="lectureDTO">
 		<![CDATA[
 			select * from member_lecture 
 				where member_id = #{member_id}
 				and lecture_id = #{lecture_id} 
 		]]>
 	</select>
-	
+
 	<insert id="insertNewLecture" parameterType="java.util.Map">
 		<![CDATA[	
 			insert into lecture 
 				values(#{lectureNo}, #{title}, #{member_id}, #{category}, #{count}, #{time} ,#{content})
-		]]>		
+		]]>
 	</insert>
-	
+
 	<update id="updateLecture" parameterType="java.util.Map">
 		<![CDATA[
 			update lecture set category = #{category}, count = #{count}, schedule = #{time}, lecture_content = #{content} where lecture_id = #{lecture_id} 
-		]]>		
+		]]>
 	</update>
-	
+
 	<select id="selectNewLectureNo" resultType="int">
 		<![CDATA[
 			select max(lecture_id)+1 from lecture
 		]]>
 	</select>
-	
-	<select id="selectLecture" parameterType="int" resultType="LectureDTO">
+
+	<select id="selectLecture" parameterType="int"
+		resultType="LectureDTO">
 		<![CDATA[
 			select * from lecture where lecture_id = #{lecture_id}
 		]]>
 	</select>
-	
+
 	<delete id="delLecture" parameterType="int">
 		<![CDATA[
 			delete from lecture where lecture_id = #{lecture_id}
@@ -98,4 +105,11 @@
 			delete from member_lecture where lecture_id = #{lecture_id}
 		]]>
 	</delete>
+
+	<select id="selectStuCount" parameterType="int"
+		resultType="LectureDTO">
+		<![CDATA[
+			select count(*) as stuCount from member_lecture where lecture_id = #{lecture_id}
+		]]>
+	</select>
 </mapper>

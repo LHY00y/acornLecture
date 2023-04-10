@@ -34,13 +34,12 @@ public class LectureControllerImpl implements LectureController {
 	
 	@Override
 	@RequestMapping(value="/lecture/listLectures.do", method=RequestMethod.GET)
-	public ModelAndView listLectures(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView listLectures(Integer lecture_id, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		
 		List<LectureDTO> lecturesList = lectureService.listLectures();
 		List<String> categories = lectureService.categories();
-		
 		
 		mav.addObject("lecturesList", lecturesList);
 		mav.addObject("categories", categories);
