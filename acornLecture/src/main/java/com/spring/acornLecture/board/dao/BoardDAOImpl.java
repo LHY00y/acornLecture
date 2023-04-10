@@ -36,7 +36,6 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 	
 	private int selectNewArticleNo() {
-		// TODO Auto-generated method stub
 		return sqlSession.selectOne("mapper.board.selectNewArticleNo");
 	}
 	
@@ -46,27 +45,44 @@ public class BoardDAOImpl implements BoardDAO{
 		int articleNo = (Integer)articleMap.get("articleNo");
 		int imageFileNo = selectNewImageFileNo();
 		for(ImageDTO image:imageFileList) {
-			image.setImageFileNo(++imageFileNo);
-			image.setArticleNo(articleNo);
+			image.setImgFileNo(++imageFileNo);
+			image.setBoard_id(articleNo);
 		}
 		sqlSession.insert("mapper.board.insertNewImage", imageFileList);
 		
 	}
 	
 	private int selectNewImageFileNo() {
-		// TODO Auto-generated method stub
 		return sqlSession.selectOne("mapper.board.selectNewImageFileNo");
 	}
 	
 	@Override
 	public BoardDTO selectArticle(int board_id) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectOne("mapper.board.selectArticle", board_id);
 	}
 
 	@Override
-	public BoardDTO deleteArticle(int board_id) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne("mapper.board.selectArticle", board_id);
+	public void deleteArticle(int board_id) {
+		sqlSession.selectOne("mapper.board.deleteArticle", board_id);
+	}
+	
+	@Override
+	public void updateArticle(Map<String, Object> articleMap) {
+		sqlSession.update("mapper.board.updateArticle", articleMap);
+	}
+
+	@Override
+	public List<ImageDTO> selectImageFileList(int articleNo) {
+		List<ImageDTO> imageFileList = sqlSession.selectList
+				("mapper.board.selectImageFileList", articleNo);
+		for(ImageDTO image : imageFileList) {
+			System.out.println(image.getImgFileName());
+		}
+		return imageFileList;
+	}
+	
+	@Override
+	public void deleteImage(int[] delFileNo) {
+		sqlSession.delete("mapper.board.deleteImage", delFileNo);
 	}
 }

@@ -13,8 +13,10 @@ public interface BoardService {
 
 	Map viewArticle(int board_id);
 
-	void deleteArticle(int board_id);
-
 	List<BoardDTO> listNotices();
+
+	void removeArticle(int board_id);
+
+	void modArticle(Map<String, Object> articleMap);
 
 }

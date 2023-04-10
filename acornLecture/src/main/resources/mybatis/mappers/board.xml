@@ -15,6 +15,12 @@
 		<result property="lecture_id" column="lecture_id" />
 		<result property="lecture_title" column="lecture_title" />
 	</resultMap>
+	
+	<resultMap type="imageDTO" id="imageResult">
+		<result property="imgFileNo" column="imgFileNo" />
+		<result property="imgFileName" column="imgFileName" />
+		<result property="board_id" column="board_id" />
+	</resultMap>
 
 	
 	<select id="selectAllReviews" resultType="boardDTO">
@@ -57,12 +63,24 @@
 		]]>
 	</select>
 	
+	<select id="selectImageFileList" resultMap="imageResult" parameterType="int">
+		<![CDATA[
+			select * from lec_imgfile where board_id=#{articleNo}
+		]]>
+	</select>
+	
+	<update id="updateArticle" parameterType="java.util.Map">
+		update board 
+		set board_title=#{title}, board_content=#{content} 
+		where board_id=#{board_id}
+	</update>
+	
 	
 	<insert id="insertNewImage" parameterType="java.util.Map">
 		<foreach collection="list" item="item" open="insert all" separator=" "
 			close="select * from dual">
 			into lec_imgfile (imgFileNo, imgFileName, board_id)
-			 values (#{item.imageFileNo}, #{item.imageFileName}, #{item.articleNo})
+			 values (#{item.imgFileNo}, #{item.imgFileName}, #{item.board_id})
 		</foreach>
 	</insert>
 	
@@ -87,7 +105,17 @@
  	
  	<delete id="deleteArticle" parameterType="int">
 		<![CDATA[
-			delete from board where board_id
+			delete from board where board_id=#{board_id}
+		]]>
+		</delete>
+
+ 	<delete id="deleteImage" parameterType="list">
+ 		<foreach collection="array" item="no" separator=" ">
+ 			delete from lec_imgfile where imgfileNo=${no}
+		</foreach>
+		<![CDATA[
+			
+			
 		
 		]]>
 		</delete>

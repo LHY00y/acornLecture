@@ -39,15 +39,27 @@ public class BoardServiceImpl implements BoardService {
 	public Map viewArticle(int board_id) {
 		Map articleMap = new HashMap();
 		BoardDTO boardDTO = boardDAO.selectArticle(board_id);
-		//List<ImageDTO> imageFileList = boardDAO.selectImageFileList(board_id);
+		List<ImageDTO> imgFileList = boardDAO.selectImageFileList(board_id);
 		articleMap.put("article", boardDTO);
-		//articleMap.put("imageFileList",imageFileList);
+		articleMap.put("imgFileList",imgFileList);
 		return articleMap;
 	}
 	
 	@Override
-	public void deleteArticle(int articleNo) {
-		// TODO Auto-generated method stub
-		boardDAO.deleteArticle(articleNo);
+	public void removeArticle(int board_id) {
+		boardDAO.deleteArticle(board_id);
 	}
+	
+	@Override
+	public void modArticle(Map<String, Object> articleMap) {
+		boardDAO.updateArticle(articleMap);
+		if(articleMap.containsKey("delFileNo")) {
+			int[] delFileNo = (int[]) articleMap.get("delFileNo");
+			boardDAO.deleteImage(delFileNo);
+		}
+		if(articleMap.containsKey("imageFileList"))
+			boardDAO.insertNewImage(articleMap);
+		
+	}
+
 }

@@ -6,13 +6,13 @@
 
 <tiles-definitions>
 	<definition name="/board/notice" extends="baseLayout">
-		<put-attribute name="title" value="게시판" />
-		<put-attribute name="body" value="/WEB-INF/views/board/notice.jsp" />
+		<put-attribute name="title" value="공지" />
+		<put-attribute name="body" value="/WEB-INF/views/board/board.jsp" />
 	</definition>
 	
 		<definition name="/board/review" extends="baseLayout">
-		<put-attribute name="title" value="게시판" />
-		<put-attribute name="body" value="/WEB-INF/views/board/review.jsp" />
+		<put-attribute name="title" value="후기" />
+		<put-attribute name="body" value="/WEB-INF/views/board/board.jsp" />
 	</definition>
 	
 	<definition name="/board/articleForm" extends="baseLayout">

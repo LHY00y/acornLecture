@@ -3,22 +3,22 @@ package com.spring.acornLecture.board.dto;
 import java.sql.Date;
 
 public class ImageDTO {
-	private int imageFileNo;
-	private String imageFileName;
+	private int imgFileNo;
+	private String imgFileName;
 	private Date regDate;
-	private int articleNo;
+	private int board_id;
 	
-	public int getImageFileNo() {
-		return imageFileNo;
+	public int getImgFileNo() {
+		return imgFileNo;
 	}
-	public void setImageFileNo(int imageFileNo) {
-		this.imageFileNo = imageFileNo;
+	public void setImgFileNo(int imgFileNo) {
+		this.imgFileNo = imgFileNo;
 	}
-	public String getImageFileName() {
-		return imageFileName;
+	public String getImgFileName() {
+		return imgFileName;
 	}
-	public void setImageFileName(String imageFileName) {
-		this.imageFileName = imageFileName;
+	public void setImgFileName(String imgFileName) {
+		this.imgFileName = imgFileName;
 	}
 	public Date getRegDate() {
 		return regDate;
@@ -26,10 +26,10 @@ public class ImageDTO {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-	public int getArticleNo() {
-		return articleNo;
+	public int getBoard_id() {
+		return board_id;
 	}
-	public void setArticleNo(int articleNo) {
-		this.articleNo = articleNo;
+	public void setBoard_id(int board_id) {
+		this.board_id = board_id;
 	}
 }

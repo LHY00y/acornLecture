@@ -30,12 +30,12 @@
 	<table align="center">
 		<tr align="center">
 			<td width="50" align="left">아이디</td>
-			<td width="200"><input type="text" name="member_id"></td>
-            <td rowspan="2"><input class="submit" type="submit" value="로그인"></td>
+			<td width="200"><input tabIndex="1"  type="text" name="member_id"></td>
+            <td rowspan="2"><input tabIndex="3" class="submit" type="submit" value="로그인"></td>
 		</tr>
 		<tr align="center">
 			<td width="50" align="left">암호</td>
-			<td width="200"><input type="password" name="password"></td>
+			<td width="200"><input tabIndex="2" type="password" name="password"></td>
 		</tr>
         <tr>
         	<td>

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.spring.acornLecture.board.dto.BoardDTO;
+import com.spring.acornLecture.board.dto.ImageDTO;
 
 public interface BoardDAO {
 
@@ -16,6 +17,9 @@ public interface BoardDAO {
 
 	BoardDTO selectArticle(int board_id);
 
-	BoardDTO deleteArticle(int board_id);
+	void deleteArticle(int board_id);
+	List<ImageDTO> selectImageFileList(int board_id);
+	void updateArticle(Map<String, Object> articleMap);
+	void deleteImage(int[] delFileNo);
 
 }

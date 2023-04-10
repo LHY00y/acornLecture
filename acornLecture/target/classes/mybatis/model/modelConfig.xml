@@ -7,5 +7,6 @@
 		<typeAlias type="com.spring.acornLecture.member.dto.MemberDTO" alias="memberDTO"/>
 		<typeAlias type="com.spring.acornLecture.lecture.dto.LectureDTO" alias="lectureDTO"/>
 		<typeAlias type="com.spring.acornLecture.board.dto.BoardDTO" alias="boardDTO"/>
+		<typeAlias type="com.spring.acornLecture.board.dto.ImageDTO" alias="imageDTO"/>
 	</typeAliases>
 </configuration>

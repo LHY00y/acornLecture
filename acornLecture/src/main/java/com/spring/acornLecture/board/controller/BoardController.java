@@ -11,14 +11,18 @@ import org.springframework.web.servlet.ModelAndView;
 public interface BoardController {
 
 	ModelAndView review(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	ModelAndView notice(HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+	ModelAndView form(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 	ResponseEntity addNewArticle(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
 			throws Exception;
 
-	ModelAndView form(HttpServletRequest request, HttpServletResponse response) throws Exception;
-
 	ModelAndView viewArticle(int board_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
-	ModelAndView notice(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	ResponseEntity removeArticle(int board_id, HttpServletRequest request, HttpServletResponse response)
+			throws Exception;
+	ResponseEntity modArticle(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
+			throws Exception;
 
 }

@@ -17,5 +17,5 @@
 
 
 <div id="reviewContainer">
-	<jsp:include page="board/review.jsp"></jsp:include>
+	<jsp:include page="board/board.jsp"></jsp:include>
 </div>

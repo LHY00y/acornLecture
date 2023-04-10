@@ -2,6 +2,11 @@ package com.spring.acornLecture.board.controller;
 
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.DirectoryNotEmptyException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -22,6 +27,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -87,7 +93,7 @@ public class BoardControllerImpl implements BoardController{
 		if(fileList != null && fileList.size() != 0) {
 			for(String fileName : fileList) {
 				ImageDTO image = new ImageDTO();
-				image.setImageFileName(fileName);
+				image.setImgFileName(fileName);
 				imageFileList.add(image);
 			}
 			imgflag=true;
@@ -110,7 +116,7 @@ public class BoardControllerImpl implements BoardController{
 			if(imageFileList != null && imageFileList.size() != 0) {
 				for(ImageDTO imageDTO : imageFileList) {
 					File srcFile = new File(CURR_IMAGE_REPO_PATH+ "\\temp\\" 
-							+ imageDTO.getImageFileName());
+							+ imageDTO.getImgFileName());
 					File destDir = new File(CURR_IMAGE_REPO_PATH+"\\"+articleNo);
 					FileUtils.moveFileToDirectory(srcFile, destDir, true);
 				}
@@ -118,7 +124,7 @@ public class BoardControllerImpl implements BoardController{
 			message = "<script>";
 			message += "alert('새글을 추가했습니다.');";
 			message += "location.href='" + multipartRequest.getContextPath()
-				+"/board/board.do';";
+				+"/board/boardPage.do?board_id="+articleNo+"';";
 			message += "</script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		} catch (Exception e) {
@@ -126,7 +132,7 @@ public class BoardControllerImpl implements BoardController{
 			if(imageFileList != null && imageFileList.size() != 0) {
 				for(ImageDTO imageDTO : imageFileList) {
 					File srcFile = new File(CURR_IMAGE_REPO_PATH+"\\temp\\"
-							+imageDTO.getImageFileName());
+							+imageDTO.getImgFileName());
 					srcFile.delete();
 				}
 			}
@@ -173,6 +179,7 @@ public class BoardControllerImpl implements BoardController{
 		return fileList;
 	}
 	
+		
 	@Override
 	@RequestMapping(value="/board/boardPage.do", method=RequestMethod.GET)
 	public ModelAndView viewArticle(int board_id, HttpServletRequest request, HttpServletResponse response)
@@ -183,6 +190,129 @@ public class BoardControllerImpl implements BoardController{
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("articleMap", articleMap);
 		return mav;
+	}
+	
+	
+	
+	@Override
+	@RequestMapping(value="/board/removeArticle", method=RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity removeArticle(int board_id, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		String message;
+		ResponseEntity resEnt = null;
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
+		try {
+			boardService.removeArticle(board_id);
+			File destDir = new File(CURR_IMAGE_REPO_PATH + "\\" + board_id);
+			FileUtils.deleteDirectory(destDir);
+			
+			message = "<script>";
+			message += "alert('삭제가 완료 되었습니다.');";
+			message += "location.href='"+request.getContextPath()+"/board/review.do';";
+			message += "</script>";
+			
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+		} catch (Exception e) {
+			message = "<script>";
+			message += "alert('삭제에 실패 하었습니다. 다시 시도해 주세요.');";
+			message += "location.href='"+request.getContextPath()+"/board/boardPage.do?board_id="+board_id+"';";
+			message += "</script>";
+			
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+			e.printStackTrace();
+		}
+		return resEnt;
+	}
+
+	
+	@Override
+	@RequestMapping(value="/board/modArticle.do", method=RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity modArticle(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		multipartRequest.setCharacterEncoding("utf-8");
+		Map<String, Object> articleMap = new HashMap<String, Object>();
+	
+		String board_id = multipartRequest.getParameter("board_id");
+		articleMap.put("board_id", board_id);
+		
+		System.out.println("board_id : " + board_id);
+		String content = multipartRequest.getParameter("content");
+		articleMap.put("content", content);
+		
+		String title = multipartRequest.getParameter("title");
+		articleMap.put("title", title);
+
+		String[] delFileNo = multipartRequest.getParameterValues("delImgNo");
+		if(delFileNo != null && delFileNo.length != 0) 
+			articleMap.put("delFileName", delFileNo);
+		
+		List<String> fileList= upload(multipartRequest);
+		HttpSession session = multipartRequest.getSession();
+		MemberDTO member = (MemberDTO)session.getAttribute("member");
+		
+		String id = member.getMember_id();
+		articleMap.put("id", id);
+		List<ImageDTO> imageFileList = new ArrayList<ImageDTO>();
+		if(fileList != null && fileList.size() != 0) {
+			for(String fileName : fileList) {
+				ImageDTO image = new ImageDTO();
+				image.setImgFileName(fileName);
+				imageFileList.add(image);
+			}
+			articleMap.put("imageFileList", imageFileList);
+		}
+		 
+		
+		String message = null;
+		ResponseEntity resEnt = null;
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
+		try {
+			boardService.modArticle(articleMap);
+			if(imageFileList != null && imageFileList.size() != 0) {
+				for(ImageDTO imageDTO : imageFileList) {
+					File srcFile = new File(CURR_IMAGE_REPO_PATH + "\\temp\\" + imageDTO.getImgFileName());
+					File destDir = new File(CURR_IMAGE_REPO_PATH + "\\" + board_id);
+					FileUtils.moveFileToDirectory(srcFile, destDir, true);	
+				}
+			}
+			
+			String[] delFileName = multipartRequest.getParameterValues("delImg");
+			System.out.println("delImgName:"+delFileName);
+			if(delFileName != null && delFileName.length != 0) {
+				for(String oldFileName : delFileName) {
+					File oldFile = new File(CURR_IMAGE_REPO_PATH + "\\" + board_id + "\\" + delFileName);
+					oldFile.delete();
+				}
+			}
+			message = "<script>";
+			message += "alert('글이 수정 되었습니다.');";
+			message += "location.href='"+multipartRequest.getContextPath()
+				+"/board/boardPage.do?board_id="+board_id+"';";
+			message += "</script>";
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+		} catch (Exception e) {
+			// TODO: handle exception
+			if(imageFileList != null && imageFileList.size() != 0) {
+				for(ImageDTO imageDTO : imageFileList) {
+					File srcFile = new File(CURR_IMAGE_REPO_PATH+"\\temp\\"
+							+imageDTO.getImgFileName());
+					srcFile.delete();
+				}
+			}
+			message = "<script>";
+			message += "alert('글 수정 중 에러가 발생했습니다. 다시 시도 하세요.');";
+			message += "location.href='"+multipartRequest.getContextPath()
+				+"/board/boardPage.do?board_id="+board_id+"';";
+			message += "</script>";
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+			e.printStackTrace();
+		}
+		return resEnt;
 	}
 	
 	
