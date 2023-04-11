@@ -7,6 +7,13 @@ public class Member_LectureDTO {
 	private int ml_index;
 	private String member_id;
 	private int lecture_id;
+	private int stuCount;
+	public int getStuCount() {
+		return stuCount;
+	}
+	public void setStuCount(int stuCount) {
+		this.stuCount = stuCount;
+	}
 	public int getMl_index() {
 		return ml_index;
 	}

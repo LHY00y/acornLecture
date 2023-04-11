@@ -13,6 +13,12 @@
 		<result property="shedule" column="schedule" />
 		<result property="lecture_content" column="lecture_content" />
 	</resultMap>
+	
+	<resultMap type="Member_LectureDTO" id="memResult">
+		<result property="ml_index" column="ml_index" />
+		<result property="member_id" column="member_id" />
+		<result property="lecture_id" column="lecture_id" />
+	</resultMap>
 
 
 	<select id="selectAllLectureList" resultType="lectureDTO">
@@ -113,9 +119,16 @@
 	</delete>
 
 	<select id="selectStuCount" parameterType="int"
-		resultType="LectureDTO">
+		resultType="Member_lectureDTO">
 		<![CDATA[
 			select count(*) as stuCount from member_lecture where lecture_id = #{lecture_id}
 		]]>
 	</select>
+	
+	<insert id="insertEnrol" parameterType="java.util.Map">
+		<![CDATA[	
+			insert into member_lecture 
+				values(seq_index.nextval, #{member_id}, #{lecture_id})
+		]]>
+	</insert>
 </mapper>

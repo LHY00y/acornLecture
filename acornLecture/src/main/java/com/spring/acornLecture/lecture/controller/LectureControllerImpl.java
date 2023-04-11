@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.acornLecture.lecture.dto.LectureDTO;
+import com.spring.acornLecture.lecture.dto.Member_LectureDTO;
 import com.spring.acornLecture.lecture.service.LectureService;
 import com.spring.acornLecture.member.dto.MemberDTO;
 
@@ -82,7 +83,9 @@ public class LectureControllerImpl implements LectureController {
 		}
 		
 		LectureDTO lecture = lectureService.lectureInfo(lecture_id);
+		Member_LectureDTO dto = lectureService.stuCount(lecture_id);
 		mav.addObject("lecture", lecture);
+		mav.addObject("dto", dto);
 		return mav;
 	}
 	
@@ -259,6 +262,36 @@ public class LectureControllerImpl implements LectureController {
 			
 			message = "<script>";
 			message += "alert('강의를 삭제했습니다.');";
+			message += "location.href='"+request.getContextPath()+"/member/myPage.do';";
+			message += "</script>";
+			
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+		} catch (Exception e) {
+			// TODO: handle exception
+			message = "<script>";
+			message += "alert('오류가 발생했습니다. 다시 시도해 주세요.');";
+			message += "location.href='"+request.getContextPath()+"/member/myPage.do';";
+			message += "</script>";
+			e.printStackTrace();
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+		}
+		return resEnt;
+	}
+
+	@Override
+	@RequestMapping(value="/lecture/enrol", method=RequestMethod.GET)
+	public ResponseEntity enrol(int lecture_id, String member_id, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		String message;
+		ResponseEntity resEnt = null;
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
+		try {
+			lectureService.enrol(lecture_id,member_id);
+			
+			message = "<script>";
+			message += "alert('수강을 신청 했습니다.');";
 			message += "location.href='"+request.getContextPath()+"/member/myPage.do';";
 			message += "</script>";
 			

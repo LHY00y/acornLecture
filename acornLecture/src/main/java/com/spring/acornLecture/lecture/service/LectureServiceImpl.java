@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.acornLecture.lecture.dao.LectureDAO;
 import com.spring.acornLecture.lecture.dto.LectureDTO;
+import com.spring.acornLecture.lecture.dto.Member_LectureDTO;
 
 @Service
 public class LectureServiceImpl implements LectureService{
@@ -69,5 +70,18 @@ public class LectureServiceImpl implements LectureService{
 	public String daybox(int lecture_id) {
 		// TODO Auto-generated method stub
 		return lectureDAO.selectDaybox(lecture_id);
+	}
+
+	@Override
+	public void enrol(int lecture_id, String member_id) {
+		// TODO Auto-generated method stub
+		lectureDAO.insertEnrol(lecture_id, member_id);
+	}
+
+	@Override
+	public Member_LectureDTO stuCount(int lecture_id) {
+		// TODO Auto-generated method stub
+		Member_LectureDTO stuCount = lectureDAO.selectStuCount(lecture_id);
+		return stuCount;
 	}
 }

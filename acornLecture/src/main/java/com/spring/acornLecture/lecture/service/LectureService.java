@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.spring.acornLecture.lecture.dto.LectureDTO;
+import com.spring.acornLecture.lecture.dto.Member_LectureDTO;
 
 public interface LectureService {
 
@@ -17,4 +18,6 @@ public interface LectureService {
 	int modLecture(Map<String, Object> lectureMap);
 	void delLecture(int lecture_id);
 	String daybox(int lecture_id);
+	void enrol(int lecture_id, String member_id);
+	Member_LectureDTO stuCount(int lecture_id);
 }

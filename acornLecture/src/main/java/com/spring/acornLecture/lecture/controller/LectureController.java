@@ -30,4 +30,7 @@ public interface LectureController {
 	
 	ResponseEntity delLecture(@RequestParam("lecture_id")int lecture_id, HttpServletRequest request, HttpServletResponse response)
 			throws Exception;
+	
+	ResponseEntity enrol(@RequestParam("lecture_id")int lecture_id,@RequestParam("member_id")String member_id, HttpServletRequest request, HttpServletResponse response)
+			throws Exception;
 }

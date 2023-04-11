@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.acornLecture.lecture.dto.LectureDTO;
+import com.spring.acornLecture.lecture.dto.Member_LectureDTO;
 
 @Repository
 public class LectureDAOImpl implements LectureDAO {
@@ -89,5 +90,20 @@ public class LectureDAOImpl implements LectureDAO {
 		// TODO Auto-generated method stub
 		String daybox = sqlSession.selectOne("mapper.lecture.selectDaybox", lecture_id);
 		return daybox;
+	}
+
+	@Override
+	public void insertEnrol(int lecture_id, String member_id) {
+		// TODO Auto-generated method stub
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("lecture_id", lecture_id);
+		map.put("member_id", member_id);
+		sqlSession.insert("mapper.lecture.insertEnrol", map);
+	}
+
+	@Override
+	public Member_LectureDTO selectStuCount(int lecture_id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.lecture.selectStuCount", lecture_id);
 	}
 }

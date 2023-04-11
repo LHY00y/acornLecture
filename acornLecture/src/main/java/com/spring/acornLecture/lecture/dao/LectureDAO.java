@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.spring.acornLecture.lecture.dto.LectureDTO;
+import com.spring.acornLecture.lecture.dto.Member_LectureDTO;
 
 public interface LectureDAO {
 
@@ -17,4 +18,6 @@ public interface LectureDAO {
 	LectureDTO selectLecture(int lecture_id);
 	void delLecture(int lecture_id);
 	String selectDaybox(int lecture_id);
+	void insertEnrol(int lecture_id, String member_id);
+	Member_LectureDTO selectStuCount(int lecture_id);
 }
