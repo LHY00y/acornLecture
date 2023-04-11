@@ -83,4 +83,11 @@ public class LectureDAOImpl implements LectureDAO {
 		sqlSession.delete("mapper.lecture.delMemberLecture", lecture_id);
 		sqlSession.delete("mapper.lecture.delBoard", lecture_id);
 	}
+
+	@Override
+	public String selectDaybox(int lecture_id) {
+		// TODO Auto-generated method stub
+		String daybox = sqlSession.selectOne("mapper.lecture.selectDaybox", lecture_id);
+		return daybox;
+	}
 }

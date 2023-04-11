@@ -173,9 +173,13 @@ public class LectureControllerImpl implements LectureController {
 		ModelAndView mav = new ModelAndView(viewName);
 		LectureDTO lecture = (LectureDTO) lectureService.lectureList(lecture_id);
 		List<String> categories = lectureService.categories();
+		String daybox = lectureService.daybox(lecture_id);
 		mav.addObject("categories",categories);
 		mav.addObject("lecture", lecture);
 		mav.addObject("result", result);
+		int idx = daybox.indexOf(" "); 
+		mav.addObject("day", daybox.substring(0, idx));
+		mav.addObject("time", daybox.substring(daybox.indexOf(" ")+1));
 		return mav;
 	}
 

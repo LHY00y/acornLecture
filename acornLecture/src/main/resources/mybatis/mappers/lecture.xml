@@ -32,6 +32,12 @@
 			select distinct category from lecture order by category asc
 		]]>
 	</select>
+	
+	<select id="selectDaybox" resultType="String">
+		<![CDATA[
+			select schedule from lecture where lecture_id = #{lecture_id}
+		]]>
+	</select>
 
 	<select id="selectSearchLectureList" parameterType="String"
 		resultType="lectureDTO">

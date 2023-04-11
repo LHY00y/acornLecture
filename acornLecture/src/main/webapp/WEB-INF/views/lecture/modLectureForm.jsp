@@ -72,20 +72,20 @@
 			<tr>
 				<td align="right">요일/시간</td>
 				<td colspan="2"><input type="checkbox" value="월" name="daybox"
-					${fn:contains(lecture.schedule, "월") ? "checked" : ""}>월
+					${fn:contains(day, "월") ? "checked" : ""}>월
 					<input type="checkbox" value="화" name="daybox"
-					${fn:contains(lecture.schedule, "화") ? "checked" : ""}>화
+					${fn:contains(day, "화") ? "checked" : ""}>화
 					<input type="checkbox" value="수" name="daybox"
-					${fn:contains(lecture.schedule, "수") ? "checked" : ""}>수
+					${fn:contains(day, "수") ? "checked" : ""}>수
 					<input type="checkbox" value="목" name="daybox"
-					${fn:contains(lecture.schedule, "목") ? "checked" : ""}>목
+					${fn:contains(day, "목") ? "checked" : ""}>목
 					<input type="checkbox" value="금" name="daybox"
-					${fn:contains(lecture.schedule, "금") ? "checked" : ""}>금
+					${fn:contains(day, "금") ? "checked" : ""}>금
 					<input type="checkbox" value="토" name="daybox"
-					${fn:contains(lecture.schedule, "토") ? "checked" : ""}>토
+					${fn:contains(day, "토") ? "checked" : ""}>토
 				</td>
 				<td align="right" colspan="2"><input type="time" name="time"
-					value="${lecture.schedule}"></td>
+					value="${time}"></td>
 			</tr>
 			<tr>
 				<td align="right">정원</td>

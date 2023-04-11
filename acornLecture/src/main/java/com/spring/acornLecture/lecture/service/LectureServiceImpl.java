@@ -64,4 +64,10 @@ public class LectureServiceImpl implements LectureService{
 		// TODO Auto-generated method stub
 		lectureDAO.delLecture(lecture_id);
 	}
+
+	@Override
+	public String daybox(int lecture_id) {
+		// TODO Auto-generated method stub
+		return lectureDAO.selectDaybox(lecture_id);
+	}
 }

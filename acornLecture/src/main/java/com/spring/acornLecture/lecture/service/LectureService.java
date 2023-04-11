@@ -16,4 +16,5 @@ public interface LectureService {
 	LectureDTO lectureList(int lecture_id);
 	int modLecture(Map<String, Object> lectureMap);
 	void delLecture(int lecture_id);
+	String daybox(int lecture_id);
 }
