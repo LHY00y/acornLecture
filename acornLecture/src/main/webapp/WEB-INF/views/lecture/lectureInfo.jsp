@@ -27,6 +27,9 @@
 					<td rowspan="2" align="right"><c:choose>
 							<c:when test="${ isLogOn == true && member != null }">
 								<c:choose>
+									<c:when test="${member.grade eq '강사' }">
+										<button id="lecBtn" <c:if test="${member.member_id ne lecture.professor_id }">disabled="disabled"</c:if>>공지 작성</button>
+									</c:when>
 									<c:when test="${ isMine == true }">
 										<button id="lecBtn">후기 작성</button>
 									</c:when>
