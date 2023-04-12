@@ -36,7 +36,7 @@
 </head>
 <body>
 		<form action="${contextPath }/lecture/search.do" method="GET" style="padding-left:20px; display:inline;">
-			<input type="text" name="keyword" style="width:55%; height:20px;">
+			<input type="text" name="keyword" value= "${keyword}" style="width:55%; height:20px;">
 			<input type="submit" value="검색" style="width:50px; height:29px; margin:5px;"/>	
 		</form>
 		<table align="center">
