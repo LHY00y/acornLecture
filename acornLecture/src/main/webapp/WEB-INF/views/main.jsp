@@ -17,5 +17,7 @@
 
 
 <div id="reviewContainer">
-	<jsp:include page="board/board.jsp"></jsp:include>
+	<jsp:include page="board/board.jsp">
+		<jsp:param name="isReview" value="true" />
+	</jsp:include>	
 </div>

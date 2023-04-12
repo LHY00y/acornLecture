@@ -36,15 +36,32 @@
 				<c:set var="boardList" value="${ noticeList }" />
 			</c:otherwise>
 		</c:choose>
-		<c:forEach var="board" items="${boardList}">
-			<tr align="center">
-				<td>${index=index+1 }</td>
-				<td><a href="${contextPath }/board/boardPage.do?board_id=${board.board_id}">${board.board_title }</a></td>
-				<td style="font-size:9pt; color:grey;">${board.member_name }</td> 
-				<td style="font-size:10pt; color:grey;">[${board.lecture_title }]</td> 
- 				<td>${board.write_date }</td>
-			</tr>
-		</c:forEach>
+		<c:choose>
+			<c:when test="${ param.isMain eq 'false' }">			
+				<c:forEach var="board" items="${boardList}">
+					<c:if test="${ board.lecture_id eq param.id }">
+						<tr align="center">
+							<td>${index=index+1 }</td>
+							<td><a href="${contextPath }/board/boardPage.do?board_id=${board.board_id}">${board.board_title }</a></td>
+							<td style="font-size:9pt; color:grey;">${board.member_name }</td> 
+							<td style="font-size:10pt; color:grey;">[${board.lecture_title }]</td> 
+			 				<td>${board.write_date }</td>
+						</tr>
+					</c:if>
+				</c:forEach>
+			</c:when>
+			<c:otherwise>
+				<c:forEach var="board" items="${boardList}">
+					<tr align="center">
+						<td>${index=index+1 }</td>
+						<td><a href="${contextPath }/board/boardPage.do?board_id=${board.board_id}">${board.board_title }</a></td>
+						<td style="font-size:9pt; color:grey;">${board.member_name }</td> 
+						<td style="font-size:10pt; color:grey;">[${board.lecture_title }]</td> 
+		 				<td>${board.write_date }</td>
+					</tr>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
 	</table>
 </body>
 </html>

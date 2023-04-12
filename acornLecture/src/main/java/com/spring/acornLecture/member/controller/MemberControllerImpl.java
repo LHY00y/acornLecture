@@ -21,7 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.spring.acornLecture.board.dto.BoardDTO;
+import com.spring.acornLecture.board.service.BoardService;
 import com.spring.acornLecture.lecture.dto.LectureDTO;
+import com.spring.acornLecture.lecture.dto.Member_LectureDTO;
 import com.spring.acornLecture.member.dto.MemberDTO;
 import com.spring.acornLecture.member.service.MemberService;
 
@@ -30,6 +33,8 @@ import com.spring.acornLecture.member.service.MemberService;
 public class MemberControllerImpl implements MemberController{
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private BoardService boardService;
 
 	@Override
 	@RequestMapping(value= {"/main.do"})
@@ -37,6 +42,10 @@ public class MemberControllerImpl implements MemberController{
 		// TODO Auto-generated method stub
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
+		
+		List<BoardDTO> reviewList = boardService.listReviews();		
+		mav.addObject("reviewList", reviewList);
+		
 		return mav;
 	}
 

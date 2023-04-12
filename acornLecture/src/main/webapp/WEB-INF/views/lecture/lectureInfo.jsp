@@ -64,6 +64,7 @@
 		<h4>공지</h4>
 		<jsp:include page="../board/board.jsp">
 			<jsp:param name="isReview" value="false" />
+			<jsp:param name="isMain" value="false" />
 		</jsp:include>
 	</div>
 	
@@ -72,6 +73,7 @@
 		<h4>후기</h4>
 		<jsp:include page="../board/board.jsp">
 			<jsp:param name="isReview" value="true" />
+			<jsp:param name="isMain" value="false" />
 		</jsp:include>	
 	</div>
 	
