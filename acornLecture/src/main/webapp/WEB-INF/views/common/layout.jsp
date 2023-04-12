@@ -11,7 +11,7 @@
 <title><tiles:insertAttribute name="title"></tiles:insertAttribute></title>
 </head>
 <body>
-	<div id="container">
+	<div id="wrapper">
 		<div id="header">
 			<tiles:insertAttribute name="header"></tiles:insertAttribute>
 		</div>
