@@ -63,7 +63,8 @@
 					<td>
 						<div class="form-floating">
 							<input type="text" style="height: 50px; width: 300px"
-								class="form-control" id="floatingInput" name="member_id"> 
+								class="form-control" id="floatingInput"
+								placeholder="ID" name="member_id"> 
 								<label for="floatingInput">ID</label>
 						</div>
 					</td>
