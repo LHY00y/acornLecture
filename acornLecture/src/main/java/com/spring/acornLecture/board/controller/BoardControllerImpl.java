@@ -54,9 +54,9 @@ public class BoardControllerImpl implements BoardController{
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		
-		List<BoardDTO> boardList = boardService.listReviews();
+		List<BoardDTO> reviewList = boardService.listReviews();
 		
-		mav.addObject("boardList", boardList);
+		mav.addObject("reviewList", reviewList);
 		return mav;
 	}
 	
@@ -67,9 +67,9 @@ public class BoardControllerImpl implements BoardController{
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		
-		List<BoardDTO> boardList = boardService.listNotices();
+		List<BoardDTO> noticeList = boardService.listNotices();
 		
-		mav.addObject("boardList", boardList);
+		mav.addObject("noticeList", noticeList);
 		return mav;
 	}
 	
@@ -179,9 +179,8 @@ public class BoardControllerImpl implements BoardController{
 		return fileList;
 	}
 	
-		
 	@Override
-	@RequestMapping(value="/board/boardPage.do", method= RequestMethod.GET)
+	@RequestMapping(value="/board/boardPage.do", method=RequestMethod.GET)
 	public ModelAndView viewArticle(int board_id, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
@@ -314,6 +313,4 @@ public class BoardControllerImpl implements BoardController{
 		}
 		return resEnt;
 	}
-	
-	
 }

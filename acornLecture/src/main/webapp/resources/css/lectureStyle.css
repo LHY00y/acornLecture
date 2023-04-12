@@ -75,3 +75,8 @@ a{
 	transition: all 0.4s;
 	background: #9DC0DF;
 }
+
+/* 공지, 후기 include 컨테이너 */
+.includeContainer {
+	margin: 30px;
+}

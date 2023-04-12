@@ -1,6 +1,5 @@
 package com.spring.acornLecture.lecture.controller;
 
-import java.sql.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.acornLecture.board.dto.BoardDTO;
+import com.spring.acornLecture.board.service.BoardService;
 import com.spring.acornLecture.lecture.dto.LectureDTO;
 import com.spring.acornLecture.lecture.dto.Member_LectureDTO;
 import com.spring.acornLecture.lecture.service.LectureService;
@@ -32,6 +33,8 @@ import com.spring.acornLecture.member.dto.MemberDTO;
 public class LectureControllerImpl implements LectureController {
 	@Autowired
 	private LectureService lectureService;
+	@Autowired
+	private BoardService boardService;
 	
 	@Override
 	@RequestMapping(value="/lecture/listLectures.do", method=RequestMethod.GET)
@@ -74,16 +77,21 @@ public class LectureControllerImpl implements LectureController {
 
 		HttpSession session = request.getSession(false);
 		
-		// 로그인 상태일 경우에만 강의가 내 강의 목록에 있는지 확인
-		if(session.getAttribute("isLogOn") != null) {
-			String member_id = (String) session.getAttribute("member_id");
-			
-			Boolean isMine = lectureService.chkLecture(lecture_id, member_id);
-			mav.addObject("isMine", isMine);
+		if(session != null) {
+			// 로그인 상태일 경우에만 강의가 내 강의 목록에 있는지 확인
+			if(session.getAttribute("isLogOn") != null) {
+				String member_id = (String) session.getAttribute("member_id");
+				
+				Boolean isMine = lectureService.chkLecture(lecture_id, member_id);
+				mav.addObject("isMine", isMine);
+			}
 		}
 		
+//		List<BoardDTO> boardList = boardService.listNotices();
+		List<BoardDTO> boardList = boardService.listReviews();
 		LectureDTO lecture = lectureService.lectureInfo(lecture_id);
 		Member_LectureDTO dto = lectureService.stuCount(lecture_id);
+		mav.addObject("boardList", boardList);
 		mav.addObject("lecture", lecture);
 		mav.addObject("dto", dto);
 		return mav;
@@ -291,7 +299,7 @@ public class LectureControllerImpl implements LectureController {
 			lectureService.enrol(lecture_id,member_id);
 			
 			message = "<script>";
-			message += "alert('수강을 신청 했습니다.');";
+			message += "alert('수강 신청이 완료되었습니다.');";
 			message += "location.href='"+request.getContextPath()+"/member/myPage.do';";
 			message += "</script>";
 			
