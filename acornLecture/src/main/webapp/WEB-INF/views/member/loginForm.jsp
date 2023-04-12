@@ -65,7 +65,7 @@
 							<input type="text" style="height: 50px; width: 300px"
 								class="form-control" id="floatingInput"
 								placeholder="ID" name="member_id"> 
-								 <label for="floatingInput">Id</label>
+								<label for="floatingInput">ID</label>
 						</div>
 					</td>
 				</tr>
@@ -86,7 +86,7 @@
 				</tr>
 				<tr>
 					<td>
-					<input class="w-100 btn btn-lg acornBtn" 
+						<input class="w-100 btn btn-lg acornBtn" 
 							type="button" value="회원 가입" onclick="location.href='memberTypeForm.do'" />
 					</td>
 				</tr>

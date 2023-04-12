@@ -27,7 +27,8 @@
 		<c:choose>
 			<c:when test="${isLogOn == true && member != null }">	
 				<input type="button" class="btn acornbtn-outline me-2" value="로그아웃" onclick="location.href='/acornLecture/member/logout.do'"/>
-				<input type="button" class="btn acornBtn" value="마이 페이지" onclick="location.href='/acornLecture/member/myPage.do'"/>			</c:when>
+				<input type="button" class="btn acornBtn" value="마이 페이지" onclick="location.href='/acornLecture/member/myPage.do'"/>
+			</c:when>
 			<c:otherwise>
 				<input type="button" class="btn acornbtn-outline me-2" value="로그인" onclick="location.href='/acornLecture/member/loginForm.do'"/>
 				<input type="button" class="btn acornBtn" value="회원 가입" onclick="location.href='/acornLecture/member/memberTypeForm.do'"/>
