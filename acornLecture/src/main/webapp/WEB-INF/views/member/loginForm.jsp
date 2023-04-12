@@ -63,9 +63,8 @@
 					<td>
 						<div class="form-floating">
 							<input type="text" style="height: 50px; width: 300px"
-								class="form-control" id="floatingInput" name="member_id"
-								placeholder="name@example.com"> <label
-								for="floatingInput">Id</label>
+								class="form-control" id="floatingInput" name="member_id"> 
+								<label for="floatingInput">ID</label>
 						</div>
 					</td>
 				</tr>
@@ -80,12 +79,14 @@
 				</tr>
 				<tr>
 					<td>
-						<input class="w-100 btn btn-lg btn-primary" type="submit" value="로그인" />
+						<input class="w-100 btn btn-lg acornBtn"  
+							type="submit" value="로그인" />
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input class="w-100 btn btn-lg btn-primary" type="button" value="회원 가입" onclick="location.href='memberTypeForm.do'" />
+						<input class="w-100 btn btn-lg acornBtn" 
+							type="button" value="회원 가입" onclick="location.href='memberTypeForm.do'" />
 					</td>
 				</tr>
 			</table>
