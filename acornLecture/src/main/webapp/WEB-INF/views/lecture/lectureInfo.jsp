@@ -6,6 +6,8 @@
 	request.setCharacterEncoding("utf-8");
 %>
 <c:set var="id" value="${ param.id }" />
+<c:set var="reviewList" value="${ reviewList }" scope="request" />
+<c:set var="noticeList" value="${ noticeList }" scope="request" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +19,7 @@
 <body>
 
 	<!--  
-		후기 작성 시 강의 아이디 전달
-		공지, 후기 리스트 모두 include
+		공지, 후기 include 시 해당 강의 정보만 불러오기
 		메인 후기 include
 	-->
 	<div id="tableContainer">
@@ -59,7 +60,20 @@
 	</div>
 
 	<hr>
-
-	<jsp:include page="../board/board.jsp"></jsp:include>
+	<div id="noticeContainer">
+		<h4>공지</h4>
+		<jsp:include page="../board/board.jsp">
+			<jsp:param name="isReview" value="false" />
+		</jsp:include>
+	</div>
+	
+	<hr>
+	<div id="reviewContainer">
+		<h4>후기</h4>
+		<jsp:include page="../board/board.jsp">
+			<jsp:param name="isReview" value="true" />
+		</jsp:include>	
+	</div>
+	
 </body>
 </html>

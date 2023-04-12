@@ -87,11 +87,14 @@ public class LectureControllerImpl implements LectureController {
 			}
 		}
 		
-//		List<BoardDTO> boardList = boardService.listNotices();
-		List<BoardDTO> boardList = boardService.listReviews();
+		List<BoardDTO> reviewList = boardService.listReviews();
+		List<BoardDTO> noticeList = boardService.listNotices();
+		
 		LectureDTO lecture = lectureService.lectureInfo(lecture_id);
 		Member_LectureDTO dto = lectureService.stuCount(lecture_id);
-		mav.addObject("boardList", boardList);
+
+		mav.addObject("reviewList", reviewList);
+		mav.addObject("noticeList", noticeList);
 		mav.addObject("lecture", lecture);
 		mav.addObject("dto", dto);
 		return mav;

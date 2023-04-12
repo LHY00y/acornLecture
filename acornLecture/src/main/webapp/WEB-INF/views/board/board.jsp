@@ -17,7 +17,6 @@
 </head>
 <body>
 	<table align="center">
-	
 		<tr align="center" bgcolor="#9DC0DF">
 			<th>번호</th>
 			<th style="width:50%;">제목</th>
@@ -25,8 +24,18 @@
 			<th>강의명</th>
 			<th>작성일</th>
 		</tr>
-		
 		<c:set var="index" value="0"/>
+		<c:choose>
+			<c:when test="${ empty param.isReview }">
+				<c:set var="boardList" value="${ boardList }" />
+			</c:when>
+			<c:when test="${ param.isReview eq 'true' }">
+				<c:set var="boardList" value="${ reviewList }" />
+			</c:when>
+			<c:otherwise>
+				<c:set var="boardList" value="${ noticeList }" />
+			</c:otherwise>
+		</c:choose>
 		<c:forEach var="board" items="${boardList}">
 			<tr align="center">
 				<td>${index=index+1 }</td>
