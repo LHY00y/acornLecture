@@ -71,9 +71,7 @@
 			d_img[i].style.display="block";
 		}
 		
-		$("#side-img").append("<hr>")
-		//이미지 없을때도 추가하는 기능
-		//이미지 첨부 ui좀 손보기
+		$("#img-list").append("<hr>")
 	}
 	
 	function fn_removeFile(no,img, obj){
@@ -85,18 +83,14 @@
 	
 	let cnt = 1;
 	function fn_addFile(){
-		$("#side-img").append("<br>" + "<input type='file' onchange='readURL(this)' name='file"+cnt+"'>");
-		/* $("#side-img").append("<br>" + "<label for='file'>"
-				  + "<div class='btn-select'>파일 선택</div>"
-				 + "<input type='file' style='display:none;' name='file"+cnt+"'> </label>"
-				  ); */
+		$("#img-list").append("<br>" + "<input type='file' onchange='readURL(this)' name='file"+cnt+"'>");
 		cnt++;
 	}
 	function readURL(input) {
 		  if (input.files && input.files[0]) {
 		    var reader = new FileReader();
 		    reader.onload = function(e) {
-	    		$("#side-img").append("<br>" + "<img style='width:100px;border-radius:10px;'src='"+e.target.result+"'>");
+	    		$("#img-list").append("<br>" + "<img style='width:100px;border-radius:10px;'src='"+e.target.result+"'>");
 		    };
 		    reader.readAsDataURL(input.files[0]);
 		  }
@@ -112,11 +106,13 @@
 		<br>
 		<img id="bImg" src="#" style="padding:20px 70px; width:800px; height:500px;">
 	</div>
-	<c:if test="${not empty imgFileList && imgFileList != null }">
+	
 	<div id="side-img">
+	<div id="img-list">
+	<c:if test="${not empty imgFileList && imgFileList != null }">
 		<c:forEach var="imgFile" items="${imgFileList}">
 			<button type="button" class="d_img" onclick="fn_removeFile(${imgFile.imgFileNo },'${imgFile.imgFileName }', this)"
-			style="position:relative; float:right; display:none; top:28px; right: 3px; color:#F0F0F0; margin-top:-25px; background:#FF6347;'" 
+			style="position:relative; float:right; display:none; top:28px; right: 8px; color:#F0F0F0; margin-top:-25px; background:#FF6347;'" 
 			>X</button>
 		
 			<img src="${contextPath }/download.do?imageFileName=${imgFile.imgFileName }&board_id=${article.board_id }"
@@ -125,11 +121,13 @@
 			 onclick="fn_imgBrowserOpen(this)">
 			<br>
 		</c:forEach>
+		</c:if>
+		</div>
 		<button id="m_img" class="button" onclick="fn_addFile()"  type="button"
 			style="display:none; padding:5px; position: absolute; bottom:-50px; margin:auto; margin-top:10px; font-size:11pt; width:100px; height:30px;"
 			>이미지추가</button>
 	</div>
-	</c:if>
+
 		
 		<input type="hidden" name="board_id" value="${article.board_id }">
 		<div id="content">
@@ -141,6 +139,7 @@
 	
 		</div>
 		<div style="margin-left:50px;">
+		
 		<c:if test="${member.member_id == article.member_id }">
 			<input id="m_btn" class="button" type="button" value="수정" onclick="fn_enable(this.form)">
 			<input id="mc_btn" class="button" type="button" value="수정 취소" onclick="window.location.reload()" style="display:none;">

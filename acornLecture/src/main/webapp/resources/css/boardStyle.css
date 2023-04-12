@@ -4,20 +4,37 @@
 	width:80%;
 	max-width:1000px;
 	padding:10px;
-	margin-left:20%;
+	margin-left:5%;
 	border:0px solid #bcbcbc;
 	z-index:-1;
 }
 #side-img {
 	position:absolute; right:8%;
-	width:100px;
-	min-height:300px;
+	width:130px;
+	padding:5px;
+	margin-right:10%;
+}
+
+#img-list{
 	padding:5px;
 	border:1px solid #bcbcbc;
 	border-radius:10px;
 	text-align:center;
 	background: #FFFFFFAA;
+	overflow-y: auto;
+	overflow-x: clip;
+	min-height:200px;
+	max-height:400px;
 }
+
+#img-list::-webkit-scrollbar {
+    width:10px;
+    margin-left:100px;
+ }
+ 
+#img-list::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+  }
 
 #imgBrowser{
 	display:none;
@@ -67,16 +84,20 @@ input.modify{
 	
 }
 
-/* 안 먹혀... */
-input::file-selector-button { 
-  width: 150px;
-  height: 30px;
+input::file-selector-button {
+  margin-left:2px;
+  width: 90px;
+  height: 25px;
   background: #fff;
   border: 1px solid rgb(77,77,77);
   border-radius: 10px;
   cursor: pointer;
-  &:hover {
-    background: rgb(77,77,77);
+  display:block;
+  float:center;
+
+}
+
+input::file-selector-button:hover {
+    background: #ADD8E6 ;
     color: #fff;
   }
-}
