@@ -13,6 +13,7 @@
 <title><tiles:insertAttribute name="title"></tiles:insertAttribute></title>
 </head>
 <body>
+	<div>
 	<div id="wrapper">
 		<div id="header">
 			<tiles:insertAttribute name="header"></tiles:insertAttribute>
@@ -23,9 +24,12 @@
 		<div id="content">
 			<tiles:insertAttribute name="body"></tiles:insertAttribute>
 		</div>
-		<div id="footer">
+		
+	</div>
+	
+	</div>
+	<div id="footer">
 			<tiles:insertAttribute name="footer"></tiles:insertAttribute>
-		</div>
 	</div>
 </body>
 </html>

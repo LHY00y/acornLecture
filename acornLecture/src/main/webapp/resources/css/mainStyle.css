@@ -83,20 +83,31 @@ a {
 }
 
 
+#wrapper{
+ height: auto;
+ min-height:95%;
+ margin-bottom:50px;
+ 
+}
+#content{
+	width:80%;
+	margin:auto;
+}
 
 /* 
 	Footer
 			*/
 
-footer {
-	position: absolute;
-	padding: 20px 0;
+#footer {
+ 	height:40px;
+ 	position : relative;
+ 	margin-top:-40px;
+	padding: 10px 0;
 	width: 100%;
-	bottom: 0;
-	left: 0;
 	text-align: center;
 	font-size: 0.5em;
 	background-color: #F0F0F0;
+	
 
 }
 
@@ -221,4 +232,37 @@ footer {
 #stuJoinMember:hover {
 	background-color: #008CBA;
 	color: white;
+}
+.acornBtn-outline {
+  color: #9DC0DF;
+  background-color: transparent;
+  background-image: none;
+  border-color: #9DC0DF;
+}
+
+.acornBtn-outline:hover {
+  color: #fff;
+  background-color: #9DC0DF;
+  border-color: #9DC0DF;
+}
+
+.acornBtn-outline:focus, .acornBtn-outline.focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+.acornBtn-outline.disabled, .acornBtn-outline:disabled {
+  color: #007bff;
+  background-color: transparent;
+}
+
+.acornBtn-outline:not(:disabled):not(.disabled):active, .acornBtn-outline:not(:disabled):not(.disabled).active,
+.show > .acornBtn-outline.dropdown-toggle {
+  color: #fff;
+  background-color: #9DC0DF;
+  border-color: #9DC0DF;
+}
+
+.acornBtn-outline:not(:disabled):not(.disabled):active:focus, .acornBtn-outline:not(:disabled):not(.disabled).active:focus,
+.show > .acornBtn-outline.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }

@@ -130,7 +130,7 @@
 
 		
 		<input type="hidden" name="board_id" value="${article.board_id }">
-		<div id="content">
+		<div id="board">
 			<p style="color:grey;">[${article.category }] ${article.lecture_title }</p>
 			<input type="text" id="i_title" class="default" name="title" placeholder="제목을 입력하세요." required="required" 
 				style="font-size:18pt; font-weight:bold;" value="${article.board_title }" disabled="disabled">

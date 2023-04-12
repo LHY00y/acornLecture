@@ -63,9 +63,9 @@
 					<td>
 						<div class="form-floating">
 							<input type="text" style="height: 50px; width: 300px"
-								class="form-control" id="floatingInput" name="member_id"
-								placeholder="name@example.com"> <label
-								for="floatingInput">Id</label>
+								class="form-control" id="floatingInput"
+								placeholder="ID" name="member_id"> 
+								 <label for="floatingInput">Id</label>
 						</div>
 					</td>
 				</tr>
