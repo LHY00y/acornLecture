@@ -132,10 +132,12 @@
 		<input type="hidden" name="board_id" value="${article.board_id }">
 		<div id="content">
 			<p style="color:grey;">[${article.category }] ${article.lecture_title }</p>
-			<input type="text" id="i_title" class="default" name="title" style="font-size:18pt; font-weight:bold;" value="${article.board_title }" disabled="disabled">
+			<input type="text" id="i_title" class="default" name="title" placeholder="제목을 입력하세요." required="required" 
+				style="font-size:18pt; font-weight:bold;" value="${article.board_title }" disabled="disabled">
 			<p style="font-size:10pt; color:grey;"> ${article.member_name } · ${article.write_date } · ${article.board_id } </p>
 			<hr/>
-			<textarea id="i_content" class="default" name="content" style="min-height:300px; width:inherit; padding:2px; margin-top:10px;" disabled="disabled">${article.board_content}</textarea>
+			<textarea id="i_content" class="default" name="content" placeholder="제목을 입력하세요." required="required" 
+				style="min-height:300px; width:inherit; padding:2px; margin-top:10px;" disabled="disabled">${article.board_content}</textarea>
 	
 		</div>
 		<div style="margin-left:50px;">

@@ -35,6 +35,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.spring.acornLecture.board.dto.BoardDTO;
 import com.spring.acornLecture.board.dto.ImageDTO;
 import com.spring.acornLecture.board.service.BoardService;
+import com.spring.acornLecture.lecture.dto.LectureDTO;
+import com.spring.acornLecture.lecture.service.LectureService;
 import com.spring.acornLecture.member.dto.MemberDTO;
 
 
@@ -46,6 +48,8 @@ public class BoardControllerImpl implements BoardController{
 	
 	@Autowired
 	private BoardService boardService;
+	@Autowired
+	private LectureService lectureService;
 	
 	@Override
 	@RequestMapping(value= {"/board/review.do"})
@@ -115,6 +119,7 @@ public class BoardControllerImpl implements BoardController{
 			int board_id = boardService.addNewArticle(articleMap, imgflag);
 			if(imageFileList != null && imageFileList.size() != 0) {
 				for(ImageDTO imageDTO : imageFileList) {
+					System.out.println("파일 이름 : "  +imageDTO.getImgFileName());
 					File srcFile = new File(CURR_IMAGE_REPO_PATH+ "\\temp\\" 
 							+ imageDTO.getImgFileName());
 					File destDir = new File(CURR_IMAGE_REPO_PATH+"\\"+board_id);
@@ -153,6 +158,11 @@ public class BoardControllerImpl implements BoardController{
 		// TODO Auto-generated method stub
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
+		int lecture_id = Integer.parseInt(request.getParameter("lecture_id"));
+		LectureDTO lecture = lectureService.lectureInfo(lecture_id);
+		
+		mav.addObject("lecture",lecture);
+		
 		return mav;
 	}
 	
@@ -178,6 +188,7 @@ public class BoardControllerImpl implements BoardController{
 		}
 		return fileList;
 	}
+	
 	
 		
 	@Override

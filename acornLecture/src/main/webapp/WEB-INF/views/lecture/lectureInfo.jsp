@@ -28,10 +28,10 @@
 							<c:when test="${ isLogOn == true && member != null }">
 								<c:choose>
 									<c:when test="${member.grade eq '강사' }">
-										<button id="lecBtn" <c:if test="${member.member_id ne lecture.professor_id }">disabled="disabled"</c:if>>공지 작성</button>
+										<button id="lecBtn" onclick="location.href='${contextPath}/board/articleForm.do?lecture_id=${lecture.lecture_id}&member_id=${member.member_id }'" <c:if test="${member.member_id ne lecture.professor_id }">disabled="disabled"</c:if>>공지 작성</button>
 									</c:when>
 									<c:when test="${ isMine == true }">
-										<button id="lecBtn">후기 작성</button>
+										<button id="lecBtn" onclick="location.href='${contextPath}/board/articleForm.do?lecture_id=${lecture.lecture_id}&member_id=${member.member_id }'">후기 작성</button>
 									</c:when>
 									<c:when test="${dto.stuCount eq lecture.count }">
 										<button id="lecBtn"
