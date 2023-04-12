@@ -233,6 +233,43 @@ a {
 	background-color: #008CBA;
 	color: white;
 }
+
+/* 버튼 스타일*/
+.acornBtn {
+  color: #fff;
+  background-color: #9DC0DF; /* Updated primary color here */
+  border-color: #9DC0DF; /* Updated primary color here */
+}
+
+.acornBtn:hover {
+  color: #fff;
+  background-color: #84a9c1; /* Updated hover color here */
+  border-color: #7a9dbb; /* Updated hover color here */
+}
+
+.acornBtn:focus, .acornBtn.focus {
+  box-shadow: 0 0 0 0.2rem rgba(157, 192, 223, 0.5); /* Updated focus color here */
+}
+
+.acornBtn.disabled, .acornBtn:disabled {
+  color: #fff;
+  background-color: #9DC0DF; /* Updated disabled color here */
+  border-color: #9DC0DF; /* Updated disabled color here */
+}
+
+.acornBtn:not(:disabled):not(.disabled):active, .acornBtn:not(:disabled):not(.disabled).active,
+.show > .acornBtn.dropdown-toggle {
+  color: #fff;
+  background-color: #7a9dbb; /* Updated active color here */
+  border-color: #6e91b5; /* Updated active color here */
+}
+
+.acornBtn:not(:disabled):not(.disabled):active:focus, .acornBtn:not(:disabled):not(.disabled).active:focus,
+.show > .acornBtn.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(157, 192, 223, 0.5); /* Updated active/focus color here */
+}
+
+
 .acornBtn-outline {
   color: #9DC0DF;
   background-color: transparent;

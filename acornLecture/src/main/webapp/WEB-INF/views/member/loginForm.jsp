@@ -80,12 +80,14 @@
 				</tr>
 				<tr>
 					<td>
-						<input class="w-100 btn btn-lg btn-primary" type="submit" value="로그인" />
+						<input class="w-100 btn btn-lg acornBtn"  
+							type="submit" value="로그인" />
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input class="w-100 btn btn-lg btn-primary" type="button" value="회원 가입" onclick="location.href='memberTypeForm.do'" />
+					<input class="w-100 btn btn-lg acornBtn" 
+							type="button" value="회원 가입" onclick="location.href='memberTypeForm.do'" />
 					</td>
 				</tr>
 			</table>
