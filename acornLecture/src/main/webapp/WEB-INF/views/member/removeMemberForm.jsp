@@ -15,7 +15,7 @@
 		var joinForm = document.joinForm;
 		var password = joinForm.password.value;
 		var rePwd = joinForm.rePwd.value;
-		var pwdChk = ${member.password};
+		var pwdChk = "${member.password}";
 		
 		if(password.length==0 || password==""){
 			alert("비밀번호를 입력해 주세요.");
