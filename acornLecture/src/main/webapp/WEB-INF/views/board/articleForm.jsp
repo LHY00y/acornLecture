@@ -13,16 +13,18 @@
 <title>게시글 작성</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
-	
-	function backToList(obj){
-		obj.action = "${contextPath}/board/board.do";
-		obj.submit();
+	function cancel(){
+		if(confirm("작성을 취소하시겠습니까?")){
+			history.back(-1);
+		} 
 	}
+	
 	let cnt = 1;
 	function fn_addFile(){
 		$("#img-list").append("<br>" + "<input type='file' onchange='readURL(this)' name='file"+cnt+"'>");
 		cnt++;
 	}
+	
 	function readURL(input) {
 		  if (input.files && input.files[0]) {
 		    var reader = new FileReader();
@@ -60,7 +62,7 @@
 			<br><br>
 			<br><br>
 			<input type="submit" class="button" value="글쓰기">
-			<input type="button"  class="button" type="button" value="목록보기" onclick="backToList(this.form)">
+			<input type="button"  class="button" type="button" value="취소" onclick="cancel()">
 	
 		</div>
 	
