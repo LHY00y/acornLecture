@@ -20,7 +20,7 @@
 			  <div class="card-body">
 			    <h5 class="card-title">프론트 엔드</h5>
 			    <p class="card-text"></p>
-			    <input type="button" class="btn acornBtn" onclick="location.href='${ contextPath }/lecture/listLectures.do?cate=프론트엔드'" value="Go Front-End">
+			    <input type="button" class="btn acornBtn w-100" onclick="location.href='${ contextPath }/lecture/listLectures.do?cate=프론트엔드'" value="Go Front-End">
 			  </div>
 			</div>
 		</td>
@@ -30,17 +30,17 @@
 			  <div class="card-body">
 			    <h5 class="card-title">백 엔드</h5>
 			    <p class="card-text"></p>
-			    <input type="button" class="btn acornBtn" onclick="location.href='${ contextPath }/lecture/listLectures.do?cate=백엔드'" value="Go Back-End">
+			    <input type="button" class="btn acornBtn w-100" onclick="location.href='${ contextPath }/lecture/listLectures.do?cate=백엔드'" value="Go Back-End">
 			  </div>
 			</div>
 		</td>
 		<td>
 			<div class="card" style="width: 14rem;">
-			  <img style="height:150px;" src=https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202111/130948-539/%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB-%E1%84%8B%E1%85%A1%E1%87%81.png class="card-img-top" alt="...">
+			  <img style="height:150px;" src="https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202111/130948-539/%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB-%E1%84%8B%E1%85%A1%E1%87%81.png" class="card-img-top" alt="...">
 			  <div class="card-body">
 			    <h5 class="card-title">모바일</h5>
 			    <p class="card-text"></p>
-			    <input type="button" class="btn acornBtn" onclick="location.href='${ contextPath }/lecture/listLectures.do?cate=모바일'" value="Go Mobile">
+			    <input type="button" class="btn acornBtn w-100" onclick="location.href='${ contextPath }/lecture/listLectures.do?cate=모바일'" value="Go Mobile">
 			  </div>
 			</div>
 		</td>
@@ -50,7 +50,7 @@
 			  <div class="card-body">
 			    <h5 class="card-title">인공지능</h5>
 			    <p class="card-text"></p>
-			    <input type="button" class="btn acornBtn" onclick="location.href='${ contextPath }/lecture/listLectures.do?cate=인공지능'" value="Go AI">
+			    <input type="button" class="btn acornBtn w-100" onclick="location.href='${ contextPath }/lecture/listLectures.do?cate=인공지능'" value="Go AI">
 			  </div>
 			</div>
 		</td>
@@ -60,7 +60,7 @@
 			  <div class="card-body">
 			    <h5 class="card-title">기타</h5>
 			    <p class="card-text"></p>
-			    <input type="button" class="btn acornBtn" onclick="location.href='${ contextPath }/lecture/listLectures.do?cate=기타'" value="Go Etc">
+			    <input type="button" class="btn acornBtn w-100" onclick="location.href='${ contextPath }/lecture/listLectures.do?cate=기타'" value="Go Etc">
 			  </div>
 			</div>
 		</td>
@@ -74,4 +74,74 @@
 	<jsp:include page="board/board.jsp">
 		<jsp:param name="isReview" value="true" />
 	</jsp:include>	
+</div>
+
+<div id="searchLectureByKeyword">
+	<h4>학습 가이드</h4>
+	<h2>
+		내게 딱 맞는 학습 순서가
+		궁금하다면?
+	</h2>
+	<h4>
+		원하는 키워드를 선택해보세요!
+	</h4>	
+	<table id="searchLectureByKeywordTb" align="center" style="border: none;">
+		<tr>
+			<td>
+				<button class="btn_image" onclick="location.href='${contextPath}/lecture/search.do?keyword=sql'">
+					<img class="input_image" src="https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202204/213648-476/sbwj-thumb09.png"></button>
+
+			</td>
+			<td>
+				<button class="btn_image" onclick="location.href='${contextPath}/lecture/search.do?keyword=프로그래밍'">
+					<img class="input_image" src="https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202204/213652-476/sbwj-thumb02.png"></button>
+			</td>
+			<td>
+				<button class="btn_image" onclick="location.href='${contextPath}/lecture/search.do?keyword=영상 편집'">
+					<img class="input_image" src="https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202204/213657-476/sbwj-thumb03.png"></button>
+			</td>
+			<td>
+				<button class="btn_image" onclick="location.href='${contextPath}/lecture/search.do?keyword=모바일'">
+					<img class="input_image" src="https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202204/213706-476/sbwj-thumb05.png"></button>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<button class="btn_image" onclick="location.href='${contextPath}/lecture/search.do?keyword=파이썬'">
+					<img class="input_image" src="https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202204/213709-476/sbwj-thumb06.png"></button>
+
+			</td>
+			<td>
+				<button class="btn_image" onclick="location.href='${contextPath}/lecture/search.do?keyword=일러스트'">
+					<img class="input_image" src="https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202204/213713-476/sbwj-thumb07.png"></button>
+			</td>
+			<td>
+				<button class="btn_image" onclick="location.href='${contextPath}/lecture/search.do?keyword=사이드 프로젝트'">
+					<img class="input_image" src="https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202204/213716-476/sbwj-thumb08.png"></button>
+			</td>
+			<td>
+				<button class="btn_image" onclick="location.href='${contextPath}/lecture/search.do?keyword=자동화'">
+					<img class="input_image" src="https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/2022-05-09T01:53:01Z/2022-05-09T01:53:01Z-476/sbwj-thumb01.png"></button>
+			</td>
+		</tr>
+				<tr>
+			<td>
+				<button class="btn_image" onclick="location.href='${contextPath}/lecture/search.do?keyword=마케터'">
+					<img class="input_image" src="https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202204/213727-476/sbwj-thumb10.png"></button>
+
+			</td>
+			<td>
+				<button class="btn_image" onclick="location.href='${contextPath}/lecture/search.do?keyword=딥러닝'">
+					<img class="input_image" src="https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202204/213733-476/sbwj-thumb11.png"></button>
+			</td>
+			<td>
+				<button class="btn_image" onclick="location.href='${contextPath}/lecture/search.do?keyword=데이터 분석'">
+					<img class="input_image" src="https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202204/213738-476/sbwj-thumb12.png"></button>
+			</td>
+			<td>
+				<button class="btn_image" onclick="location.href='${contextPath}/lecture/search.do?keyword=기초 데이터 분석 '">
+					<img class="input_image" src="https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202204/213648-476/sbwj-thumb09.png"></button>
+			</td>
+		</tr>
+	</table>
 </div>
