@@ -28,6 +28,18 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 	
 	@Override
+	public List<BoardDTO> selectAllReviews(int lecture_id) {
+		List<BoardDTO> boardList = sqlSession.selectList("mapper.board.selectCertainLecReviews", lecture_id);
+		return boardList;
+	}
+	
+	@Override
+	public List<BoardDTO> selectAllNotices(int lecture_id) {
+		List<BoardDTO> boardList = sqlSession.selectList("mapper.board.selectCertainLecNotices", lecture_id);
+		return boardList;
+	}
+	
+	@Override
 	public int insertNewArticle(Map<String, Object> articleMap) {
 		int articleNo = selectNewArticleNo();
 		articleMap.put("articleNo", articleNo);

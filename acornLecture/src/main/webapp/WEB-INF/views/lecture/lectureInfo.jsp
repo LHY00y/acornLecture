@@ -17,11 +17,6 @@
 <title>강의 정보</title>
 </head>
 <body>
-
-	<!--  
-		공지, 후기 include 시 해당 강의 정보만 불러오기
-		메인 후기 include
-	-->
 	<div id="tableContainer">
 		<table id="lecInfoTable">
 			<tr class="lecInfoTr">

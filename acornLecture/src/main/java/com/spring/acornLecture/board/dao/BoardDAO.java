@@ -11,6 +11,9 @@ public interface BoardDAO {
 	List<BoardDTO> selectAllReviews();
 	List<BoardDTO> selectAllNotices();
 
+	List<BoardDTO> selectAllReviews(int lecture_id);
+	List<BoardDTO> selectAllNotices(int lecture_id);
+
 	int insertNewArticle(Map<String, Object> articleMap);
 
 	void insertNewImage(Map<String, Object> articleMap);

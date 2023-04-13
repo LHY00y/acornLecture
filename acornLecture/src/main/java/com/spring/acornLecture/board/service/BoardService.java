@@ -9,11 +9,16 @@ public interface BoardService {
 
 	List<BoardDTO> listReviews();
 
+	List<BoardDTO> listNotices();
+
+	List<BoardDTO> listReviews(int lecture_id);
+
+	List<BoardDTO> listNotices(int lecture_id);
+
 	int addNewArticle(Map<String, Object> articleMap, boolean imgflag);
 
 	Map viewArticle(int board_id);
 
-	List<BoardDTO> listNotices();
 
 	void removeArticle(int board_id);
 

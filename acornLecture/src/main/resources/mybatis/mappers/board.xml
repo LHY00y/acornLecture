@@ -36,7 +36,6 @@
 		]]>
 	</select>
 	
-	
 	<select id="selectAllNotices" resultType="boardDTO">
 		<![CDATA[
 			select board.*, members. member_name as member_name, lecture.lecture_title as lecture_title,
@@ -44,8 +43,35 @@
 		        inner join members
 		        on board.member_id = members.member_id
 		        inner join lecture
-		        on board.lecture_id = lecture.lecture_id
+		        on board.lecture_id = lecture.lecture_id 
                 where members.grade='강사'
+		        order by board_id desc
+		]]>
+	</select>
+	
+	
+	<select id="selectCertainLecReviews" resultType="boardDTO" parameterType="int">
+		<![CDATA[
+			select board.*, members. member_name as member_name, lecture.lecture_title as lecture_title,
+		        '후기' as category from board
+		        inner join members
+		        on board.member_id = members.member_id
+		        inner join lecture
+		        on board.lecture_id = lecture.lecture_id
+                where members.grade='학생' and lecture.lecture_id = #{lecture_id}
+		        order by board_id desc
+		]]>
+	</select>
+	
+	<select id="selectCertainLecNotices" resultType="boardDTO" parameterType="int">
+		<![CDATA[
+			select board.*, members. member_name as member_name, lecture.lecture_title as lecture_title,
+		        '공지' as category from board
+		        inner join members
+		        on board.member_id = members.member_id
+		        inner join lecture
+		        on board.lecture_id = lecture.lecture_id
+                where members.grade='강사' and lecture.lecture_id = #{lecture_id}
 		        order by board_id desc
 		]]>
 	</select>

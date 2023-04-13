@@ -84,3 +84,8 @@ a{
 #reviewContainer {
 	margin-bottom: 70px;
 }
+
+/* 작성된 게시글이 없습니다 */
+#noneDataTd {
+	color: gray;
+}

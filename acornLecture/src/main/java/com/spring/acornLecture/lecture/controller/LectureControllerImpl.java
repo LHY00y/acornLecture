@@ -87,8 +87,8 @@ public class LectureControllerImpl implements LectureController {
 			}
 		}
 		
-		List<BoardDTO> reviewList = boardService.listReviews();
-		List<BoardDTO> noticeList = boardService.listNotices();
+		List<BoardDTO> reviewList = boardService.listReviews(lecture_id);
+		List<BoardDTO> noticeList = boardService.listNotices(lecture_id);
 		
 		LectureDTO lecture = lectureService.lectureInfo(lecture_id);
 		Member_LectureDTO dto = lectureService.stuCount(lecture_id);

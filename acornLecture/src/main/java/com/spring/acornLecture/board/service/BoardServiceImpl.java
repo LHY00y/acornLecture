@@ -27,6 +27,16 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
+	public List<BoardDTO> listNotices(int lecture_id) {
+		return boardDAO.selectAllNotices(lecture_id);
+	}
+	
+	@Override
+	public List<BoardDTO> listReviews(int lecture_id) {
+		return boardDAO.selectAllReviews(lecture_id);
+	}
+	
+	@Override
 	public int addNewArticle(Map<String, Object> articleMap, boolean imgflag) {
 		int board_id = boardDAO.insertNewArticle(articleMap);
 		articleMap.put("board_id", board_id);
