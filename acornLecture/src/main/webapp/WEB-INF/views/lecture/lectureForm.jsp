@@ -10,6 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>강의 추가</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
 	function cancel(obj){
 		obj.action = "${contextPath}/main.do";
@@ -25,6 +26,25 @@
 		}else{
 			document.getElementById("add_cate").style.visibility="hidden";
 		}
+	}
+	
+	function fn_submit(obj){
+		let title = document.getElementById("title");
+		let content11 = document.getElementById("content11");
+
+		if(title.value== null || title.value.length==0){
+			alert('제목을 입력해주세요');
+			return;
+		} else if(content11.value==null || content11.value.length==0){
+			alert('내용을 입력해주세요');
+			return;
+		}else if( $('input:checkbox[name=daybox]:checked').length==0){
+		    alert("요일을 선택해주세요.");
+		    return;
+		}
+		obj.action = "${contextPath}/lecture/addNewLecture.do";
+		obj.method= "post";
+		obj.submit();
 	}
 </script>
 </head>
@@ -59,11 +79,11 @@
 			</tr>
 			<tr>
 				<td align="right">강의 제목</td>
-				<td colspan="4"><input type="text" size="67" maxlength="500" name="title"></td>
+				<td colspan="4"><input type="text" id="title" size="67" maxlength="500" name="title"></td>
 			</tr>
 			<tr>
 				<td align="right" valign="top">강의 설명</td>
-				<td colspan="4"><textarea name="content" rows="10" cols="69" maxlength="4000"></textarea></td>
+				<td colspan="4"><textarea id="content11" name="content" rows="10" cols="69" maxlength="4000" ></textarea></td>
 			</tr>
 			<tr>
 				<td align="right" >요일/시간</td>
@@ -85,7 +105,7 @@
 			<tr style="height:100px; align:bottom;">
 				<td></td>
 				<td colspan="2">
-					<input type="submit" value="강의추가" style="">
+					<input type="button" onclick="fn_submit(this.form)" value="강의추가" style="">
 					<input type="button" value="취소" onclick="cancel(this.form)">
 				</td>
 			</tr>
