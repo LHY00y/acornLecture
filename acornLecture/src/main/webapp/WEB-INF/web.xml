@@ -33,7 +33,7 @@
 	
 	<error-page>
 	<error-code>500</error-code>
-	<location>/error.do</location>
+	<location>/acornLecture/error.do</location>
 	</error-page>
 	
 	<error-page>
