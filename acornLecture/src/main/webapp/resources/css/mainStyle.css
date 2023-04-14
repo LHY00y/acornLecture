@@ -95,6 +95,18 @@ a {
   border-color: #7a9dbb; /* Updated hover color here */
 }
 
+.acornBtn1 {
+  color: #000000;
+  background-color: #fff; /* Updated primary color here */
+  border-color: #fff; /* Updated primary color here */
+}
+
+.acornBtn1:hover {
+  color: #fff;
+  background-color: #9DC0DF; /* Updated hover color here */
+  border-color: #9DC0DF; /* Updated hover color here */
+}
+
 .acornBtn:focus, .acornBtn.focus {
   box-shadow: 0 0 0 0.2rem rgba(157, 192, 223, 0.5); /* Updated focus color here */
 }

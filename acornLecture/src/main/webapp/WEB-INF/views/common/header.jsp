@@ -37,7 +37,7 @@
 		</div>
 		</header>
 	
-		<div id="menuContainer">
+		<div id="menuContainer" style="background-color: #9DC0DF;">
 			<a class="link" href="${ contextPath }/lecture/listLectures.do">강의
 				목록</a> <a class="link" href="${ contextPath }/board/review.do">후기 목록</a>
 			<a class="link" href="${ contextPath }/board/notice.do">공지 목록</a>

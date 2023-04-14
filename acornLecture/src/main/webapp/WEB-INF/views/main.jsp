@@ -5,13 +5,6 @@
     
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 
-<%-- <div id="ctBtnContainer">
-	<button class="ctBtn" onclick="location.href='${ contextPath }/lecture/listLectures.do?cate=백엔드'">백엔드</button>
-	<button class="ctBtn" onclick="location.href='${ contextPath }/lecture/listLectures.do?cate=프론트엔드'">프론트엔드</button>
-	<button class="ctBtn" onclick="location.href='${ contextPath }/lecture/listLectures.do?cate=모바일'">모바일</button>
-	<button class="ctBtn" onclick="location.href='${ contextPath }/lecture/listLectures.do?cate=인공지능'">인공지능</button>
-	<button class="ctBtn" onclick="location.href='${ contextPath }/lecture/listLectures.do?cate=기타'">기타</button>
-</div> --%>
 <table style="text-algn:center">
 	<tr>
 		<td>
@@ -79,8 +72,7 @@
 <div id="searchLectureByKeyword">
 	<h4>학습 가이드</h4>
 	<h2>
-		내게 딱 맞는 학습 순서가
-		궁금하다면?
+		내게 딱 맞는 학습이 궁금하다면?
 	</h2>
 	<h4>
 		원하는 키워드를 선택해보세요!
@@ -145,3 +137,4 @@
 		</tr>
 	</table>
 </div>
+

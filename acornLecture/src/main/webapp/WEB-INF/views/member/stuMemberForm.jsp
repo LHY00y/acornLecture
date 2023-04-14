@@ -51,7 +51,7 @@
 			joinForm.member_id.focus();
 		} else {
 			window.open("${contextPath}/member/dbCheckId.do?member_id="
-					+ member_id, "", "width=300px, height=300px");
+                    + member_id, "", "width=300px, height=300px left=800px top=300px");
 		}
 	}
 

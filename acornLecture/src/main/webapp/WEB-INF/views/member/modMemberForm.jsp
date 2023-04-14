@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +36,38 @@
 </script>
 </head>
 <body>
-	<form method="post" name="joinForm">
+	<div class="row" style="margin-top: 10px;">
+		<div class="panel panel-info col-md-1" style="width:200px;">
+    	<a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+      		<svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+      		<span class="fs-4">Sidebar</span>
+    	</a>
+    <hr>
+    	<ul class="nav nav-pills flex-column mb-auto">
+    	  	<li class="nav-item">
+        		<a href="${contextPath }/member/myPage.do" class="acornBtn1 nav-link" aria-current="page">
+          			<svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+						내 강의 보기
+        		</a>
+      		</li>
+      		<li>
+        		<a href="${contextPath }/member/modMemberForm.do" class="acornBtn1 nav-link">
+          			<svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+					회원 정보 수정
+        		</a>
+      		</li>
+     		<li>
+        		<a href="${contextPath }/member/removeMemberForm.do" class="acornBtn1 nav-link">
+          			<svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+					회원 탈퇴
+        		</a>
+      		</li>
+    	</ul>
+    <hr>
+   	</div>
+	<div class="col-md-1"></div>
+	<div class="col-md-1"></div>
+	<form method="post" name="joinForm" class="col-md-4">
 		<h1 style="text-align: center">회원 정보 수정창</h1>
 		<table align="center">
 			<tr>
@@ -70,5 +103,8 @@
 			</tr>
 		</table>
 	</form>
+	<div class="col-md-1"></div>
+	<div class="col-md-1"></div>
+	</div>
 </body>
 </html>

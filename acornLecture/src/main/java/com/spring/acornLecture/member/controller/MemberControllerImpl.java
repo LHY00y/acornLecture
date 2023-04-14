@@ -169,6 +169,8 @@ public class MemberControllerImpl implements MemberController{
 			throws Exception {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
+		MemberDTO dto1 = (MemberDTO) session.getAttribute("member");
+		
 		member_id = (String) session.getAttribute("member_id");
 		MemberDTO dto = memberService.selectGrade(member_id);
 		String grade = (String) session.getAttribute("grade");
@@ -182,7 +184,7 @@ public class MemberControllerImpl implements MemberController{
 
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("member", dto);
+		mav.addObject("member", dto1);
 		mav.addObject("lectureList", lectureList);
 		return mav;
 	}
