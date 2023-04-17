@@ -27,6 +27,27 @@
 			document.getElementById("add_cate").style.visibility = "hidden";
 		}
 	}
+	
+	function fn_submit(obj){
+		let content11 = document.getElementById("content11");
+		let count=0;
+
+		if(content11.value==null || content11.value.length==0){
+			alert('내용을 입력해주세요');
+			return;
+		}
+		for(i=1; i<=5; i++){ 
+	        if(!(document.getElementById("daybox"+i).checked)){ 
+	        	count++;
+	        }
+	    }if(count==5){
+	    	alert("요일을 선택해주세요.");
+	    	return
+	    }
+		obj.action = "${contextPath }/lecture/modLecture.do?lecture_id=${lecture.lecture_id}";
+		obj.method= "post";
+		obj.submit();
+	}
 </script>
 </head>
 <body>
@@ -66,23 +87,23 @@
 			</tr>
 			<tr>
 				<td align="right" valign="top">강의 설명</td>
-				<td colspan="4"><textarea name="content" rows="10" cols="69"
+				<td colspan="4"><textarea id="content11" name="content" rows="10" cols="69"
 						maxlength="4000">${lecture.lecture_content }</textarea></td>
 			</tr>
 			<tr>
 				<td align="right">요일/시간</td>
 				<td colspan="2"><input type="checkbox" value="월" name="daybox"
-					${fn:contains(day, "월") ? "checked" : ""}>월
-					<input type="checkbox" value="화" name="daybox"
-					${fn:contains(day, "화") ? "checked" : ""}>화
-					<input type="checkbox" value="수" name="daybox"
-					${fn:contains(day, "수") ? "checked" : ""}>수
-					<input type="checkbox" value="목" name="daybox"
-					${fn:contains(day, "목") ? "checked" : ""}>목
-					<input type="checkbox" value="금" name="daybox"
-					${fn:contains(day, "금") ? "checked" : ""}>금
-					<input type="checkbox" value="토" name="daybox"
-					${fn:contains(day, "토") ? "checked" : ""}>토
+					${fn:contains(day, "월") ? "checked" : "unchecked"}>월
+					<input type="checkbox" value="화"id="daybox1"
+					${fn:contains(day, "화") ? "checked" : "unchecked"}>화
+					<input type="checkbox" value="수" id="daybox2"
+					${fn:contains(day, "수") ? "checked" : "unchecked"}>수
+					<input type="checkbox" value="목" id="daybox3"
+					${fn:contains(day, "목") ? "checked" : "unchecked"}>목
+					<input type="checkbox" value="금" id="daybox4"
+					${fn:contains(day, "금") ? "checked" : "unchecked"}>금
+					<input type="checkbox" value="토" id="daybox5"
+					${fn:contains(day, "토") ? "checked" : "unchecked"}>토
 				</td>
 				<td align="right" colspan="2"><input type="time" name="time"
 					value="${time}"></td>
@@ -95,8 +116,9 @@
 
 			<tr style="height: 100px; align: bottom;">
 				<td></td>
-				<td colspan="2"><input type="submit" value="강의수정" style="">
-					<input type="button" value="취소" onclick="cancel(this.form)">
+				<td colspan="2">
+					<input class="btn acornBtn" type="button" onclick="fn_submit(this.form)" value="강의추가">
+					<input class="btn acornBtn" type="button" value="취소" onclick="cancel(this.form)">
 				</td>
 			</tr>
 		</table>
