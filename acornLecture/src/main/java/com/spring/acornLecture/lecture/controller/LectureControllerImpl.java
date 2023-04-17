@@ -38,7 +38,7 @@ public class LectureControllerImpl implements LectureController {
 	
 	@Override
 	@RequestMapping(value="/lecture/listLectures.do", method=RequestMethod.GET)
-	public ModelAndView listLectures(Integer lecture_id, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView listLectures(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		
@@ -53,7 +53,6 @@ public class LectureControllerImpl implements LectureController {
 	@Override
 	@RequestMapping(value="/lecture/search.do", method=RequestMethod.GET)
 	public ModelAndView searchLectures(@RequestParam("keyword") String keyword, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//ModelAndView mav = new ModelAndView("redirect:/lecture/listLectures.do");
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 

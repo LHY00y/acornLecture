@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 public interface LectureController {
 
-	ModelAndView listLectures(@RequestParam("lecture_id")Integer lecture_id,HttpServletRequest request, HttpServletResponse response) throws Exception;
+	ModelAndView listLectures(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 	ModelAndView searchLectures(@RequestParam("keyword") String keyword, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
