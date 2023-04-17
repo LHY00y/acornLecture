@@ -37,7 +37,7 @@
 <body>
 		<form action="${contextPath }/lecture/search.do" method="GET" style="padding-left:20px; display:inline;">
 			<input type="text" name="keyword" value= "${keyword}" style="width:55%; height:20px;">
-			<input type="submit" value="검색" style="width:50px; height:29px; margin:5px;"/>	
+			<input  type="submit" value="검색" style="width:50px; height:29px; margin:5px;"/>	
 		</form>
 		<table align="center">
 	
@@ -81,7 +81,7 @@
 		</c:forEach>
 	</table>
 	<c:if test="${member.grade=='강사' }">
-		<input id=confirm type="button" onclick="location.href='lectureForm.do'" value="강의 추가"> 
+		<input class="btn acornBtn" type="button" onclick="location.href='lectureForm.do'" value="강의 추가"> 
 	</c:if>
 </body>
 </html>

@@ -105,8 +105,8 @@
 			<tr style="height:100px; align:bottom;">
 				<td></td>
 				<td colspan="2">
-					<input type="button" onclick="fn_submit(this.form)" value="강의추가" style="">
-					<input type="button" value="취소" onclick="cancel(this.form)">
+					<input class="btn acornBtn" type="button" onclick="fn_submit(this.form)" value="강의추가" style="">
+					<input class="btn acornBtn" type="button" value="취소" onclick="cancel(this.form)">
 				</td>
 			</tr>
 		</table>
