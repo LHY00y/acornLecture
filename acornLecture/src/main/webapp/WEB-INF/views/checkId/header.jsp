@@ -6,8 +6,6 @@
 %>
 
 
-<div id="mainLogoContainer">
-	<h1>홍 선생</h1>
-</div>
+	<h1 style="text-align:center; margin-top:10px">홍 선생</h1>
 
 
