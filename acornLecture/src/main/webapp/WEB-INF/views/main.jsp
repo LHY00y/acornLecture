@@ -5,7 +5,7 @@
     
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 
-<table style="text-algn:center">
+<table style="text-algn:center; margin:0px auto">
 	<tr>
 		<td>
 			<div class="card h-100" style="width: 14rem;">

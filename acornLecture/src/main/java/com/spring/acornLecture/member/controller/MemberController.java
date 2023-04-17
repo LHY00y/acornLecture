@@ -21,7 +21,7 @@ public interface MemberController {
 	public ModelAndView dbCkeckId(HttpServletRequest request, HttpServletResponse response);
 	public ModelAndView logout(RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView modMemberForm(@RequestParam("member_id") String member_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public ModelAndView modMember(@ModelAttribute("member") MemberDTO member, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView modMember(@ModelAttribute("member") MemberDTO member, RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView myPage(@RequestParam("member_id") String member_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ResponseEntity dropLecture(@RequestParam("lecture_id") int lecture_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView removeMember(@RequestParam("member_id") String member_id, HttpServletRequest request, HttpServletResponse response) throws Exception;

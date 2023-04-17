@@ -40,7 +40,10 @@
 		<div class="panel panel-info col-md-1" style="width:200px;">
     	<a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
       		<svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-      		<span class="fs-4">Sidebar</span>
+      		<h5>
+      			안녕하세요<br>
+      			${member.member_name}님
+      		</h5>
     	</a>
     <hr>
     	<ul class="nav nav-pills flex-column mb-auto">
