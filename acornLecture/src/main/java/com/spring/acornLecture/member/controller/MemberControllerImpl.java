@@ -153,23 +153,28 @@ public class MemberControllerImpl implements MemberController{
 
 	@Override
 	@RequestMapping(value="/member/modMember.do", method=RequestMethod.POST)
-	public ModelAndView modMember(MemberDTO member, RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response)
+	public ModelAndView modMember(MemberDTO member, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
 		memberService.modMember(member);
-
-		HttpSession session = request.getSession(false);
-		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
-
-		ModelAndView mav = new ModelAndView();
-
-		if(session != null && isLogOn != null) {			
-			session.invalidate();
-			rAttr.addAttribute("result", "logout");
-		} else {
-			rAttr.addAttribute("result", "notLogin");
-		}
-		mav.setViewName("redirect:/member/loginForm.do");
+		ModelAndView mav = new ModelAndView("redirect:/main.do");
+		HttpSession session = request.getSession();
+		member.setPassword((String)request.getParameter("password"));
+		member.setMember_name((String)request.getParameter("member_name"));
+		session.setAttribute("member", member);
+		
+//		HttpSession session = request.getSession(false);
+//		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
+//
+//		ModelAndView mav = new ModelAndView();
+//
+//		if(session != null && isLogOn != null) {			
+//			session.invalidate();
+//			rAttr.addAttribute("result", "logout");
+//		} else {
+//			rAttr.addAttribute("result", "notLogin");
+//		}
+//		mav.setViewName("redirect:/member/loginForm.do");
 		return mav;
 	}
 
@@ -237,9 +242,13 @@ public class MemberControllerImpl implements MemberController{
 	public ModelAndView removeMember(String member_id,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		memberService.removeMemBoard(member_id);
+		memberService.removeMemLecture(member_id);
 		memberService.removeMember(member_id);
 		ModelAndView mav = new ModelAndView("redirect:/member/logout.do");
 				
 		return mav;
 	}
+
+	
 }
