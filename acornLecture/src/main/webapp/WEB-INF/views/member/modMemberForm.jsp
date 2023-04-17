@@ -75,7 +75,7 @@
 		<table align="center">
 			<tr>
 				<td width="200"><p align="right">아이디</p></td>
-				<td width="400"><input type="text" name="member_id"
+				<td width="400"><input class="form-control" type="text" name="member_id"
 					value="${member.member_id }" disabled="disabled"> <input
 					type="hidden" name="member_id" value="${member.member_id }">
 				</td>
@@ -83,20 +83,20 @@
 			</tr>
 			<tr>
 				<td width="200"><p align="right">암호</p></td>
-				<td width="400"><input type="password" name="password"></td>
+				<td width="400"><input class="form-control" type="password" name="password"></td>
 			</tr>
 			<tr>
 				<td width="200"><p align="right">암호확인</p></td>
-				<td width="400"><input type="password" name="rePwd"></td>
+				<td width="400"><input class="form-control" type="password" name="rePwd"></td>
 			</tr>
 			<tr>
 				<td width="200"><p align="right">이름</p></td>
-				<td width="400"><input type="text" name="member_name"
+				<td width="400"><input class="form-control" type="text" name="member_name"
 					value="${member.member_name }"></td>
 			</tr>
 			<tr>
 				<td width="200"><p align="right">등급</p></td>
-				<td width="400"><input type="text" name="grade"
+				<td width="400"><input class="form-control" type="text" name="grade"
 					value="${member.grade }" disabled="disabled"></td>
 			</tr>
 			<tr>
