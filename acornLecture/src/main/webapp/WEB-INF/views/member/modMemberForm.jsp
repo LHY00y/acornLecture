@@ -98,7 +98,8 @@
 			</tr>
 			<tr>
 				<td width="200"><p align="right">&nbsp;</p></td>
-				<td width="400"><input id="confirm" type="button" value="수정하기" onclick="fn_modMember()"> <input id="confirm"
+				<td width="400"><input class="btn acornBtn" type="button" value="수정하기" onclick="fn_modMember()">
+				 <input class="btn acornBtn"
 					type="reset" value="다시입력"></td>
 			</tr>
 		</table>
