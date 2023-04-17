@@ -5,7 +5,8 @@
     
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 
-<table style="text-algn:center; margin:0px auto">
+
+<table style="text-algn:center; margin: 0px auto;">
 	<tr>
 		<td>
 			<div class="card h-100" style="width: 14rem;">
@@ -136,5 +137,15 @@
 			</td>
 		</tr>
 	</table>
+</div>
+
+<div style="margin: 50px 0px 50px 0px">
+	<h4>요즘 대세 chatGPT</h4>
+	<h2>
+		chatGPT란?
+	</h2>
+	<h4>chatGPT에 대해 배워보고 효율적으로 사용해보세요!</h4>
+	<iframe width="640" height="355" src="https://www.youtube.com/embed/OktEGBDholo" title="지금 전 세계가 주목하는 &#39;챗GPT&#39;✨&#39;GPT&#39; 모르면 도태된다!｜&#39;AI와 함께 살기, 준비됐나요?&#39; - 김성훈 교수｜차이나는 클라스｜JTBC 201130 방송" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br>
+	<button type="button" class="btn acornBtn" style="width:640px;" onclick="location.href='${contextPath}/lecture/search.do?keyword=chatGPT'">수강하러 가기</button>
 </div>
 
