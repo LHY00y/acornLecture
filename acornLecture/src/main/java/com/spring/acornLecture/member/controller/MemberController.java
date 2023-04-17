@@ -25,5 +25,6 @@ public interface MemberController {
 	public ModelAndView myPage(@RequestParam("member_id") String member_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ResponseEntity dropLecture(@RequestParam("lecture_id") int lecture_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView removeMember(@RequestParam("member_id") String member_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView info(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
 }

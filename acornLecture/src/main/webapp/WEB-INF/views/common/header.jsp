@@ -19,7 +19,7 @@
 			<li><a href="#" class="nav-link px-2" style="color:#9DC0DF">Features</a></li>
 			<li><a href="#" class="nav-link px-2" style="color:#9DC0DF">Pricing</a></li>
 			<li><a href="#" class="nav-link px-2" style="color:#9DC0DF">FAQs</a></li>
-			<li><a href="#" class="nav-link px-2" style="color:#9DC0DF">About</a></li>
+			<li><a href="${ contextPath }/member/info.do" class="nav-link px-2" style="color:#9DC0DF">About</a></li>
 		</ul>
         
         <!-- 신버전 헤더 -->

@@ -162,19 +162,7 @@ public class MemberControllerImpl implements MemberController{
 		member.setPassword((String)request.getParameter("password"));
 		member.setMember_name((String)request.getParameter("member_name"));
 		session.setAttribute("member", member);
-		
-//		HttpSession session = request.getSession(false);
-//		Boolean isLogOn = (Boolean) session.getAttribute("isLogOn");
-//
-//		ModelAndView mav = new ModelAndView();
-//
-//		if(session != null && isLogOn != null) {			
-//			session.invalidate();
-//			rAttr.addAttribute("result", "logout");
-//		} else {
-//			rAttr.addAttribute("result", "notLogin");
-//		}
-//		mav.setViewName("redirect:/member/loginForm.do");
+
 		return mav;
 	}
 
@@ -242,11 +230,19 @@ public class MemberControllerImpl implements MemberController{
 	public ModelAndView removeMember(String member_id,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		memberService.removeMemBoard(member_id);
-		memberService.removeMemLecture(member_id);
 		memberService.removeMember(member_id);
 		ModelAndView mav = new ModelAndView("redirect:/member/logout.do");
 				
+		return mav;
+	}
+
+	@Override
+	@RequestMapping("/member/info.do")
+	public ModelAndView info(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+		
 		return mav;
 	}
 
