@@ -48,6 +48,19 @@ a {
 	margin: 5px;
 }
 
+/* 세로 정렬 */
+.d-flex {
+	align-items: center;
+	padding: 1.2rem 0 !important;
+}
+
+#searchForm {
+	margin-bottom: 0px;
+}
+
+.mb-md-0 {
+	font-weight: bold;
+}
 
 
 /* 
@@ -186,6 +199,9 @@ a {
   width: 100%;
   height: 100%;
 }
+
+
+
 /* 
 	Footer
 			*/
@@ -324,5 +340,12 @@ a {
 #stuJoinMember:hover {
 	background-color: #008CBA;
 	color: white;
+}
+
+
+
+/* INFO */
+#infoText {
+	font-size: 1.1em !important;
 }
 

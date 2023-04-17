@@ -15,9 +15,9 @@
 	<div class="p-5 mb-4 bg-light rounded-3" style="width: 100%">
 		<div class="container-fluid py-5">
 			<h1 class="display-5 fw-bold">홍선생 홈페이지에 오신 것을 환영합니다!</h1>
-			<p class="col-md-8 fs-4">
+			<p class="col-md-8 fs-4" id="infoText">
 				홍선생 홈페이지는 학생들이 원하는 과목에 대한 인강 선생님을 추천해주는 홈페이지입니다.<br> 강의는 수준 높은
-				내용과 풍부한 경험을 가진 선생님들이 제작한 것으로, 학생들의 능력과 수준에 맞게 구성되어 있습니다.
+				내용과 풍부한 경험을 가진 선생님들이 제작한 것으로, <br>학생들의 능력과 수준에 맞게 구성되어 있습니다.
 			</p>
 		</div>
 	</div>

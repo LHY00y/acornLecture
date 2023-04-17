@@ -11,7 +11,7 @@
       <div class="col-sm-1">
         <a id="mainLogo" href="${ contextPath }/main.do">홍 선생</a>
       </div>
-      <form action="${contextPath }/lecture/search.do" method="GET" class="col-sm-4">
+      <form id="searchForm" action="${contextPath }/lecture/search.do" method="GET" class="col-sm-4">
         <div class="input-group">
           <input type="text" class="form-control" style="width:200px;" name="keyword" value="${keyword}" placeholder="강의를 검색해 보세요" style="font-size: 14px;"/>
           <input type="submit" class="btn btn-lg acornBtn" style="font-size: 14px;" value="강의 검색"/>
