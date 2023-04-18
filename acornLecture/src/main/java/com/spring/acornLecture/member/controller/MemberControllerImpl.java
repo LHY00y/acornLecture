@@ -175,8 +175,8 @@ public class MemberControllerImpl implements MemberController{
 		MemberDTO dto1 = (MemberDTO) session.getAttribute("member");
 		
 		member_id = (String) session.getAttribute("member_id");
-		MemberDTO dto = memberService.selectGrade(member_id);
 		String grade = (String) session.getAttribute("grade");
+		
 		List<LectureDTO> lectureList;
 		if(grade.equals("학생")) {
 			lectureList = memberService.selectStuLectureList(member_id);
@@ -184,8 +184,10 @@ public class MemberControllerImpl implements MemberController{
 		else {	
 			lectureList = memberService.selectProLectureList(member_id);
 		}
-
 		String viewName = (String) request.getAttribute("viewName");
+		
+		dto1.setGrade(grade);
+		
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("member", dto1);
 		mav.addObject("lectureList", lectureList);
