@@ -81,7 +81,7 @@
 	<table id="searchLectureByKeywordTb" align="center" style="border: none;">
 		<tr>
 			<td>
-				<button class="btn_image" onclick="location.href='${contextPath}/lecture/search.do?keyword=sql'">
+				<button class="btn_image" onclick="location.href='${contextPath}/lecture/search.do?keyword=데이터 분석'">
 					<img class="input_image" src="https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202204/213648-476/sbwj-thumb09.png"></button>
 
 			</td>
@@ -90,7 +90,7 @@
 					<img class="input_image" src="https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202204/213652-476/sbwj-thumb02.png"></button>
 			</td>
 			<td>
-				<button class="btn_image" onclick="location.href='${contextPath}/lecture/search.do?keyword=영상 편집'">
+				<button class="btn_image" onclick="location.href='${contextPath}/lecture/search.do?keyword=영상편집'">
 					<img class="input_image" src="https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202204/213657-476/sbwj-thumb03.png"></button>
 			</td>
 			<td>
@@ -119,7 +119,7 @@
 		</tr>
 				<tr>
 			<td>
-				<button class="btn_image" onclick="location.href='${contextPath}/lecture/search.do?keyword=마케터'">
+				<button class="btn_image" onclick="location.href='${contextPath}/lecture/search.do?keyword=마케팅'">
 					<img class="input_image" src="https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202204/213727-476/sbwj-thumb10.png"></button>
 
 			</td>
@@ -132,8 +132,8 @@
 					<img class="input_image" src="https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202204/213738-476/sbwj-thumb12.png"></button>
 			</td>
 			<td>
-				<button class="btn_image" onclick="location.href='${contextPath}/lecture/search.do?keyword=기초 데이터 분석 '">
-					<img class="input_image" src="https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202204/213648-476/sbwj-thumb09.png"></button>
+				<button class="btn_image" onclick="location.href='${contextPath}/lecture/search.do?keyword=디자인 '">
+					<img class="input_image" src="https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/202204/213700-476/sbwj-thumb04.png"></button>
 			</td>
 		</tr>
 	</table>
