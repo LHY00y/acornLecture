@@ -39,7 +39,7 @@ import com.spring.acornLecture.member.dto.MemberDTO;
 @EnableAspectJAutoProxy
 public class LectureControllerImpl implements LectureController {
 	
-	private static final String CURR_MOVIE_REPO_PATH = "C:\\Users\\leeha\\git\\acornLecture\\acornLecture\\lecture_movie";
+	private static final String CURR_MOVIE_REPO_PATH = "D:\\MY\\tools\\acornstudy\\apache-tomcat-9.0.71\\acornLecture\\acornLecture\\lecture_movie";
 
 	@Autowired
 	private LectureService lectureService;
@@ -255,7 +255,7 @@ public class LectureControllerImpl implements LectureController {
 			message = "<script>";
 			message += "alert('강의를 수정했습니다.');";
 			message += "location.href='" + multipartRequest.getContextPath()
-				+"/lecture/info.do?id="+lectureNo+"';";
+				+"/lecture/info.do?id="+lecture_id+"';";
 			message += "</script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		} catch (Exception e) {
