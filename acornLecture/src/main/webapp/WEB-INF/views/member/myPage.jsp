@@ -70,7 +70,7 @@
                            ${status.count }
                         </div>
                         <a class="card-title" style="font-size:20px; padding:10px 10px 0px 10px;" href="${ contextPath }/lecture/info.do?id=${item.lecture_id}">${item.lecture_title}</a>
-                        <p class="card-text" style="font-size:14px; padding:10px 10px 0px 10px;">${item.lecture_content}</p>
+                        <p class="card-text" style="font-size:14px; padding:10px 10px 0px 10px;">${item.schedule}</p>
                         <table border="0">
                            <tr>
                               <td>
@@ -102,7 +102,7 @@
                            ${status.count }
                         </div>
                         <a class="card-title" style="font-size:20px; padding:10px 10px 0px 10px;" href="${ contextPath }/lecture/info.do?id=${item.lecture_id}">${item.lecture_title}</a>
-                        <p class="card-text" style="font-size:14px; padding:10px 10px 0px 10px;">${item.lecture_content}</p>
+                        <p class="card-text" style="font-size:14px; padding:10px 10px 0px 10px;">${item.schedule}</p>
                         <table border="0">
                            <tr>
                               <td>

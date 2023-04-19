@@ -62,7 +62,7 @@
 	<select id="selectStuLectureList" parameterType="String"
 		resultType="lectureDTO">
         <![CDATA[
-            select l.lecture_title, l.lecture_id, l.lecture_content
+            select l.lecture_title, l.lecture_id, l.lecture_content, l.schedule
             FROM lecture l
             INNER JOIN member_lecture ml ON l.lecture_id = ml.lecture_id
             WHERE ml.member_id=#{member_id}
