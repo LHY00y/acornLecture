@@ -36,11 +36,11 @@
 			alert('내용을 입력해주세요');
 			return;
 		}
-		for(i=1; i<=5; i++){ 
+		for(i=1; i<=6; i++){ 
 	        if(!(document.getElementById("daybox"+i).checked)){ 
 	        	count++;
 	        }
-	    }if(count==5){
+	    }if(count==6){
 	    	alert("요일을 선택해주세요.");
 	    	return
 	    }
@@ -92,32 +92,30 @@
 			</tr>
 			<tr>
 				<td align="right">요일/시간</td>
-				<td colspan="2"><input type="checkbox" value="월" name="daybox"
+				<td colspan="2"><input type="checkbox" value="월" name="daybox" id="daybox1"
 					${fn:contains(day, "월") ? "checked" : "unchecked"}>월
-					<input type="checkbox" value="화"id="daybox1"
+					<input type="checkbox" value="화" id="daybox2" name="daybox"
 					${fn:contains(day, "화") ? "checked" : "unchecked"}>화
-					<input type="checkbox" value="수" id="daybox2"
+					<input type="checkbox" value="수" id="daybox3" name="daybox"
 					${fn:contains(day, "수") ? "checked" : "unchecked"}>수
-					<input type="checkbox" value="목" id="daybox3"
+					<input type="checkbox" value="목" id="daybox4" name="daybox"
 					${fn:contains(day, "목") ? "checked" : "unchecked"}>목
-					<input type="checkbox" value="금" id="daybox4"
+					<input type="checkbox" value="금" id="daybox5" name="daybox"
 					${fn:contains(day, "금") ? "checked" : "unchecked"}>금
-					<input type="checkbox" value="토" id="daybox5"
+					<input type="checkbox" value="토" id="daybox6" name="daybox"
 					${fn:contains(day, "토") ? "checked" : "unchecked"}>토
 				</td>
-				<td align="right" colspan="2"><input type="time" name="time"
-					value="${time}"></td>
+				<td align="right" colspan="2"><input type="time" name="time" value="${time}"></td>
 			</tr>
 			<tr>
 				<td align="right">정원</td>
 				<td><input type="number" min="0" name="count"
 					value="${lecture.count }"></td>
 			</tr>
-
 			<tr style="height: 100px; align: bottom;">
 				<td></td>
 				<td colspan="2">
-					<input class="btn acornBtn" type="button" onclick="fn_submit(this.form)" value="강의추가">
+					<input class="btn acornBtn" type="button" onclick="fn_submit(this.form)" value="강의수정">
 					<input class="btn acornBtn" type="button" value="취소" onclick="cancel(this.form)">
 				</td>
 			</tr>

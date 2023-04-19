@@ -33,7 +33,7 @@
 				<c:forEach var="mv" items="${mvList}">
 					<tr align="center">
 						<td>${index=index+1 }</td>
-						<td><a href="${contextPath }/lecture/showMv.do?mvFileNo=${mv.mvFileNo}">${mv.mvTitle}</a></td>
+						<td><a href="${contextPath }/lecture/showMv.do?id=${mv.lecture_id}&mvFileNo=${mv.mvFileNo}">${mv.mvTitle}</a></td>
 						<td style="font-size:9pt; color:grey;">${mv.regDate }</td> 
 					</tr>
 				</c:forEach>

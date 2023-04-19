@@ -255,7 +255,7 @@ public class LectureControllerImpl implements LectureController {
 			message = "<script>";
 			message += "alert('강의를 수정했습니다.');";
 			message += "location.href='" + multipartRequest.getContextPath()
-				+"/lecture/info.do?id="+lectureNo+"';";
+				+"/lecture/info.do?id="+lecture_id+"';";
 			message += "</script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		} catch (Exception e) {
@@ -407,14 +407,27 @@ public class LectureControllerImpl implements LectureController {
 	
 	@Override
 	@RequestMapping(value="/lecture/showMv.do", method=RequestMethod.GET)
-	public ModelAndView showMv(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView showMv(@RequestParam("id") int lecture_id, @RequestParam("mvFileNo") int mvFileNo, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
-		int mvFileNo = Integer.parseInt(request.getParameter("mvFileNo"));
-		
+		int prev = 0, next = 0;
+		List<MovieDTO> mvList = lectureService.mvList(lecture_id);
+	
+		for(int i = 0; i<mvList.size(); i++) {
+			if(mvList.get(i).getMvFileNo() == mvFileNo) {
+				if(i>0) {
+					prev = mvList.get(i-1).getMvFileNo();
+				}
+				if(i+1<mvList.size()) {
+					next = mvList.get(i+1).getMvFileNo();
+				}
+			}
+		}
 		MovieDTO mv = lectureService.mvInfo(mvFileNo);
 		
 		mav.addObject("mv", mv);
+		mav.addObject("prevMv", prev);
+		mav.addObject("nextMv", next);
 		return mav;
 	}
 	

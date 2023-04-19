@@ -101,6 +101,17 @@ a {
   background-color: #9DC0DF; /* Updated primary color here */
   border-color: #9DC0DF; /* Updated primary color here */
 }
+.acornBtn2 {
+  color: #fff;
+  background-color: #9DC0DF; /* Updated primary color here */
+  border-color: #9DC0DF; /* Updated primary color here */
+}
+
+.acornBtn2:disabled {
+  color: #AAAAAA;
+  background-color: #DDDDDD; 
+  border-color: #AAAAAA; 
+}
 
 .acornBtn:hover {
   color: #fff;

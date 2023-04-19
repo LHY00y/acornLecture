@@ -37,7 +37,7 @@ public interface LectureController {
 	ResponseEntity addNewMovie(MultipartHttpServletRequest multipartRequest, HttpServletRequest request, HttpServletResponse response)
 			throws Exception;
 
-	ModelAndView showMv(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	ModelAndView showMv(@RequestParam("id") int lecture_id,  @RequestParam("mvFileNo") int mvFileNo, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 	ModelAndView mvList(@RequestParam("id") int lecture_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 }
