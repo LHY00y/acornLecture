@@ -18,7 +18,7 @@
 		<br>
 		<div style="min-width:700px; width:70%; text-align:center; margin:auto;">
 			<video style="min-width:700px; width:100%; max-height:600px; margin:auto; " 
-				src="${contextPath }/mvdownload.do?mvFileName=${mv.mvFileName }&lecture_id=${mv.lecture_id }" type="mp4" controls="controls">영상에 문제가 있습니다.</video>
+				src="${contextPath }/mvdownload.do?mvFileName=${mv.mvFileName }&mvFileNo=${mv.mvFileNo }" type="mp4" controls="controls">영상에 문제가 있습니다.</video>
 			<br><br>
 			<button class="acornBtn2"  id="prevBtn" onClick="location.href='${ contextPath }/lecture/showMv.do?id=${mv.lecture_id }&mvFileNo=${prevMv}'" style="float:left; padding:5px 20px;">이전 영상</button>
 			<button class="acornBtn2" id="nextBtn"  onClick="location.href='${ contextPath }/lecture/showMv.do?id=${mv.lecture_id }&mvFileNo=${nextMv}'" style="float:right; padding:5px 20px;">다음 영상</button>

@@ -41,10 +41,10 @@ public class FileDownloadController {
 	
 	@RequestMapping("/mvdownload.do")
 	public void mvdownload(@RequestParam("mvFileName") String mvFileName,
-			@RequestParam("lecture_id") String lecture_id,
+			@RequestParam("mvFileNo") String mvFileNo,
 			HttpServletResponse response) throws Exception {
 		OutputStream out = response.getOutputStream();
-		String downFile = CURR_MOVIE_REPO_PATH + "\\" + lecture_id + "\\" + mvFileName;
+		String downFile = CURR_MOVIE_REPO_PATH + "\\" + mvFileNo + "\\" + mvFileName;
 		File file = new File(downFile);
 		
 		response.setHeader("Cache-Control", "no-cache");

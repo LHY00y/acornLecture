@@ -39,7 +39,7 @@ import com.spring.acornLecture.member.dto.MemberDTO;
 @EnableAspectJAutoProxy
 public class LectureControllerImpl implements LectureController {
 	
-	private static final String CURR_MOVIE_REPO_PATH = "D:\\MY\\tools\\acornstudy\\apache-tomcat-9.0.71\\acornLecture\\acornLecture\\lecture_movie";
+	private static final String CURR_MOVIE_REPO_PATH = "C:\\Users\\leeha\\git\\acornLecture\\acornLecture\\lecture_movie";
 
 	@Autowired
 	private LectureService lectureService;
@@ -362,7 +362,7 @@ public class LectureControllerImpl implements LectureController {
 			if(mvFileName != null && mvFileName != "") {
 				File srcFile = new File(CURR_MOVIE_REPO_PATH+ "\\temp\\" 
 						+ mvFileName);
-				File destDir = new File(CURR_MOVIE_REPO_PATH+"\\"+lecture_id);
+				File destDir = new File(CURR_MOVIE_REPO_PATH+"\\"+mvNo);
 				FileUtils.moveFileToDirectory(srcFile, destDir, true);
 			}
 			
