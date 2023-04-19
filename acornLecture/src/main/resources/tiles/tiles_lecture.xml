@@ -31,4 +31,14 @@
 		<put-attribute name="title" value="강의수정" />
 		<put-attribute name="body" value="/WEB-INF/views/lecture/modLectureForm.jsp" />
 	</definition>
+
+	<definition name="/lecture/uploadForm" extends="baseLayout">
+		<put-attribute name="title" value="강의업로드" />
+		<put-attribute name="body" value="/WEB-INF/views/lecture/uploadForm.jsp" />
+	</definition>
+	
+		<definition name="/lecture/showMv" extends="baseLayout">
+		<put-attribute name="title" value="영상시청" />
+		<put-attribute name="body" value="/WEB-INF/views/lecture/showMv.jsp" />
+	</definition>
 </tiles-definitions>

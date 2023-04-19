@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.spring.acornLecture.lecture.dto.LectureDTO;
 import com.spring.acornLecture.lecture.dto.Member_LectureDTO;
+import com.spring.acornLecture.lecture.dto.MovieDTO;
 
 public interface LectureDAO {
 
@@ -20,4 +21,8 @@ public interface LectureDAO {
 	String selectDaybox(int lecture_id);
 	void insertEnrol(int lecture_id, String member_id);
 	Member_LectureDTO selectStuCount(int lecture_id);
+	int selectMvCount();
+	void insertNewMv(Map<String, Object> mvMap);
+	MovieDTO selectOneMv(int mvFileNo);
+	List<MovieDTO> selectMvList(int lecture_id);
 }

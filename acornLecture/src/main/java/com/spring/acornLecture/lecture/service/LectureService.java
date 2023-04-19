@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.spring.acornLecture.lecture.dto.LectureDTO;
 import com.spring.acornLecture.lecture.dto.Member_LectureDTO;
+import com.spring.acornLecture.lecture.dto.MovieDTO;
 
 public interface LectureService {
 
@@ -20,4 +21,7 @@ public interface LectureService {
 	String daybox(int lecture_id);
 	void enrol(int lecture_id, String member_id);
 	Member_LectureDTO stuCount(int lecture_id);
+	int addNewMovie(Map<String, Object> mvMap);
+	MovieDTO mvInfo(int mvFileNo);
+	List<MovieDTO> mvList(int lecture_id);
 }

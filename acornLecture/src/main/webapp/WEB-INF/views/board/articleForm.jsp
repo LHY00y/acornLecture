@@ -65,39 +65,6 @@
 			<input type="button"  class="button" type="button" value="취소" onclick="cancel()">
 	
 		</div>
-	
-		
-		
-		
-		<%-- <table border="0" align="center">
-			<tr>
-				<td align="right">작성자</td>
-				<td colspan="2" align="left">
-				<input type="hidden" name="lecture_id" value="${param.lecture_id}">
-				<input type="text" size="20" maxlength="100" name="name" value="${member.member_name }" readonly="readonly"></td>
-			</tr>
-			<tr>
-				<td align="right">글제목</td>
-				<td colspan="2"><input type="text" size="67" maxlength="500" name="title"></td>
-			</tr>
-			<tr>
-				<td align="right" valign="top">글내용</td>
-				<td colspan="2"><textarea name="content" rows="10" cols="69" maxlength="4000"></textarea></td>
-			</tr>
-			<tr>
-				<td align="right">이미지파일 첨부</td>
-				<td align="left"><input type="button" value="파일추가" onclick="fn_addFile()"></td>
-			</tr>
-			<tr>
-				<td colspan="4"><div id="d_file"></div></td>
-			</tr>
-			<tr>
-				<td align="right"></td>
-				<td colspan="2">
-					
-				</td>
-			</tr>
-		</table>		 --%>
 	</form>
 </body>
 </html>

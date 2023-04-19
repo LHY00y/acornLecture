@@ -25,6 +25,7 @@
 						<c:when test="${ isLogOn == true && member != null }">
 							<c:choose>
 								<c:when test="${member.grade eq '강사' }">
+									<button id="lecBtn" onclick="location.href='${ contextPath }/lecture/uploadForm.do?lecture_id=${ lecture.lecture_id }'" <c:if test="${member.member_id ne lecture.professor_id }">disabled="disabled"</c:if>>영상 업로드</button>
 									<button id="lecBtn" onclick="location.href='${ contextPath }/board/articleForm.do?lecture_id=${ lecture.lecture_id }'" <c:if test="${member.member_id ne lecture.professor_id }">disabled="disabled"</c:if>>공지 작성</button>
 								</c:when>
 								<c:when test="${ isMine == true }">
@@ -53,6 +54,16 @@
 			</tr>
 		</table>
 	</div>
+	<c:if test="${ isMine == true || member.grade eq '강사' }">
+	<hr>
+	<div id="mvContainer">
+		<h4>영상</h4>
+		<jsp:include page="mvList.jsp">
+			<jsp:param name="isReview" value="false" />
+			<jsp:param name="isMain" value="false" />
+		</jsp:include>
+	</div>
+	</c:if>
 
 	<hr>
 	<div id="noticeContainer">

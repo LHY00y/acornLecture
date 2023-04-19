@@ -116,7 +116,7 @@ public class BoardControllerImpl implements BoardController{
 		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
 		
 		try {
-			int board_id = boardService.addNewArticle(articleMap, imgflag);
+			int board_id =boardService.addNewArticle(articleMap, imgflag);
 			if(imageFileList != null && imageFileList.size() != 0) {
 				for(ImageDTO imageDTO : imageFileList) {
 					System.out.println("파일 이름 : "  +imageDTO.getImgFileName());

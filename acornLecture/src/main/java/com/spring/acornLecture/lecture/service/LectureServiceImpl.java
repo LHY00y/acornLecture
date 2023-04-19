@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.spring.acornLecture.lecture.dao.LectureDAO;
 import com.spring.acornLecture.lecture.dto.LectureDTO;
 import com.spring.acornLecture.lecture.dto.Member_LectureDTO;
+import com.spring.acornLecture.lecture.dto.MovieDTO;
 
 @Service
 public class LectureServiceImpl implements LectureService{
@@ -83,5 +84,22 @@ public class LectureServiceImpl implements LectureService{
 		// TODO Auto-generated method stub
 		Member_LectureDTO stuCount = lectureDAO.selectStuCount(lecture_id);
 		return stuCount;
+	}
+	
+	@Override
+	public int addNewMovie( Map<String, Object> mvMap) {
+		int mvNo = lectureDAO.selectMvCount() + 1;
+		mvMap.put("mvFileNo", mvNo);
+		lectureDAO.insertNewMv(mvMap);
+		return mvNo;
+	}
+	
+	@Override
+	public MovieDTO mvInfo(int mvFileNo) {
+		return lectureDAO.selectOneMv(mvFileNo);
+	}
+	@Override
+	public List<MovieDTO> mvList(int lecture_id) {
+		return lectureDAO.selectMvList(lecture_id);
 	}
 }

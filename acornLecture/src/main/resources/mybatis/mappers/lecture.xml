@@ -19,6 +19,14 @@
 		<result property="member_id" column="member_id" />
 		<result property="lecture_id" column="lecture_id" />
 	</resultMap>
+	
+	<resultMap type="movieDTO" id="mvResult">
+		<result property="mvFileNo" column="mvfileno" />
+		<result property="mvFileName" column="mvfilename" />
+		<result property="mvTitle" column="mvtitle" />
+		<result property="lecture_id" column="lecture_id" />
+		<result property="regDate" column="regDate" />
+	</resultMap>
 
 
 	<select id="selectAllLectureList" resultType="lectureDTO">
@@ -134,4 +142,30 @@
 				values(seq_index.nextval, #{member_id}, #{lecture_id})
 		]]>
 	</insert>
+	
+	<select id="selectMvCount" resultType="int">
+		<![CDATA[
+			select count(mvFileNo) from lec_mvFile
+		]]>
+	</select>
+	
+	<select id="selectMv" resultType="movieDTO" parameterType="int">
+		<![CDATA[
+			select * from lec_mvfile where mvfileno = #{mvFileNo}
+		]]>
+	</select>
+	
+	<select id="selectMvList" resultType="movieDTO" parameterType="int">
+		<![CDATA[
+			select * from lec_mvfile where lecture_id = #{lecture_id}  order by regDate asc
+		]]>
+	</select>
+	
+	<insert id="insertMv" parameterType="java.util.Map">
+		<![CDATA[	
+			insert into lec_mvfile(mvfileno, mvtitle, mvfilename, lecture_id)
+				values(#{mvFileNo}, #{title}, #{mvFileName}, #{lecture_id})
+		]]>
+	</insert>
+	
 </mapper>

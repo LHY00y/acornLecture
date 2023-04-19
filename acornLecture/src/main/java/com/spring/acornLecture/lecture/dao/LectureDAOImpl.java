@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.acornLecture.lecture.dto.LectureDTO;
 import com.spring.acornLecture.lecture.dto.Member_LectureDTO;
+import com.spring.acornLecture.lecture.dto.MovieDTO;
 
 @Repository
 public class LectureDAOImpl implements LectureDAO {
@@ -105,5 +106,23 @@ public class LectureDAOImpl implements LectureDAO {
 	public Member_LectureDTO selectStuCount(int lecture_id) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("mapper.lecture.selectStuCount", lecture_id);
+	}
+	@Override
+	public void insertNewMv(Map<String, Object> mvMap) {
+		sqlSession.insert("mapper.lecture.insertMv", mvMap);
+	}
+	
+	@Override
+	public int selectMvCount() {
+		return sqlSession.selectOne("mapper.lecture.selectMvCount");
+	}
+	
+	@Override
+	public MovieDTO selectOneMv(int mvFileNo) {
+		return sqlSession.selectOne("mapper.lecture.selectMv", mvFileNo);
+	}
+	@Override
+	public List<MovieDTO> selectMvList(int lecture_id) {
+		return sqlSession.selectList("mapper.lecture.selectMvList", lecture_id);
 	}
 }

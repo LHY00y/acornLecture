@@ -9,5 +9,6 @@
 		<typeAlias type="com.spring.acornLecture.board.dto.BoardDTO" alias="boardDTO"/>
 		<typeAlias type="com.spring.acornLecture.board.dto.ImageDTO" alias="imageDTO"/>
 		<typeAlias type="com.spring.acornLecture.lecture.dto.Member_LectureDTO" alias="Member_LectureDTO"/>
+		<typeAlias type="com.spring.acornLecture.lecture.dto.MovieDTO" alias="movieDTO"/>
 	</typeAliases>
 </configuration>

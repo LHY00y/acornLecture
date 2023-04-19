@@ -1,7 +1,10 @@
 package com.spring.acornLecture.lecture.controller;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.http.HttpHeaders;
@@ -18,19 +22,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.acornLecture.board.dto.BoardDTO;
+import com.spring.acornLecture.board.dto.ImageDTO;
 import com.spring.acornLecture.board.service.BoardService;
 import com.spring.acornLecture.lecture.dto.LectureDTO;
 import com.spring.acornLecture.lecture.dto.Member_LectureDTO;
+import com.spring.acornLecture.lecture.dto.MovieDTO;
 import com.spring.acornLecture.lecture.service.LectureService;
 import com.spring.acornLecture.member.dto.MemberDTO;
 
 @Controller
 @EnableAspectJAutoProxy
 public class LectureControllerImpl implements LectureController {
+	
+	private static final String CURR_MOVIE_REPO_PATH = "C:\\Users\\leeha\\git\\acornLecture\\acornLecture\\lecture_movie";
+
 	@Autowired
 	private LectureService lectureService;
 	@Autowired
@@ -92,8 +102,11 @@ public class LectureControllerImpl implements LectureController {
 		LectureDTO lecture = lectureService.lectureInfo(lecture_id);
 		Member_LectureDTO dto = lectureService.stuCount(lecture_id);
 
+		List<MovieDTO> mvList = lectureService.mvList(lecture_id);
+		
 		mav.addObject("reviewList", reviewList);
 		mav.addObject("noticeList", noticeList);
+		mav.addObject("mvList", mvList);
 		mav.addObject("lecture", lecture);
 		mav.addObject("dto", dto);
 		return mav;
@@ -316,5 +329,105 @@ public class LectureControllerImpl implements LectureController {
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 		}
 		return resEnt;
+	}
+	
+	@Override
+	@RequestMapping(value="/lecture/addNewMovie.do", method=RequestMethod.POST)
+	public ResponseEntity addNewMovie( MultipartHttpServletRequest multipartRequest, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		multipartRequest.setCharacterEncoding("utf-8");
+		Map<String, Object> mvMap = new HashMap<String, Object>();
+		Enumeration<String> enu = multipartRequest.getParameterNames();
+		
+		while(enu.hasMoreElements()) {
+			String name = (String)enu.nextElement();
+			String value = multipartRequest.getParameter(name);
+			mvMap.put(name, value);
+		}
+		
+		String mvFileName = upload(multipartRequest);
+		mvMap.put("mvFileName", mvFileName);
+
+		String lecture_id = request.getParameter("lecture_id");
+				
+		String message;
+		ResponseEntity resEnt = null;
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
+		
+		try {
+			
+			int mvNo = lectureService.addNewMovie(mvMap);
+			
+			if(mvFileName != null && mvFileName != "") {
+				File srcFile = new File(CURR_MOVIE_REPO_PATH+ "\\temp\\" 
+						+ mvFileName);
+				File destDir = new File(CURR_MOVIE_REPO_PATH+"\\"+lecture_id);
+				FileUtils.moveFileToDirectory(srcFile, destDir, true);
+			}
+			
+			message = "<script>";
+			message += "alert('새 영상을 추가했습니다.');";
+			message += "location.href='" + multipartRequest.getContextPath()
+				+"/lecture/info.do?id="+lecture_id+"';";
+			message += "</script>";
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+		} catch (Exception e) {
+			// TODO: handle exception
+			message = "<script>";
+			message += "alert('오류가 발생했습니다. 다시 시도해 주세요.');";
+			message += "location.href='" + multipartRequest.getContextPath()
+				+"/lecture/uploadForm.do?lecture_id="+lecture_id+"';";
+			message += "</script>";
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+			e.printStackTrace();
+		}
+		return resEnt;
+	}
+	
+	private String upload(MultipartHttpServletRequest multipartRequest) throws Exception {
+		Iterator<String> fileNames = multipartRequest.getFileNames();
+		String originalFileName ="";
+		while(fileNames.hasNext()) {
+			String fileName = fileNames.next();
+			MultipartFile mFile = multipartRequest.getFile(fileName);
+			originalFileName = mFile.getOriginalFilename();
+			File file = new File(CURR_MOVIE_REPO_PATH+"\\"+fileName);
+			if(mFile.getSize()!=0) {
+				if(!file.exists()) {
+					if(file.getParentFile().mkdirs()) {
+						file.createNewFile();
+					}
+				}
+				mFile.transferTo(new File(CURR_MOVIE_REPO_PATH+"\\temp\\"+originalFileName));
+			}
+		}
+		return originalFileName;
+	}
+	
+	@Override
+	@RequestMapping(value="/lecture/showMv.do", method=RequestMethod.GET)
+	public ModelAndView showMv(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+		int mvFileNo = Integer.parseInt(request.getParameter("mvFileNo"));
+		
+		MovieDTO mv = lectureService.mvInfo(mvFileNo);
+		
+		mav.addObject("mv", mv);
+		return mav;
+	}
+	
+	
+	@Override
+	@RequestMapping(value="/lecture/mvList.do", method=RequestMethod.GET)
+	public ModelAndView mvList(@RequestParam("id") int lecture_id, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+		
+		List<MovieDTO> mvList = lectureService.mvList(lecture_id);
+		
+		mav.addObject("mvList", mvList);
+		return mav;
 	}
 }
